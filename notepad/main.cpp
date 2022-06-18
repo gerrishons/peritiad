@@ -48,15 +48,14 @@
 **
 ****************************************************************************/
 
-#include "notepad.h"
+#include "peritia.h"
 
 #include <QApplication>
-#include <QLCDNumber>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Notepad w;
+    Peritia w;
     w.show();
     return a.exec();
 }
