@@ -11,11 +11,15 @@
 
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
+#include <QtWebKitWidgets/QWebView>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCommandLinkButton>
+#include <QtWidgets/QDial>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -26,6 +30,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QTimeEdit>
 #include <QtWidgets/QToolBar>
@@ -55,6 +60,7 @@ public:
     QAction *summaryAct;
     QAction *actionAbout_Scalabli;
     QAction *actionGyug;
+    QAction *actionPeritiaUpdate;
     QWidget *centralWidget;
     QLabel *label;
     QTextEdit *textEdit;
@@ -74,6 +80,11 @@ public:
     QLCDNumber *lcdNumber;
     QTimeEdit *timeEdit;
     QProgressBar *progressBar;
+    QCommandLinkButton *commandLinkButton;
+    QTableWidget *tableWidget;
+    QDial *dial;
+    QTimeEdit *timeEdit_2;
+    QWebView *webView;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -85,7 +96,7 @@ public:
     {
         if (Peritia->objectName().isEmpty())
             Peritia->setObjectName(QString::fromUtf8("Peritia"));
-        Peritia->resize(942, 803);
+        Peritia->resize(1920, 1080);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/images/peritia-logo.png"), QSize(), QIcon::Normal, QIcon::Off);
         Peritia->setWindowIcon(icon);
@@ -189,6 +200,8 @@ public:
         actionAbout_Scalabli->setIcon(icon17);
         actionGyug = new QAction(Peritia);
         actionGyug->setObjectName(QString::fromUtf8("actionGyug"));
+        actionPeritiaUpdate = new QAction(Peritia);
+        actionPeritiaUpdate->setObjectName(QString::fromUtf8("actionPeritiaUpdate"));
         centralWidget = new QWidget(Peritia);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         centralWidget->setStyleSheet(QString::fromUtf8("background-image: url(:/images/daco.png);"));
@@ -211,12 +224,13 @@ public:
         textEdit = new QTextEdit(centralWidget);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
         textEdit->setGeometry(QRect(130, 490, 104, 70));
+        textEdit->setFrameShape(QFrame::Panel);
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
         graphicsView->setGeometry(QRect(70, 140, 256, 192));
         graphicsView->setStyleSheet(QString::fromUtf8("image: url(:/images/blake.png);\n"
 "background-image: url(:/images/blake.png);"));
-        graphicsView->setFrameShape(QFrame::Panel);
+        graphicsView->setFrameShape(QFrame::NoFrame);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(10, 10, 131, 111));
@@ -241,9 +255,16 @@ public:
         gridLayout->setContentsMargins(0, 0, 0, 0);
         pushButton_5 = new QPushButton(gridLayoutWidget);
         pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pushButton_5->setFocusPolicy(Qt::WheelFocus);
+        pushButton_5->setAcceptDrops(true);
+#if QT_CONFIG(tooltip)
+        pushButton_5->setToolTip(QString::fromUtf8(""));
+#endif // QT_CONFIG(tooltip)
         pushButton_5->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(245, 224, 176, 255), stop:0.09 rgba(246, 189, 237, 255), stop:0.14 rgba(194, 207, 246, 255), stop:0.19 rgba(184, 160, 168, 255), stop:0.25 rgba(171, 186, 248, 255), stop:0.32 rgba(243, 248, 224, 255), stop:0.385 rgba(249, 162, 183, 255), stop:0.47 rgba(100, 115, 124, 255), stop:0.58 rgba(251, 205, 202, 255), stop:0.65 rgba(170, 128, 185, 255), stop:0.75 rgba(252, 222, 204, 255), stop:0.805 rgba(206, 122, 218, 255), stop:0.86 rgba(254, 223, 175, 255), stop:0.91 rgba(254, 236, 244, 255), stop:1 rgba(255, 191, 221, 255));"));
         pushButton_5->setIcon(icon1);
         pushButton_5->setIconSize(QSize(25, 26));
+        pushButton_5->setAutoDefault(true);
+        pushButton_5->setFlat(false);
 
         gridLayout->addWidget(pushButton_5, 0, 0, 1, 1);
 
@@ -261,7 +282,7 @@ public:
         groupBox->setStyleSheet(QString::fromUtf8("background-image: url(:/images/celebratory.png);"));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(30, 600, 271, 80));
+        tabWidget->setGeometry(QRect(10, 590, 271, 80));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Noto Sans Mono"));
         font2.setItalic(true);
@@ -301,10 +322,44 @@ public:
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
         progressBar->setGeometry(QRect(50, 520, 221, 23));
         progressBar->setValue(24);
+        commandLinkButton = new QCommandLinkButton(centralWidget);
+        commandLinkButton->setObjectName(QString::fromUtf8("commandLinkButton"));
+        commandLinkButton->setGeometry(QRect(1080, 660, 175, 41));
+        commandLinkButton->setStyleSheet(QString::fromUtf8("selection-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(0, 0, 0, 255), stop:0.19397 rgba(0, 0, 0, 255), stop:0.202312 rgba(122, 97, 0, 255), stop:0.495514 rgba(76, 58, 0, 255), stop:0.504819 rgba(255, 255, 255, 255), stop:0.79 rgba(255, 255, 255, 255), stop:1 rgba(255, 158, 158, 255));\n"
+"background-color: qconicalgradient(cx:0.5, cy:0.5, angle:0, stop:0 rgba(35, 40, 3, 255), stop:0.16 rgba(136, 106, 22, 255), stop:0.225 rgba(166, 140, 41, 255), stop:0.285 rgba(204, 181, 74, 255), stop:0.345 rgba(235, 219, 102, 255), stop:0.415 rgba(245, 236, 112, 255), stop:0.52 rgba(209, 190, 76, 255), stop:0.57 rgba(187, 156, 51, 255), stop:0.635 rgba(168, 142, 42, 255), stop:0.695 rgba(202, 174, 68, 255), stop:0.75 rgba(218, 202, 86, 255), stop:0.815 rgba(208, 187, 73, 255), stop:0.88 rgba(187, 156, 51, 255), stop:0.935 rgba(137, 108, 26, 255), stop:1 rgba(35, 40, 3, 255));"));
+        QIcon icon18;
+        icon18.addFile(QString::fromUtf8(":/images/celebratory.png"), QSize(), QIcon::Normal, QIcon::Off);
+        commandLinkButton->setIcon(icon18);
+        tableWidget = new QTableWidget(centralWidget);
+        if (tableWidget->columnCount() < 6)
+            tableWidget->setColumnCount(6);
+        if (tableWidget->rowCount() < 3)
+            tableWidget->setRowCount(3);
+        tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
+        tableWidget->setGeometry(QRect(350, 300, 381, 111));
+        tableWidget->setFrameShape(QFrame::VLine);
+        tableWidget->setFrameShadow(QFrame::Raised);
+        tableWidget->setGridStyle(Qt::DotLine);
+        tableWidget->setRowCount(3);
+        tableWidget->setColumnCount(6);
+        dial = new QDial(centralWidget);
+        dial->setObjectName(QString::fromUtf8("dial"));
+        dial->setGeometry(QRect(630, 520, 50, 64));
+        dial->setInvertedControls(true);
+        timeEdit_2 = new QTimeEdit(centralWidget);
+        timeEdit_2->setObjectName(QString::fromUtf8("timeEdit_2"));
+        timeEdit_2->setGeometry(QRect(260, 40, 118, 28));
+        timeEdit_2->setInputMethodHints(Qt::ImhDate|Qt::ImhPreferNumbers|Qt::ImhTime);
+        timeEdit_2->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        timeEdit_2->setCalendarPopup(true);
+        webView = new QWebView(centralWidget);
+        webView->setObjectName(QString::fromUtf8("webView"));
+        webView->setGeometry(QRect(770, 120, 300, 200));
+        webView->setUrl(QUrl(QString::fromUtf8("about:blank")));
         Peritia->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Peritia);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 942, 24));
+        menuBar->setGeometry(QRect(0, 0, 1920, 24));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menuBar);
@@ -366,7 +421,10 @@ public:
         retranslateUi(Peritia);
         QObject::connect(actionAbout_Scalabli, SIGNAL(triggered()), actionAbout_Scalabli, SLOT(trigger()));
         QObject::connect(pushButton_5, SIGNAL(clicked()), actionSummary, SLOT(trigger()));
+        QObject::connect(pushButton_7, SIGNAL(clicked()), label_2, SLOT(update()));
+        QObject::connect(commandLinkButton, SIGNAL(clicked()), commandLinkButton, SLOT(animateClick()));
 
+        pushButton_5->setDefault(true);
         tabWidget->setCurrentIndex(1);
 
 
@@ -426,10 +484,13 @@ public:
 #if QT_CONFIG(shortcut)
         actionCopy->setShortcut(QCoreApplication::translate("Peritia", "Ctrl+C", nullptr));
 #endif // QT_CONFIG(shortcut)
-        actionExit->setText(QCoreApplication::translate("Peritia", "Exit", nullptr));
+        actionExit->setText(QCoreApplication::translate("Peritia", "Quit", nullptr));
 #if QT_CONFIG(tooltip)
-        actionExit->setToolTip(QCoreApplication::translate("Peritia", "Exit notepad", nullptr));
+        actionExit->setToolTip(QCoreApplication::translate("Peritia", "Exit peritia", nullptr));
 #endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionExit->setShortcut(QCoreApplication::translate("Peritia", "Ctrl+Q", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionPrint->setText(QCoreApplication::translate("Peritia", "Print", nullptr));
 #if QT_CONFIG(tooltip)
         actionPrint->setToolTip(QCoreApplication::translate("Peritia", "Print file", nullptr));
@@ -471,12 +532,10 @@ public:
         actionAbout_Scalabli->setToolTip(QCoreApplication::translate("Peritia", "More information about Scalabli", nullptr));
 #endif // QT_CONFIG(tooltip)
         actionGyug->setText(QCoreApplication::translate("Peritia", "Gyug", nullptr));
+        actionPeritiaUpdate->setText(QCoreApplication::translate("Peritia", "PeritiaUpdate", nullptr));
         label->setText(QCoreApplication::translate("Peritia", "<html><head/><body><p><span style=\" font-size:26pt; font-weight:600; color:#e66100;\">Peritia</span></p></body></html>", nullptr));
         label_2->setText(QString());
         label_3->setText(QCoreApplication::translate("Peritia", "<html><head/><body><p><span style=\" font-size:26pt; color:#63452c;\">Peritia</span></p></body></html>", nullptr));
-#if QT_CONFIG(tooltip)
-        pushButton_5->setToolTip(QString());
-#endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
         pushButton_5->setStatusTip(QCoreApplication::translate("Peritia", "Summary of your system ", nullptr));
 #endif // QT_CONFIG(statustip)
@@ -492,6 +551,8 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("Peritia", "Tab 1", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("Peritia", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("Peritia", "Page", nullptr));
+        commandLinkButton->setText(QCoreApplication::translate("Peritia", "Webiste", nullptr));
+        commandLinkButton->setDescription(QCoreApplication::translate("Peritia", "Command link button", nullptr));
         menuFile->setTitle(QCoreApplication::translate("Peritia", "File", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("Peritia", "Edit", nullptr));
         menuAbout->setTitle(QCoreApplication::translate("Peritia", "About", nullptr));

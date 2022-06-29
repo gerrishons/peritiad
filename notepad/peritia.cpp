@@ -52,6 +52,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <chrono>
+#include <QLabel>
 #include <QFile>
 #include <QTime>
 #include <QTimer>
@@ -71,6 +72,7 @@
 #include <QFontDialog>
 
 #include "peritia.h"
+
 #include "ui_peritia.h"
 
 Peritia::Peritia(QWidget *parent) :
@@ -78,6 +80,18 @@ Peritia::Peritia(QWidget *parent) :
     ui(new Ui::Peritia)
 {
     ui->setupUi(this);
+    
+    QTimer *timer = new QTimer(this);
+//! [4] //! [5]
+    connect(timer, &QTimer::timeout, this, QOverload<>::of(&AnalogClock::update));
+//! [5] //! [6]
+    timer->start(1000);
+//! [6
+// setWindowTitle(tr("Analog Clock"));
+   // resize(200, 200);
+//! [7]
+
+
    
     connect(ui->actionSummary, &QAction::triggered, this, &Peritia::newDocument);
     connect(ui->actionOpen, &QAction::triggered, this, &Peritia::open);
@@ -143,20 +157,21 @@ void Peritia::newDocument()
      QString str;
 
      if(hourStringToInt < 12) {
-	 //    QString str;
-	     str = QString(tr("Good morning, Your using a linux machine"));
+
+	     str = QString(tr("Good morning🌄, Your using a linux machine"));
 	     QMessageBox::about(this, tr("About Peritia"), str);
-     }
+	     //label_2 = new QLabel(centralWidget);                          // label_2->setObjectName(QString::fromUtf8("label_2"));        //label_2->setGeometry(QRect(10, 10, 131, 111));
+	   //  label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/blake.png);"));}i
+	    }
      
      // logical operators
      if(12 <= hourStringToInt && hourStringToInt <18) {
-	    // QString str;
-	     str = QString(tr("Good aftertoon, Your using a oinux machine"));
+	     str = QString(tr("Good aftertoon⛅, Your using a linux machine"));
 	     QMessageBox::about(this, tr("About Peritia"), str);
      }
-     else {
-	  //   QString str;
-	     str = QString(tr("Good evening, Your using a oinux machine"));
+
+     if(hourStringToInt > 18) {
+	     str = QString(tr("Good evening🌃, Your using a linux machine"));
 	     QMessageBox::about(this, tr("About Peritia"), str);
      }
 
@@ -274,8 +289,8 @@ void Peritia::setFontBold(bool bold)
 
 void Peritia::about()
 {
-    QMessageBox::about(this, tr("About Peritia"), tr("<b>Peritia</b> is a Latin word which means experience or practical knowledge.\n"
-			    "In this context peritia is a computer software for Text to ASL and Text to Braille, it can also be used as a data analytics tool i.e to check and analyse students` performance, teachers can use the output to set reasonable and measurable goals based on current and historical data. <u>USAGE</u> %1\nPress `ESC` to exit %2\n%3\n© Gerrishon Sirere %4\nTHE SOFTWARE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE DEALINGS IN THE SOFTWARE"));
+    QMessageBox::about(this, tr("About Peritia"), tr("<b>Peritia</b> is a Latin word which means experience or practical knowledge."
+			    "<br>In this context peritia is a computer software for Text to ASL and Text to Braille, it can also be used as a data analytics tool i.e to check and analyse students` performance, teachers can use the output to set reasonable and measurable goals based on current and historical data. <br><u>USAGE</u><br>Press `ESC` to exit.<br><br>© Gerrishon Sirere <br>THE SOFTWARE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE DEALINGS IN THE SOFTWARE"));
 
    // QMessageBox::about(this, tr("About Peritia"), str);
 
@@ -290,3 +305,6 @@ void Peritia::aboutScalabli()
 	str = QString(tr("More info about Scalabli"));
 	QMessageBox::about(this, tr("About Scalabli"), str);
 }
+
+
+

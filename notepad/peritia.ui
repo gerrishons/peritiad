@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Notepad</class>
+ <class>Peritia</class>
  <widget class="QMainWindow" name="Peritia">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>942</width>
-    <height>803</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -84,6 +84,9 @@
       <height>70</height>
      </rect>
     </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
    </widget>
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
@@ -99,7 +102,7 @@
 background-image: url(:/images/blake.png);</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Panel</enum>
+     <enum>QFrame::NoFrame</enum>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -156,8 +159,14 @@ background-image: url(:/images/blake.png);</string>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
       <widget class="QPushButton" name="pushButton_5">
+       <property name="focusPolicy">
+        <enum>Qt::WheelFocus</enum>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
        <property name="toolTip">
-        <string extracomment="Uyui hijjjj"/>
+        <string notr="true" extracomment="Uyui hijjjj"/>
        </property>
        <property name="statusTip">
         <string>Summary of your system </string>
@@ -180,6 +189,15 @@ background-image: url(:/images/blake.png);</string>
        </property>
        <property name="shortcut">
         <string>L</string>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -227,8 +245,8 @@ background-image: url(:/images/blake.png);</string>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>600</y>
+      <x>10</x>
+      <y>590</y>
       <width>271</width>
       <height>80</height>
      </rect>
@@ -340,13 +358,118 @@ background-image: url(:/images/blake.png);</string>
      <number>24</number>
     </property>
    </widget>
+   <widget class="QCommandLinkButton" name="commandLinkButton">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>660</y>
+      <width>175</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">selection-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(0, 0, 0, 255), stop:0.19397 rgba(0, 0, 0, 255), stop:0.202312 rgba(122, 97, 0, 255), stop:0.495514 rgba(76, 58, 0, 255), stop:0.504819 rgba(255, 255, 255, 255), stop:0.79 rgba(255, 255, 255, 255), stop:1 rgba(255, 158, 158, 255));
+background-color: qconicalgradient(cx:0.5, cy:0.5, angle:0, stop:0 rgba(35, 40, 3, 255), stop:0.16 rgba(136, 106, 22, 255), stop:0.225 rgba(166, 140, 41, 255), stop:0.285 rgba(204, 181, 74, 255), stop:0.345 rgba(235, 219, 102, 255), stop:0.415 rgba(245, 236, 112, 255), stop:0.52 rgba(209, 190, 76, 255), stop:0.57 rgba(187, 156, 51, 255), stop:0.635 rgba(168, 142, 42, 255), stop:0.695 rgba(202, 174, 68, 255), stop:0.75 rgba(218, 202, 86, 255), stop:0.815 rgba(208, 187, 73, 255), stop:0.88 rgba(187, 156, 51, 255), stop:0.935 rgba(137, 108, 26, 255), stop:1 rgba(35, 40, 3, 255));</string>
+    </property>
+    <property name="text">
+     <string>Webiste</string>
+    </property>
+    <property name="icon">
+     <iconset resource="peritia.qrc">
+      <normaloff>:/images/celebratory.png</normaloff>:/images/celebratory.png</iconset>
+    </property>
+    <property name="description">
+     <string>Command link button</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>300</y>
+      <width>381</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::VLine</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::DotLine</enum>
+    </property>
+    <property name="rowCount">
+     <number>3</number>
+    </property>
+    <property name="columnCount">
+     <number>6</number>
+    </property>
+    <row/>
+    <row/>
+    <row/>
+    <column/>
+    <column/>
+    <column/>
+    <column/>
+    <column/>
+    <column/>
+   </widget>
+   <widget class="QDial" name="dial">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>520</y>
+      <width>50</width>
+      <height>64</height>
+     </rect>
+    </property>
+    <property name="invertedControls">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QTimeEdit" name="timeEdit_2">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>40</y>
+      <width>118</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhDate|Qt::ImhPreferNumbers|Qt::ImhTime</set>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWebView" name="webView">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>120</y>
+      <width>300</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="url">
+     <url>
+      <string>about:blank</string>
+     </url>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>942</width>
+     <width>1920</width>
      <height>24</height>
     </rect>
    </property>
@@ -563,14 +686,17 @@ background-image: url(:/images/blake.png);</string>
   </action>
   <action name="actionExit">
    <property name="icon">
-    <iconset theme="exit.png" resource="notepad.qrc">
+    <iconset theme="exit.png" resource="peritia.qrc">
      <normaloff>:/images/exit.png</normaloff>:/images/exit.png</iconset>
    </property>
    <property name="text">
-    <string>Exit</string>
+    <string>Quit</string>
    </property>
    <property name="toolTip">
-    <string>Exit notepad</string>
+    <string>Exit peritia</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
   <action name="actionPrint">
@@ -673,8 +799,20 @@ background-image: url(:/images/blake.png);</string>
     <string>Gyug</string>
    </property>
   </action>
+  <action name="actionPeritiaUpdate">
+   <property name="text">
+    <string>PeritiaUpdate</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebKitWidgets/QWebView</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="peritia.qrc"/>
  </resources>
@@ -708,6 +846,38 @@ background-image: url(:/images/blake.png);</string>
     <hint type="destinationlabel">
      <x>-1</x>
      <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>label_2</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>402</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>75</x>
+     <y>128</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>commandLinkButton</sender>
+   <signal>clicked()</signal>
+   <receiver>commandLinkButton</receiver>
+   <slot>animateClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>827</x>
+     <y>743</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>827</x>
+     <y>743</y>
     </hint>
    </hints>
   </connection>
