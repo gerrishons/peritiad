@@ -1,0 +1,145 @@
+#include "peritia.h"
+#include "peritia-about.h"
+
+
+
+void Peritia::ShowAbout() {
+
+	QDialog *DAbout = new QDialog();
+	QIcon icon1;
+	icon1.addFile(QString::fromUtf8(":/images/peritia-logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+	DAbout->setWindowIcon(icon1);
+	DAbout->setWindowTitle("About");
+       	DAbout->setFixedSize(500,500);
+
+
+	QPushButton *pushButton = new QPushButton();
+	pushButton->setObjectName(QString::fromUtf8("pushButton"));
+	pushButton->setGeometry(QRect(410, 430, 87, 27));
+	pushButton->setStyleSheet(QString::fromUtf8("background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 235, 235, 206), stop:0.35 rgba(255, 188, 188, 80), stop:0.4 rgba(255, 162, 162, 80), stop:0.425 rgba(255, 132, 132, 156), stop:0.44 rgba(252, 128, 128, 80), stop:1 rgba(255, 255, 255, 0));"));
+	QIcon icon2;
+       	icon2.addFile(QString::fromUtf8(":/images/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+       	pushButton->setIcon(icon2);
+
+
+	QTabWidget *tabWidget = new QTabWidget();
+       	tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+	tabWidget->setGeometry(QRect(0, 310, 401, 151));
+	tabWidget->setTabPosition(QTabWidget::South);
+	//QGroupBox *groupBox = new QGroupBox();                                groupBox->setObjectName(QString::fromUtf8("groupBox"));
+     //	groupBox->setGeometry(QRect(0, 190, 500, 100));
+       
+	QWidget *tab1 = new QWidget();
+	tab1->setObjectName(QString::fromUtf8("tab1"));
+	
+	QWidget *verticalLayoutWidget1 = new QWidget(tab1);
+	verticalLayoutWidget1->setObjectName(QString::fromUtf8("verticalLayoutWidget1"));
+	verticalLayoutWidget1->setFixedHeight(100);
+       	verticalLayoutWidget1->setGeometry(QRect(0, 10, 401, 91));
+	
+	QVBoxLayout *verticalLayout1 = new QVBoxLayout(verticalLayoutWidget1);
+	verticalLayout1->setObjectName(QString::fromUtf8("verticalLayout1"));
+       	verticalLayout1->setContentsMargins(0, 0, 0, 0);
+	QLabel *credits_label = new QLabel(verticalLayoutWidget1);
+	credits_label->setObjectName(QString::fromUtf8("license_label"));
+	credits_label->setText("yyyyyg");
+	credits_label->setAlignment(Qt::AlignCenter);
+
+	QIcon icon3;
+	icon3.addFile(QString::fromUtf8(":/images/peritia-logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+	tabWidget->addTab(tab1, icon3, QString("Credits"));
+	
+	QWidget *tab2 = new QWidget();
+	tab2->setObjectName(QString::fromUtf8("tab2"));
+	
+	QWidget *verticalLayoutWidget2 = new QWidget(tab2);
+	verticalLayoutWidget2->setObjectName(QString::fromUtf8("verticalLayoutWidget2"));
+	//verticalLayoutWidget2->setGeometry(QRect(0, 10, 401, 91));
+	verticalLayoutWidget2->setGeometry(QRect(-1, 0, 331, 121));
+	QVBoxLayout *verticalLayout2 = new QVBoxLayout(verticalLayoutWidget2);
+	verticalLayout2->setObjectName(QString::fromUtf8("verticalLayout2"));
+	verticalLayout2->setContentsMargins(10, 100, 100, 10);
+	verticalLayout2->addStretch(1);
+	
+	QTextBrowser *textBrowser_license = new QTextBrowser(verticalLayoutWidget2);
+       	textBrowser_license->setObjectName(QString::fromUtf8("textBrowser_license"));
+	textBrowser_license->setSource(QUrl(QString::fromUtf8("file:///root/git/peritia/LICENSE")));
+	
+	/*QLabel *license_label = new QLabel(verticalLayoutWidget2);
+	license_label->setObjectName(QString::fromUtf8("license_label"));
+	license_label->setText("yyyyyg");*/
+       	QIcon icon4;
+	icon4.addFile(QString::fromUtf8(":/images/celebratory.png"), QSize(), QIcon::Normal, QIcon::Off);
+	tabWidget->addTab(tab2, icon4, QString("License"));
+
+	
+	QWidget *tab3 = new QWidget();
+	tab3->setObjectName(QString::fromUtf8("tab3"));
+	tabWidget->addTab(tab3, QString());
+	
+	
+	QWidget *verticalLayoutWidgetMain1 = new QWidget();
+	verticalLayoutWidgetMain1->setObjectName(QString::fromUtf8("verticalLayoutWidgetMain1"));
+	verticalLayoutWidgetMain1->setGeometry(QRect(170, 0, 160, 80));
+        QVBoxLayout *verticalLayoutMain1 = new QVBoxLayout(verticalLayoutWidgetMain1);
+	verticalLayoutMain1->setObjectName(QString::fromUtf8("verticalLayoutMain1"));
+	verticalLayoutMain1->setContentsMargins(0, 0, 0, 0);
+
+        QLabel *photo_label = new QLabel(verticalLayoutWidgetMain1);
+	photo_label->setObjectName(QString::fromUtf8("photo_label"));
+	photo_label->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
+
+	QLabel *title_label = new QLabel(verticalLayoutWidgetMain1);
+	title_label->setObjectName(QString::fromUtf8("title_label"));
+	title_label->setText(tr("<h5><b>PERITIA</b></h5>"));
+	title_label->setAlignment(Qt::AlignCenter);
+
+	
+	//verticalLayoutMain1->addWidget(photo_label);
+	/*verticalLayoutMain1->addWidget(title_label);
+	verticalLayoutMain1->addWidget(pushButton);*/
+
+	
+	QGroupBox *groupBox = new QGroupBox(verticalLayoutWidgetMain1);
+	groupBox->setObjectName(QString::fromUtf8("groupBox"));
+	groupBox->setGeometry(QRect(0, 190, 500, 100));
+	QLabel *body_label = new QLabel(verticalLayoutWidgetMain1);
+      	body_label->setObjectName(QString::fromUtf8("body_label"));
+
+    /* 	QWidget *verticalLayoutWidgetMain2 = new QWidget(groupBox);
+	verticalLayoutWidgetMain2->setObjectName(QString::fromUtf8("verticalLayoutWidgetMain2"));
+	verticalLayoutWidgetMain2->setGeometry(QRect(-10, 20, 501, 80));
+	QVBoxLayout *verticalLayoutMain2 =new QVBoxLayout(verticalLayoutWidgetMain2);
+	verticalLayoutMain2->setObjectName(QString::fromUtf8("verticalLayoutMain2"));
+	verticalLayoutMain2->setContentsMargins(0, 0, 0, 0);
+	
+	QLabel *body_label = new QLabel(verticalLayoutWidgetMain2);
+	body_label->setObjectName(QString::fromUtf8("body_label"));*/
+
+	verticalLayoutMain1->addWidget(photo_label);
+        verticalLayoutMain1->addWidget(title_label);
+	verticalLayoutMain1->addWidget(body_label);
+	verticalLayoutMain1->addWidget(tabWidget);
+        verticalLayoutMain1->addWidget(pushButton);
+	//verticalLayoutMain2->addWidget(body_label);
+
+	//HBoxLayout *final_layout = QHBoxLayout();
+
+/*	verticalLayoutMain2->addWidget(photo_label);
+	verticalLayoutMain2->addWidget(title_label);
+	verticalLayoutMain2->addWidget(body_label);
+	verticalLayoutMain2->addWidget(tabWidget);
+	verticalLayoutMain2->addWidget(pushButton);*/
+	
+	DAbout->setLayout(verticalLayoutMain1);
+	DAbout->show();
+
+}
+
+
+void Peritia::AboutScalabli()
+{
+       	QString str;
+       	str = QString(tr("More info about Scalabli"));
+	QMessageBox::about(this, tr("About Scalabli"), str);
+}
