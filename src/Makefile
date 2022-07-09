@@ -424,8 +424,7 @@ compiler_uic_make_all: ui_peritia.h
 compiler_uic_clean:
 	-$(DEL_FILE) ui_peritia.h
 ui_peritia.h: peritia.ui \
-		/usr/lib/qt5/bin/uic \
-		/usr/include/arm-linux-gnueabihf/qt5/QtWebKitWidgets/QWebView
+		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic peritia.ui -o ui_peritia.h
 
 compiler_yacc_decl_make_all:
@@ -445,6 +444,8 @@ peritia.o: peritia.cpp peritia-about.cpp \
 		peritia-about.hpp \
 		peritia.h \
 		version.h \
+		peritia-help.cpp \
+		peritia-help.hpp \
 		ui_peritia.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o peritia.o peritia.cpp
 

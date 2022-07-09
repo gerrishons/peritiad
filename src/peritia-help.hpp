@@ -1,0 +1,2 @@
+#include <QDesktopServices>
+#include <QUrl>

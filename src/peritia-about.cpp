@@ -63,7 +63,7 @@ void Peritia::ShowAbout() {
        	textBrowser1->setGeometry(QRect(0, 0, 341, 121));
 
 	QString ff = "dkdieieie deieiiwiwi";
-	textBrowser1->setSource(ff);//QString::fromUtf8("file: url(:/data/LICENSE);")));
+	textBrowser1->setText(QString::fromUtf8("file: url(:/data/LICENSE);"));
 	//textBrowser1->setSource(QUrl::fromLocalFile("/root/git/peritia/notepad/data/LICENSE"));
 		//	QString::fromUtf8(":/data/LICENSE")));
 	//x->width, y->height
@@ -85,8 +85,8 @@ void Peritia::ShowAbout() {
 	QIcon icon3;
        	icon3.addFile(QString::fromUtf8(":/images/peritia-logo.png"), QSize(), QIcon::Normal, QIcon::Off);
        	tabWidget->addTab(tab1, icon3, QString("Credits"));
-
-	QHBoxLayout *hah = new QHBoxLayout();
+	
+	QHBoxLayout *buttonLayout = new QHBoxLayout;
 
 
 	QPushButton *pushButton = new QPushButton("Back");
@@ -98,15 +98,15 @@ void Peritia::ShowAbout() {
 	pushButton->setIcon(back_icon);
 	pushButton->setFixedSize(60,30);
 	//pushButton->setAlignment(Qt::AlignRight);
-	hah->addWidget(pushButton);
+	buttonLayout->addWidget(pushButton);
 
 	vBoxLayout->addLayout(hBoxLayout);
 	vBoxLayout->addWidget(title_label);
 	vBoxLayout->addWidget(version_label);
 	vBoxLayout->addWidget(body_label);
 	vBoxLayout->addWidget(tabWidget);
-	vBoxLayout->addLayout(hah);
-	//vBoxLayout->addWidget(pushButton);
+	vBoxLayout->addLayout(buttonLayout);
+	//BoxLayout->addWidget(pushButton);
 
 	DAbout->setLayout(vBoxLayout);
 

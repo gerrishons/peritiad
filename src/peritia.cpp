@@ -69,11 +69,13 @@
 #endif // QT_PRINTSUPPORT_LIB
 #include <QFont>
 #include <QFontDialog>
-
+#include <QPainter>
 #include "peritia-about.cpp"
+#include "peritia-help.cpp"
 #include "peritia.h"
 
 #include "ui_peritia.h"
+
 
 Peritia::Peritia(QWidget *parent) :
     QMainWindow(parent),
@@ -83,6 +85,23 @@ Peritia::Peritia(QWidget *parent) :
 
     //this special method will prevent the background image to be inherited by children
     ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/blake.png) }");
+    QWidget *clockw = new QWidget;
+    QTimer *timer = new QTimer(clockw);
+    ui->formLayout->addWidget(clockw);
+  //  QPushButton *pushButtoasn = new QPushButton(ui->widget);
+    //pushButtoasn->setText("Back");
+    //Label *qlbl = new QLabel(ui->centralwidget);
+    //QTimer *timer = new QTimer(ui->centralWidget->widget);
+    
+    connect(timer, &QTimer::timeout, this, QOverload<>::of(&Peritia::update));
+    timer->start(1000);
+    //i->widget->resize(200,200);
+   // ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/blake.png) }").flush();
+    //unsleep(5);
+   /* unsigned int microsecond = 1000000;
+    usleep(3 * microsecond);//sleeps for 3 second
+    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/peritia-logo.png) }");*/
+
 
 
     connect(ui->actionChangePic, &QAction::triggered, this, &Peritia::changePhoto);
@@ -110,6 +129,7 @@ Peritia::Peritia(QWidget *parent) :
     connect(ui->actionItalic, &QAction::triggered, this, &Peritia::setFontItalic);
     connect(ui->actionAbout, &QAction::triggered, this, &Peritia::ShowAbout);
     connect(ui->actionAboutScalabli, &QAction::triggered, this, &Peritia::AboutScalabli);
+    connect(ui->actionHelp, &QAction::triggered, this, &Peritia::showHelp);
 
 // Disable menu actions for unavailable features
 #if !defined(QT_PRINTSUPPORT_LIB) || !QT_CONFIG(printer)
@@ -285,5 +305,63 @@ void Peritia::setFontBold(bool bold)
 void Peritia::changePhoto()
 {
 	ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
+}
+
+void Peritia::paintEvent(QPaintEvent *)
+{
+	static const QPoint hourHand[3] = {
+		QPoint(7, 8),
+		QPoint(-7, 8),
+	       	QPoint(0, -40)
+       	};
+
+	static const QPoint minuteHand[3] = {
+	       	QPoint(7, 8),
+		QPoint(-7, 8),
+	       	QPoint(0, -70)
+	};
+	
+	QColor hourColor(127, 0, 127);
+	QColor minuteColor(0, 127, 127, 191);
+	
+	int side = qMin(width(), height());
+	
+	QTime time = QTime::currentTime();
+	
+	QPainter painter(this);
+	
+	painter.setRenderHint(QPainter::Antialiasing);
+	
+	painter.translate(width() / 2, height() / 2);
+	painter.scale(side / 200.0, side / 200.0);
+	
+	painter.setPen(Qt::NoPen);
+	painter.setBrush(hourColor);
+	painter.save();
+	painter.rotate(30.0 * ((time.hour() + time.minute() / 60.0)));
+       	painter.drawConvexPolygon(hourHand, 3);
+       	painter.restore();
+	painter.setPen(hourColor);
+	
+	for (int i = 0; i < 12; ++i) {
+	       	painter.drawLine(88, 0, 96, 0);
+		painter.rotate(30.0);
+	}
+	
+	painter.setPen(Qt::NoPen);
+	painter.setBrush(minuteColor);
+	painter.save();
+	
+	painter.rotate(6.0 * (time.minute() + time.second() / 60.0));
+       	painter.drawConvexPolygon(minuteHand, 3);
+	painter.restore();
+	painter.setPen(minuteColor);
+	
+	for (int j = 0; j < 60; ++j) {
+		if ((j % 5) != 0)
+		       	painter.drawLine(92, 0, 96, 0);
+	       	painter.rotate(6.0);
+	}
+//	ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
 }
 

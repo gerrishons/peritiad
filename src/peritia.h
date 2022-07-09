@@ -82,7 +82,11 @@ private slots:
     void setFontUnderline(bool underline);
     void setFontItalic(bool italic);
     void ShowAbout();
+    void showHelp();
     void AboutScalabli();
+
+protected:
+    void paintEvent(QPaintEvent *event) override;
 
 private:
     Ui::Peritia *ui;

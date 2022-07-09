@@ -33,6 +33,7 @@ target_link_libraries(peritia PUBLIC
 
 # Resources:
 set(peritia_resource_files
+    "data/LICENSE"
     "images/bold.png"
     "images/daco.png"
     "images/peritia-logo.png"

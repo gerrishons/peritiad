@@ -11,10 +11,11 @@
 
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
-#include <QtWebKitWidgets/QWebView>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QDockWidget>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -64,13 +65,15 @@ public:
     QPushButton *pushButton_5;
     QPushButton *pushButton;
     QLabel *label_2;
-    QWebView *webView;
+    QFormLayout *formLayout;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
     QMenu *menuHelp;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
+    QDockWidget *dockWidget;
+    QWidget *dockWidgetContents;
 
     void setupUi(QMainWindow *Peritia)
     {
@@ -257,11 +260,11 @@ public:
 
         gridLayout_2->addWidget(label_2, 1, 0, 1, 1);
 
-        webView = new QWebView(centralWidget);
-        webView->setObjectName(QString::fromUtf8("webView"));
-        webView->setUrl(QUrl(QString::fromUtf8("http://free.facebook.com/")));
+        formLayout = new QFormLayout();
+        formLayout->setSpacing(6);
+        formLayout->setObjectName(QString::fromUtf8("formLayout"));
 
-        gridLayout_2->addWidget(webView, 1, 1, 1, 1);
+        gridLayout_2->addLayout(formLayout, 0, 2, 1, 1);
 
 
         gridLayout->addLayout(gridLayout_2, 0, 0, 1, 1);
@@ -285,6 +288,12 @@ public:
         statusBar = new QStatusBar(Peritia);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         Peritia->setStatusBar(statusBar);
+        dockWidget = new QDockWidget(Peritia);
+        dockWidget->setObjectName(QString::fromUtf8("dockWidget"));
+        dockWidgetContents = new QWidget();
+        dockWidgetContents->setObjectName(QString::fromUtf8("dockWidgetContents"));
+        dockWidget->setWidget(dockWidgetContents);
+        Peritia->addDockWidget(Qt::BottomDockWidgetArea, dockWidget);
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuEdit->menuAction());
