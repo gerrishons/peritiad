@@ -163,16 +163,3 @@ void Peritia::ShowSummary() {
 
 }
 
-/*void Peritia::AboutScalabli()
-{
-	QString str;
-       	str = QString(tr("More info about Scalabli"));
-	QMessageBox::about(this, tr("About Scalabli"),str);
-}
-
-
-
-/:string path;
-	QString error = "Error! File could not be read.\n\n \
-		Go to: https://github.com/obsproject/obs-studio/blob/master/COPYING";
-*/
