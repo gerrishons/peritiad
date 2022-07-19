@@ -72,6 +72,7 @@
 #include <QPainter>
 #include "peritia-about.cpp"
 #include "peritia-help.cpp"
+#include "peritia-summary.cpp"
 #include "peritia.h"
 
 #include "ui_peritia.h"
@@ -82,9 +83,45 @@ Peritia::Peritia(QWidget *parent) :
     ui(new Ui::Peritia)
 {
     ui->setupUi(this);
+   
+    using namespace std::chrono;
+    system_clock::time_point p = system_clock::now();
+    
+    std::time_t t = system_clock::to_time_t(p);
+    auto tt = std::ctime(&t);
+    // turn UTC time tt into string
+    std::string Hour(std::ctime(&t));
+    std::string newHour = Hour.substr(11,2);
+    
+    //std::cout << tt << std::endl;
+    // std::cout<<newHour<<std::endl;
+    // convert hour(string) to int
+    int hourStringToInt = std::stoi(newHour);
+    
+    //Add 3 to change it into East Africa Timezone (UTC+3)
+    int FinalHour = hourStringToInt+3;
 
-    //this special method will prevent the background image to be inherited by children
-    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/blake.png) }");
+    std::cout<<FinalHour<<std::endl;
+
+    if (FinalHour <12) {
+	    //this special method will prevent the background image to be inherited by children
+	    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/water.jpg) }");
+	    //color Columbia Blue
+	    ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(155, 221, 255);"));
+    }
+
+    //use of logical operators
+    if(12 <= FinalHour && FinalHour <=18) {
+	    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/daylight.jpg) }");
+	    ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(173, 216, 230);"));
+	}
+    
+    if(FinalHour > 18) {
+	    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/evening.jpg) }"); 
+	    // bronze color
+	    ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(205, 127, 50);"));
+    }
+
     QWidget *clockw = new QWidget;
     QTimer *timer = new QTimer(clockw);
     ui->formLayout->addWidget(clockw);
@@ -106,7 +143,7 @@ Peritia::Peritia(QWidget *parent) :
 
     connect(ui->actionChangePic, &QAction::triggered, this, &Peritia::changePhoto);
    
-    connect(ui->actionSummary, &QAction::triggered, this, &Peritia::newDocument);
+    connect(ui->actionSummary, &QAction::triggered, this, &Peritia::ShowSummary);
     connect(ui->actionOpen, &QAction::triggered, this, &Peritia::open);
     connect(ui->actionSave, &QAction::triggered, this, &Peritia::save);
     connect(ui->actionSave_as, &QAction::triggered, this, &Peritia::saveAs);
@@ -128,7 +165,7 @@ Peritia::Peritia(QWidget *parent) :
     connect(ui->actionUnderline, &QAction::triggered, this, &Peritia::setFontUnderline);
     connect(ui->actionItalic, &QAction::triggered, this, &Peritia::setFontItalic);
     connect(ui->actionAbout, &QAction::triggered, this, &Peritia::ShowAbout);
-    connect(ui->actionAboutScalabli, &QAction::triggered, this, &Peritia::AboutScalabli);
+    //connect(ui->actionAboutScalabli, &QAction::triggered, this, &Peritia::AboutScalabli);
     connect(ui->actionHelp, &QAction::triggered, this, &Peritia::showHelp);
 
 // Disable menu actions for unavailable features
@@ -148,8 +185,7 @@ Peritia::~Peritia()
     delete ui;
 }
 
-void Peritia::newDocument()
-{
+/*void Peritia::ShowSummary() {
 
 #if __linux__
  
@@ -197,7 +233,7 @@ void Peritia::newDocument()
 
 #endif
 }
-
+*/
 //{
   //  currentFile.clear();
  //   ui->textEdit->setText(QString());
@@ -305,6 +341,7 @@ void Peritia::setFontBold(bool bold)
 void Peritia::changePhoto()
 {
 	ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
+	ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/lumbo-minar.jpeg) }");
 }
 
 void Peritia::paintEvent(QPaintEvent *)

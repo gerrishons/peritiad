@@ -1,4 +1,3 @@
-#include <QGroupBox>
 #include <QLabel>
 #include <QMessageBox>
 #include <QPushButton>

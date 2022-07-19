@@ -71,7 +71,6 @@ public:
 //	void addButtonClicked();
 	
 private slots:
-    void newDocument();
     void changePhoto();
     void open();
     void save();
@@ -83,6 +82,7 @@ private slots:
     void setFontItalic(bool italic);
     void ShowAbout();
     void showHelp();
+    void ShowSummary();
     void AboutScalabli();
 
 protected:

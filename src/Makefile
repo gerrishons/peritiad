@@ -376,13 +376,16 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_peritia.cpp
 qrc_peritia.cpp: peritia.qrc \
 		/usr/lib/qt5/bin/rcc \
+		images/help.png \
 		images/open.png \
 		images/scalabli-logo.png \
 		images/underline.png \
 		images/font.png \
 		images/paste.png \
 		images/info.png \
+		images/chevron-right.png \
 		images/copy.png \
+		images/daylightsungif.gif \
 		images/bold.png \
 		images/print.png \
 		images/vine.png \
@@ -390,14 +393,19 @@ qrc_peritia.cpp: peritia.qrc \
 		images/celebratory.png \
 		images/edit_redo.png \
 		images/create.png \
+		images/daylight.jpg \
 		images/peritia-logo.png \
-		images/save.png \
 		images/blake.png \
+		images/save.png \
 		images/edit_undo.png \
+		images/right.png \
+		images/evening.jpg \
 		images/daco.png \
-		images/cut.png \
-		images/save_as.png \
 		images/new.png \
+		images/save_as.png \
+		images/cut.png \
+		images/lumbo-minar.jpeg \
+		images/water.jpg \
 		images/italic.png \
 		data/LICENSE
 	/usr/lib/qt5/bin/rcc -name peritia peritia.qrc -o qrc_peritia.cpp
@@ -446,6 +454,8 @@ peritia.o: peritia.cpp peritia-about.cpp \
 		version.h \
 		peritia-help.cpp \
 		peritia-help.hpp \
+		peritia-summary.cpp \
+		peritia-summary.hpp \
 		ui_peritia.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o peritia.o peritia.cpp
 

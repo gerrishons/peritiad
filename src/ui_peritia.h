@@ -14,7 +14,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
-#include <QtWidgets/QDockWidget>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
@@ -47,8 +46,6 @@ public:
     QAction *actionSave;
     QAction *actionOpen;
     QAction *actionSummary;
-    QAction *summaryAct;
-    QAction *actionAboutScalabli;
     QAction *actionGyug;
     QAction *actionPeritiaUpdate;
     QAction *actionSample;
@@ -57,23 +54,22 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QGridLayout *gridLayout_2;
+    QPushButton *pushButton;
+    QPushButton *pushButton_4;
+    QLabel *label;
+    QFormLayout *formLayout;
+    QLabel *label_2;
     QCheckBox *checkBox;
     QPushButton *pushButton_3;
-    QLabel *label;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_4;
     QPushButton *pushButton_5;
-    QPushButton *pushButton;
-    QLabel *label_2;
-    QFormLayout *formLayout;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_6;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
     QMenu *menuHelp;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
-    QDockWidget *dockWidget;
-    QWidget *dockWidgetContents;
 
     void setupUi(QMainWindow *Peritia)
     {
@@ -181,15 +177,6 @@ public:
         QIcon icon16;
         icon16.addFile(QString::fromUtf8(":/images/celebratory.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionSummary->setIcon(icon16);
-        summaryAct = new QAction(Peritia);
-        summaryAct->setObjectName(QString::fromUtf8("summaryAct"));
-        summaryAct->setIcon(icon16);
-        summaryAct->setShortcutContext(Qt::WidgetShortcut);
-        actionAboutScalabli = new QAction(Peritia);
-        actionAboutScalabli->setObjectName(QString::fromUtf8("actionAboutScalabli"));
-        QIcon icon17;
-        icon17.addFile(QString::fromUtf8("../../../.designer/backup/images/create.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionAboutScalabli->setIcon(icon17);
         actionGyug = new QAction(Peritia);
         actionGyug->setObjectName(QString::fromUtf8("actionGyug"));
         actionPeritiaUpdate = new QAction(Peritia);
@@ -212,39 +199,6 @@ public:
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setSpacing(6);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        checkBox = new QCheckBox(centralWidget);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-
-        gridLayout_2->addWidget(checkBox, 2, 0, 1, 1);
-
-        pushButton_3 = new QPushButton(centralWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-
-        gridLayout_2->addWidget(pushButton_3, 6, 2, 1, 1);
-
-        label = new QLabel(centralWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setMinimumSize(QSize(150, 150));
-        label->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
-
-        gridLayout_2->addWidget(label, 0, 0, 1, 1, Qt::AlignLeft|Qt::AlignTop);
-
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(245, 224, 176, 255), stop:0.09 rgba(246, 189, 237, 255), stop:0.14 rgba(194, 207, 246, 255), stop:0.19 rgba(184, 160, 168, 255), stop:0.25 rgba(171, 186, 248, 255), stop:0.32 rgba(243, 248, 224, 255), stop:0.385 rgba(249, 162, 183, 255), stop:0.47 rgba(100, 115, 124, 255), stop:0.58 rgba(251, 205, 202, 255), stop:0.65 rgba(170, 128, 185, 255), stop:0.75 rgba(252, 222, 204, 255), stop:0.805 rgba(206, 122, 218, 255), stop:0.86 rgba(254, 223, 175, 255), stop:0.91 rgba(254, 236, 244, 255), stop:1 rgba(255, 191, 221, 255));"));
-
-        gridLayout_2->addWidget(pushButton_2, 6, 0, 1, 1);
-
-        pushButton_4 = new QPushButton(centralWidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-
-        gridLayout_2->addWidget(pushButton_4, 7, 0, 1, 1);
-
-        pushButton_5 = new QPushButton(centralWidget);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-
-        gridLayout_2->addWidget(pushButton_5, 6, 1, 1, 1);
-
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setFocusPolicy(Qt::WheelFocus);
@@ -252,19 +206,64 @@ public:
         pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(152, 106, 68);"));
         pushButton->setFlat(true);
 
-        gridLayout_2->addWidget(pushButton, 3, 0, 1, 1);
+        gridLayout_2->addWidget(pushButton, 3, 1, 1, 1);
 
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/vine.png);"));
+        pushButton_4 = new QPushButton(centralWidget);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
 
-        gridLayout_2->addWidget(label_2, 1, 0, 1, 1);
+        gridLayout_2->addWidget(pushButton_4, 7, 1, 1, 1);
+
+        label = new QLabel(centralWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setMinimumSize(QSize(150, 150));
+        label->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
+
+        gridLayout_2->addWidget(label, 0, 1, 1, 1, Qt::AlignLeft|Qt::AlignTop);
 
         formLayout = new QFormLayout();
         formLayout->setSpacing(6);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
 
-        gridLayout_2->addLayout(formLayout, 0, 2, 1, 1);
+        gridLayout_2->addLayout(formLayout, 0, 3, 1, 1);
+
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/vine.png);"));
+
+        gridLayout_2->addWidget(label_2, 1, 1, 1, 1);
+
+        checkBox = new QCheckBox(centralWidget);
+        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+
+        gridLayout_2->addWidget(checkBox, 2, 1, 1, 1);
+
+        pushButton_3 = new QPushButton(centralWidget);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+
+        gridLayout_2->addWidget(pushButton_3, 6, 3, 1, 1);
+
+        pushButton_5 = new QPushButton(centralWidget);
+        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+
+        gridLayout_2->addWidget(pushButton_5, 6, 2, 1, 1);
+
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(245, 224, 176, 255), stop:0.09 rgba(246, 189, 237, 255), stop:0.14 rgba(194, 207, 246, 255), stop:0.19 rgba(184, 160, 168, 255), stop:0.25 rgba(171, 186, 248, 255), stop:0.32 rgba(243, 248, 224, 255), stop:0.385 rgba(249, 162, 183, 255), stop:0.47 rgba(100, 115, 124, 255), stop:0.58 rgba(251, 205, 202, 255), stop:0.65 rgba(170, 128, 185, 255), stop:0.75 rgba(252, 222, 204, 255), stop:0.805 rgba(206, 122, 218, 255), stop:0.86 rgba(254, 223, 175, 255), stop:0.91 rgba(254, 236, 244, 255), stop:1 rgba(255, 191, 221, 255));"));
+
+        gridLayout_2->addWidget(pushButton_2, 4, 1, 1, 1);
+
+        pushButton_6 = new QPushButton(centralWidget);
+        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+        pushButton_6->setMinimumSize(QSize(100, 80));
+        pushButton_6->setMaximumSize(QSize(100, 70));
+        QIcon icon17;
+        icon17.addFile(QString::fromUtf8(":/images/right.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_6->setIcon(icon17);
+        pushButton_6->setIconSize(QSize(100, 100));
+        pushButton_6->setFlat(true);
+
+        gridLayout_2->addWidget(pushButton_6, 0, 2, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
 
 
         gridLayout->addLayout(gridLayout_2, 0, 0, 1, 1);
@@ -288,12 +287,6 @@ public:
         statusBar = new QStatusBar(Peritia);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         Peritia->setStatusBar(statusBar);
-        dockWidget = new QDockWidget(Peritia);
-        dockWidget->setObjectName(QString::fromUtf8("dockWidget"));
-        dockWidgetContents = new QWidget();
-        dockWidgetContents->setObjectName(QString::fromUtf8("dockWidgetContents"));
-        dockWidget->setWidget(dockWidgetContents);
-        Peritia->addDockWidget(Qt::BottomDockWidgetArea, dockWidget);
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuEdit->menuAction());
@@ -315,7 +308,6 @@ public:
         menuHelp->addAction(actionHelp);
         menuHelp->addAction(actionAbout);
         menuHelp->addSeparator();
-        menuHelp->addAction(actionAboutScalabli);
         mainToolBar->addAction(actionSummary);
         mainToolBar->addAction(actionOpen);
         mainToolBar->addAction(actionSave);
@@ -334,13 +326,13 @@ public:
         mainToolBar->addAction(actionUnderline);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionAbout);
-        mainToolBar->addAction(actionAboutScalabli);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionExit);
         mainToolBar->addSeparator();
 
         retranslateUi(Peritia);
         QObject::connect(pushButton_2, SIGNAL(clicked()), actionChangePic, SLOT(trigger()));
+        QObject::connect(pushButton_6, SIGNAL(clicked()), actionSummary, SLOT(trigger()));
 
         pushButton->setDefault(true);
 
@@ -447,11 +439,6 @@ public:
 #if QT_CONFIG(shortcut)
         actionSummary->setShortcut(QCoreApplication::translate("Peritia", "Ctrl+S", nullptr));
 #endif // QT_CONFIG(shortcut)
-        summaryAct->setText(QCoreApplication::translate("Peritia", "About sumnary", nullptr));
-        actionAboutScalabli->setText(QCoreApplication::translate("Peritia", "About Scalabli", nullptr));
-#if QT_CONFIG(tooltip)
-        actionAboutScalabli->setToolTip(QCoreApplication::translate("Peritia", "More information about Scalabli", nullptr));
-#endif // QT_CONFIG(tooltip)
         actionGyug->setText(QCoreApplication::translate("Peritia", "Gyug", nullptr));
         actionPeritiaUpdate->setText(QCoreApplication::translate("Peritia", "PeritiaUpdate", nullptr));
         actionSample->setText(QCoreApplication::translate("Peritia", "Sample", nullptr));
@@ -460,13 +447,17 @@ public:
 #if QT_CONFIG(shortcut)
         actionHelp->setShortcut(QCoreApplication::translate("Peritia", "F1", nullptr));
 #endif // QT_CONFIG(shortcut)
+        pushButton->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        label_2->setText(QCoreApplication::translate("Peritia", "TextLabel", nullptr));
         checkBox->setText(QCoreApplication::translate("Peritia", "CheckBox", nullptr));
         pushButton_3->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
         pushButton_5->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        pushButton->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        label_2->setText(QCoreApplication::translate("Peritia", "TextLabel", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+#if QT_CONFIG(statustip)
+        pushButton_6->setStatusTip(QCoreApplication::translate("Peritia", "Click this button to see various tools incorporated in this software", nullptr));
+#endif // QT_CONFIG(statustip)
+        pushButton_6->setText(QString());
         menuFile->setTitle(QCoreApplication::translate("Peritia", "File", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("Peritia", "Edit", nullptr));
         menuHelp->setTitle(QCoreApplication::translate("Peritia", "Help", nullptr));

@@ -1,8 +1,16 @@
 <RCC>
     <qresource prefix="/">
         <file>data/LICENSE</file>
+        <file>images/chevron-right.png</file>
         <file>images/daco.png</file>
+        <file>images/daylight.jpg</file>
+        <file>images/daylightsungif.gif</file>
+        <file>images/evening.jpg</file>
+        <file>images/help.png</file>
         <file>images/info.png</file>
+        <file>images/lumbo-minar.jpeg</file>
+        <file>images/right.png</file>
+        <file>images/water.jpg</file>
         <file>images/celebratory.png</file>
         <file>images/peritia-logo.png</file>
         <file>images/blake.png</file>

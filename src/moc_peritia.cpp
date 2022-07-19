@@ -33,29 +33,29 @@ struct qt_meta_stringdata_Peritia_t {
 static const qt_meta_stringdata_Peritia_t qt_meta_stringdata_Peritia = {
     {
 QT_MOC_LITERAL(0, 0, 7), // "Peritia"
-QT_MOC_LITERAL(1, 8, 11), // "newDocument"
+QT_MOC_LITERAL(1, 8, 11), // "changePhoto"
 QT_MOC_LITERAL(2, 20, 0), // ""
-QT_MOC_LITERAL(3, 21, 11), // "changePhoto"
-QT_MOC_LITERAL(4, 33, 4), // "open"
-QT_MOC_LITERAL(5, 38, 4), // "save"
-QT_MOC_LITERAL(6, 43, 6), // "saveAs"
-QT_MOC_LITERAL(7, 50, 5), // "print"
-QT_MOC_LITERAL(8, 56, 10), // "selectFont"
-QT_MOC_LITERAL(9, 67, 11), // "setFontBold"
-QT_MOC_LITERAL(10, 79, 4), // "bold"
-QT_MOC_LITERAL(11, 84, 16), // "setFontUnderline"
-QT_MOC_LITERAL(12, 101, 9), // "underline"
-QT_MOC_LITERAL(13, 111, 13), // "setFontItalic"
-QT_MOC_LITERAL(14, 125, 6), // "italic"
-QT_MOC_LITERAL(15, 132, 9), // "ShowAbout"
-QT_MOC_LITERAL(16, 142, 8), // "showHelp"
+QT_MOC_LITERAL(3, 21, 4), // "open"
+QT_MOC_LITERAL(4, 26, 4), // "save"
+QT_MOC_LITERAL(5, 31, 6), // "saveAs"
+QT_MOC_LITERAL(6, 38, 5), // "print"
+QT_MOC_LITERAL(7, 44, 10), // "selectFont"
+QT_MOC_LITERAL(8, 55, 11), // "setFontBold"
+QT_MOC_LITERAL(9, 67, 4), // "bold"
+QT_MOC_LITERAL(10, 72, 16), // "setFontUnderline"
+QT_MOC_LITERAL(11, 89, 9), // "underline"
+QT_MOC_LITERAL(12, 99, 13), // "setFontItalic"
+QT_MOC_LITERAL(13, 113, 6), // "italic"
+QT_MOC_LITERAL(14, 120, 9), // "ShowAbout"
+QT_MOC_LITERAL(15, 130, 8), // "showHelp"
+QT_MOC_LITERAL(16, 139, 11), // "ShowSummary"
 QT_MOC_LITERAL(17, 151, 13) // "AboutScalabli"
 
     },
-    "Peritia\0newDocument\0\0changePhoto\0open\0"
-    "save\0saveAs\0print\0selectFont\0setFontBold\0"
-    "bold\0setFontUnderline\0underline\0"
-    "setFontItalic\0italic\0ShowAbout\0showHelp\0"
+    "Peritia\0changePhoto\0\0open\0save\0saveAs\0"
+    "print\0selectFont\0setFontBold\0bold\0"
+    "setFontUnderline\0underline\0setFontItalic\0"
+    "italic\0ShowAbout\0showHelp\0ShowSummary\0"
     "AboutScalabli"
 };
 #undef QT_MOC_LITERAL
@@ -80,10 +80,10 @@ static const uint qt_meta_data_Peritia[] = {
        5,    0,   82,    2, 0x08 /* Private */,
        6,    0,   83,    2, 0x08 /* Private */,
        7,    0,   84,    2, 0x08 /* Private */,
-       8,    0,   85,    2, 0x08 /* Private */,
-       9,    1,   86,    2, 0x08 /* Private */,
-      11,    1,   89,    2, 0x08 /* Private */,
-      13,    1,   92,    2, 0x08 /* Private */,
+       8,    1,   85,    2, 0x08 /* Private */,
+      10,    1,   88,    2, 0x08 /* Private */,
+      12,    1,   91,    2, 0x08 /* Private */,
+      14,    0,   94,    2, 0x08 /* Private */,
       15,    0,   95,    2, 0x08 /* Private */,
       16,    0,   96,    2, 0x08 /* Private */,
       17,    0,   97,    2, 0x08 /* Private */,
@@ -95,10 +95,10 @@ static const uint qt_meta_data_Peritia[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,   11,
+    QMetaType::Void, QMetaType::Bool,   13,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,   10,
-    QMetaType::Void, QMetaType::Bool,   12,
-    QMetaType::Void, QMetaType::Bool,   14,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -112,18 +112,18 @@ void Peritia::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         auto *_t = static_cast<Peritia *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->newDocument(); break;
-        case 1: _t->changePhoto(); break;
-        case 2: _t->open(); break;
-        case 3: _t->save(); break;
-        case 4: _t->saveAs(); break;
-        case 5: _t->print(); break;
-        case 6: _t->selectFont(); break;
-        case 7: _t->setFontBold((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 8: _t->setFontUnderline((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 9: _t->setFontItalic((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 10: _t->ShowAbout(); break;
-        case 11: _t->showHelp(); break;
+        case 0: _t->changePhoto(); break;
+        case 1: _t->open(); break;
+        case 2: _t->save(); break;
+        case 3: _t->saveAs(); break;
+        case 4: _t->print(); break;
+        case 5: _t->selectFont(); break;
+        case 6: _t->setFontBold((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 7: _t->setFontUnderline((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 8: _t->setFontItalic((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 9: _t->ShowAbout(); break;
+        case 10: _t->showHelp(); break;
+        case 11: _t->ShowSummary(); break;
         case 12: _t->AboutScalabli(); break;
         default: ;
         }
