@@ -476,7 +476,7 @@
   <action name="actionSummary">
    <property name="icon">
     <iconset resource="peritia.qrc">
-     <normaloff>:/images/celebratory.png</normaloff>:/images/celebratory.png</iconset>
+     <normaloff>:/images/summary-pic.png</normaloff>:/images/summary-pic.png</iconset>
    </property>
    <property name="text">
     <string>Summary</string>

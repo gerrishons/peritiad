@@ -376,6 +376,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_peritia.cpp
 qrc_peritia.cpp: peritia.qrc \
 		/usr/lib/qt5/bin/rcc \
+		images/summary-pic.png \
 		images/help.png \
 		images/open.png \
 		images/scalabli-logo.png \

@@ -175,7 +175,7 @@ public:
         actionSummary = new QAction(Peritia);
         actionSummary->setObjectName(QString::fromUtf8("actionSummary"));
         QIcon icon16;
-        icon16.addFile(QString::fromUtf8(":/images/celebratory.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon16.addFile(QString::fromUtf8(":/images/summary-pic.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionSummary->setIcon(icon16);
         actionGyug = new QAction(Peritia);
         actionGyug->setObjectName(QString::fromUtf8("actionGyug"));
@@ -183,10 +183,12 @@ public:
         actionPeritiaUpdate->setObjectName(QString::fromUtf8("actionPeritiaUpdate"));
         actionSample = new QAction(Peritia);
         actionSample->setObjectName(QString::fromUtf8("actionSample"));
-        actionSample->setIcon(icon16);
+        QIcon icon17;
+        icon17.addFile(QString::fromUtf8(":/images/celebratory.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionSample->setIcon(icon17);
         actionChangePic = new QAction(Peritia);
         actionChangePic->setObjectName(QString::fromUtf8("actionChangePic"));
-        actionChangePic->setIcon(icon16);
+        actionChangePic->setIcon(icon17);
         actionHelp = new QAction(Peritia);
         actionHelp->setObjectName(QString::fromUtf8("actionHelp"));
         actionHelp->setIcon(icon);
@@ -257,9 +259,9 @@ public:
         pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
         pushButton_6->setMinimumSize(QSize(100, 80));
         pushButton_6->setMaximumSize(QSize(100, 70));
-        QIcon icon17;
-        icon17.addFile(QString::fromUtf8(":/images/right.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_6->setIcon(icon17);
+        QIcon icon18;
+        icon18.addFile(QString::fromUtf8(":/images/right.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_6->setIcon(icon18);
         pushButton_6->setIconSize(QSize(100, 100));
         pushButton_6->setFlat(true);
 

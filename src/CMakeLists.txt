@@ -43,6 +43,7 @@ set(peritia_resource_files
     "images/lumbo-minar.jpeg"
     "images/peritia-logo.png"
     "images/right.png"
+    "images/summary-pic.png"
     "images/water.jpg"
     "images/celebratory.png"
     "images/scalabli-logo.png"
