@@ -378,8 +378,8 @@ qrc_peritia.cpp: peritia.qrc \
 		/usr/lib/qt5/bin/rcc \
 		images/summary-pic.png \
 		images/help.png \
-		images/open.png \
 		images/scalabli-logo.png \
+		images/open.png \
 		images/underline.png \
 		images/font.png \
 		images/paste.png \
@@ -388,6 +388,7 @@ qrc_peritia.cpp: peritia.qrc \
 		images/copy.png \
 		images/daylightsungif.gif \
 		images/bold.png \
+		images/zoom-out.png \
 		images/print.png \
 		images/vine.png \
 		images/exit.png \
@@ -395,6 +396,7 @@ qrc_peritia.cpp: peritia.qrc \
 		images/edit_redo.png \
 		images/create.png \
 		images/daylight.jpg \
+		images/settings.png \
 		images/peritia-logo.png \
 		images/blake.png \
 		images/save.png \
@@ -405,6 +407,7 @@ qrc_peritia.cpp: peritia.qrc \
 		images/new.png \
 		images/save_as.png \
 		images/cut.png \
+		images/zoom-in.png \
 		images/lumbo-minar.jpeg \
 		images/water.jpg \
 		images/italic.png \

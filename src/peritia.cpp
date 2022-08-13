@@ -83,6 +83,7 @@ Peritia::Peritia(QWidget *parent) :
     ui(new Ui::Peritia)
 {
     ui->setupUi(this);
+    startTimer(1000);
    
     using namespace std::chrono;
     system_clock::time_point p = system_clock::now();
@@ -92,8 +93,16 @@ Peritia::Peritia(QWidget *parent) :
     // turn UTC time tt into string
     std::string Hour(std::ctime(&t));
     std::string newHour = Hour.substr(11,2);
+
+    std::string Day = Hour.substr(0,3);
+
+
+    //convert string to QString
+    QString QDay = QString::fromStdString(Day);
+
+    ui->day_label->setText(QDay);
     
-    //std::cout << tt << std::endl;
+    std::cout << tt << std::endl;
     // std::cout<<newHour<<std::endl;
     // convert hour(string) to int
     int hourStringToInt = std::stoi(newHour);
@@ -122,16 +131,16 @@ Peritia::Peritia(QWidget *parent) :
 	    ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(205, 127, 50);"));
     }
 
-    QWidget *clockw = new QWidget;
-    QTimer *timer = new QTimer(clockw);
-    ui->formLayout->addWidget(clockw);
+    //QWidget *clockw = new QWidget;
+    //Timer *timer = new QTimer(clockw);
+   // ui->formLayout->addWidget(clockw);
   //  QPushButton *pushButtoasn = new QPushButton(ui->widget);
     //pushButtoasn->setText("Back");
     //Label *qlbl = new QLabel(ui->centralwidget);
     //QTimer *timer = new QTimer(ui->centralWidget->widget);
     
-    connect(timer, &QTimer::timeout, this, QOverload<>::of(&Peritia::update));
-    timer->start(1000);
+   // connect(timer, &QTimer::timeout, this, QOverload<>::of(&Peritia::update));
+    //timer->start(1000);
     //i->widget->resize(200,200);
    // ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/blake.png) }").flush();
     //unsleep(5);
@@ -167,6 +176,7 @@ Peritia::Peritia(QWidget *parent) :
     connect(ui->actionAbout, &QAction::triggered, this, &Peritia::ShowAbout);
     //connect(ui->actionAboutScalabli, &QAction::triggered, this, &Peritia::AboutScalabli);
     connect(ui->actionHelp, &QAction::triggered, this, &Peritia::showHelp);
+    connect(ui->actionZoom_in, &QAction::triggered, this, &Peritia::ZoominPeritia);
 
 // Disable menu actions for unavailable features
 #if !defined(QT_PRINTSUPPORT_LIB) || !QT_CONFIG(printer)
@@ -343,8 +353,24 @@ void Peritia::changePhoto()
 	ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
 	ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/lumbo-minar.jpeg) }");
 }
+void Peritia::timerEvent(QTimerEvent *) {
+	QTime utctime;
 
-void Peritia::paintEvent(QPaintEvent *)
+	//We used .addSecs to change to UTC+3
+	//3hrs, 60 mins, 60secs , the last bit +0 should indicate the minutes added
+	utctime = QTime::currentTime().addSecs(3 * 60 * 60 + 0);
+
+	ui->clock_label->setText(utctime.toString("hh:mm:ss"));
+
+
+}
+
+void Peritia::ZoominPeritia()
+{
+	ui->centralWidget->resize(950,750);
+}
+
+/*void Peritia::paintEvent(QPaintEvent *)
 {
 	static const QPoint hourHand[3] = {
 		QPoint(7, 8),
@@ -401,4 +427,5 @@ void Peritia::paintEvent(QPaintEvent *)
 	}
 //	ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
 }
+*/
 

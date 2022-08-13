@@ -43,6 +43,7 @@ void Peritia::ShowSummary() {
 	
 	QLabel *title_label = new QLabel();
 	title_label->setObjectName(QString::fromUtf8("title_label"));
+	//String tlbl = newHour;
 	title_label->setText(tr("<h6><b>PERITIA</b></h6>"));
 	title_label->setAlignment(Qt::AlignCenter);
 
@@ -85,6 +86,18 @@ void Peritia::ShowSummary() {
 		version_label->setText("Good afternoon, you are using a " + bitness + " Windows machine");
 #endif
 	};
+
+	if (FinalHour > 18) {
+		//add co
+#if __apple__
+	       	version_label->setText("Good night, you are using a " + bitness + " Apple machine");
+#elif __linux__
+	       	version_label->setText("Good night, you are using a " + bitness + " Linux machine");
+#else
+		version_label->setText("Good night, you are using a " + bitness + " Windows machine");
+#endif
+	};
+
 
 //	QLabel *processLabel = new QLabel(this);
 //	version_label->setMovie(movie);

@@ -14,8 +14,8 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
-#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -51,23 +51,31 @@ public:
     QAction *actionSample;
     QAction *actionChangePic;
     QAction *actionHelp;
+    QAction *actionPreference;
+    QAction *actionZoom_in;
+    QAction *actionZoom_out;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QGridLayout *gridLayout_2;
-    QPushButton *pushButton;
-    QPushButton *pushButton_4;
-    QLabel *label;
-    QFormLayout *formLayout;
-    QLabel *label_2;
     QCheckBox *checkBox;
+    QLabel *label;
+    QLabel *label_2;
+    QPushButton *pushButton_6;
+    QPushButton *pushButton;
     QPushButton *pushButton_3;
+    QGridLayout *gridLayout_3;
+    QHBoxLayout *horizontalLayout;
+    QLabel *day_label;
+    QLabel *clock_label;
     QPushButton *pushButton_5;
     QPushButton *pushButton_2;
-    QPushButton *pushButton_6;
+    QPushButton *pushButton_4;
+    QLabel *label_3;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
     QMenu *menuHelp;
+    QMenu *menuPreference;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -192,6 +200,21 @@ public:
         actionHelp = new QAction(Peritia);
         actionHelp->setObjectName(QString::fromUtf8("actionHelp"));
         actionHelp->setIcon(icon);
+        actionPreference = new QAction(Peritia);
+        actionPreference->setObjectName(QString::fromUtf8("actionPreference"));
+        QIcon icon18;
+        icon18.addFile(QString::fromUtf8(":/images/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionPreference->setIcon(icon18);
+        actionZoom_in = new QAction(Peritia);
+        actionZoom_in->setObjectName(QString::fromUtf8("actionZoom_in"));
+        QIcon icon19;
+        icon19.addFile(QString::fromUtf8(":/images/zoom-in.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionZoom_in->setIcon(icon19);
+        actionZoom_out = new QAction(Peritia);
+        actionZoom_out->setObjectName(QString::fromUtf8("actionZoom_out"));
+        QIcon icon20;
+        icon20.addFile(QString::fromUtf8(":/images/zoom-out.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionZoom_out->setIcon(icon20);
         centralWidget = new QWidget(Peritia);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -201,6 +224,36 @@ public:
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setSpacing(6);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        checkBox = new QCheckBox(centralWidget);
+        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+
+        gridLayout_2->addWidget(checkBox, 2, 1, 1, 1);
+
+        label = new QLabel(centralWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setMinimumSize(QSize(150, 150));
+        label->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
+
+        gridLayout_2->addWidget(label, 0, 1, 1, 1, Qt::AlignLeft|Qt::AlignTop);
+
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/vine.png);"));
+
+        gridLayout_2->addWidget(label_2, 1, 1, 1, 1);
+
+        pushButton_6 = new QPushButton(centralWidget);
+        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+        pushButton_6->setMinimumSize(QSize(100, 80));
+        pushButton_6->setMaximumSize(QSize(100, 70));
+        QIcon icon21;
+        icon21.addFile(QString::fromUtf8(":/images/right.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_6->setIcon(icon21);
+        pushButton_6->setIconSize(QSize(100, 100));
+        pushButton_6->setFlat(true);
+
+        gridLayout_2->addWidget(pushButton_6, 0, 2, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
+
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setFocusPolicy(Qt::WheelFocus);
@@ -210,39 +263,40 @@ public:
 
         gridLayout_2->addWidget(pushButton, 3, 1, 1, 1);
 
-        pushButton_4 = new QPushButton(centralWidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-
-        gridLayout_2->addWidget(pushButton_4, 7, 1, 1, 1);
-
-        label = new QLabel(centralWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setMinimumSize(QSize(150, 150));
-        label->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
-
-        gridLayout_2->addWidget(label, 0, 1, 1, 1, Qt::AlignLeft|Qt::AlignTop);
-
-        formLayout = new QFormLayout();
-        formLayout->setSpacing(6);
-        formLayout->setObjectName(QString::fromUtf8("formLayout"));
-
-        gridLayout_2->addLayout(formLayout, 0, 3, 1, 1);
-
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/vine.png);"));
-
-        gridLayout_2->addWidget(label_2, 1, 1, 1, 1);
-
-        checkBox = new QCheckBox(centralWidget);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-
-        gridLayout_2->addWidget(checkBox, 2, 1, 1, 1);
-
         pushButton_3 = new QPushButton(centralWidget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
 
-        gridLayout_2->addWidget(pushButton_3, 6, 3, 1, 1);
+        gridLayout_2->addWidget(pushButton_3, 6, 5, 1, 1);
+
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        day_label = new QLabel(centralWidget);
+        day_label->setObjectName(QString::fromUtf8("day_label"));
+        day_label->setMaximumSize(QSize(27, 18));
+        day_label->setStyleSheet(QString::fromUtf8("image: url(:/images/daco.png);\n"
+"color: rgb(28, 113, 216);"));
+        day_label->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout->addWidget(day_label, 0, Qt::AlignRight|Qt::AlignTop);
+
+        clock_label = new QLabel(centralWidget);
+        clock_label->setObjectName(QString::fromUtf8("clock_label"));
+        clock_label->setMaximumSize(QSize(75, 21));
+        clock_label->setStyleSheet(QString::fromUtf8("background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 235, 235, 206), stop:0.35 rgba(255, 188, 188, 80), stop:0.4 rgba(255, 162, 162, 80), stop:0.425 rgba(255, 132, 132, 156), stop:0.44 rgba(252, 128, 128, 80), stop:1 rgba(255, 255, 255, 0));"));
+        clock_label->setFrameShape(QFrame::StyledPanel);
+        clock_label->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout->addWidget(clock_label, 0, Qt::AlignTop);
+
+
+        gridLayout_3->addLayout(horizontalLayout, 3, 0, 1, 1);
+
+
+        gridLayout_2->addLayout(gridLayout_3, 0, 5, 1, 1);
 
         pushButton_5 = new QPushButton(centralWidget);
         pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
@@ -255,17 +309,15 @@ public:
 
         gridLayout_2->addWidget(pushButton_2, 4, 1, 1, 1);
 
-        pushButton_6 = new QPushButton(centralWidget);
-        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
-        pushButton_6->setMinimumSize(QSize(100, 80));
-        pushButton_6->setMaximumSize(QSize(100, 70));
-        QIcon icon18;
-        icon18.addFile(QString::fromUtf8(":/images/right.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_6->setIcon(icon18);
-        pushButton_6->setIconSize(QSize(100, 100));
-        pushButton_6->setFlat(true);
+        pushButton_4 = new QPushButton(centralWidget);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
 
-        gridLayout_2->addWidget(pushButton_6, 0, 2, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
+        gridLayout_2->addWidget(pushButton_4, 7, 1, 1, 1);
+
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        gridLayout_2->addWidget(label_3, 0, 3, 1, 1);
 
 
         gridLayout->addLayout(gridLayout_2, 0, 0, 1, 1);
@@ -280,6 +332,8 @@ public:
         menuEdit->setObjectName(QString::fromUtf8("menuEdit"));
         menuHelp = new QMenu(menuBar);
         menuHelp->setObjectName(QString::fromUtf8("menuHelp"));
+        menuPreference = new QMenu(menuBar);
+        menuPreference->setObjectName(QString::fromUtf8("menuPreference"));
         Peritia->setMenuBar(menuBar);
         mainToolBar = new QToolBar(Peritia);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -292,6 +346,7 @@ public:
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuEdit->menuAction());
+        menuBar->addAction(menuPreference->menuAction());
         menuBar->addAction(menuHelp->menuAction());
         menuFile->addAction(actionSummary);
         menuFile->addAction(actionOpen);
@@ -307,9 +362,12 @@ public:
         menuEdit->addAction(actionUndo);
         menuEdit->addAction(actionRedo);
         menuEdit->addAction(actionFont);
+        menuEdit->addAction(actionZoom_in);
+        menuEdit->addAction(actionZoom_out);
         menuHelp->addAction(actionHelp);
         menuHelp->addAction(actionAbout);
         menuHelp->addSeparator();
+        menuPreference->addAction(actionPreference);
         mainToolBar->addAction(actionSummary);
         mainToolBar->addAction(actionOpen);
         mainToolBar->addAction(actionSave);
@@ -326,6 +384,8 @@ public:
         mainToolBar->addAction(actionBold);
         mainToolBar->addAction(actionItalic);
         mainToolBar->addAction(actionUnderline);
+        mainToolBar->addSeparator();
+        mainToolBar->addAction(actionPreference);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionAbout);
         mainToolBar->addSeparator();
@@ -449,20 +509,36 @@ public:
 #if QT_CONFIG(shortcut)
         actionHelp->setShortcut(QCoreApplication::translate("Peritia", "F1", nullptr));
 #endif // QT_CONFIG(shortcut)
-        pushButton->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        label_2->setText(QCoreApplication::translate("Peritia", "TextLabel", nullptr));
+        actionPreference->setText(QCoreApplication::translate("Peritia", "Preference", nullptr));
+#if QT_CONFIG(shortcut)
+        actionPreference->setShortcut(QCoreApplication::translate("Peritia", "Ctrl+P", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionZoom_in->setText(QCoreApplication::translate("Peritia", "Zoom in", nullptr));
+#if QT_CONFIG(shortcut)
+        actionZoom_in->setShortcut(QCoreApplication::translate("Peritia", "Ctrl++", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionZoom_out->setText(QCoreApplication::translate("Peritia", "Zoom out", nullptr));
+#if QT_CONFIG(shortcut)
+        actionZoom_out->setShortcut(QCoreApplication::translate("Peritia", "Ctrl+-", nullptr));
+#endif // QT_CONFIG(shortcut)
         checkBox->setText(QCoreApplication::translate("Peritia", "CheckBox", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        label_2->setText(QString());
 #if QT_CONFIG(statustip)
         pushButton_6->setStatusTip(QCoreApplication::translate("Peritia", "Click this button to see various tools incorporated in this software", nullptr));
 #endif // QT_CONFIG(statustip)
         pushButton_6->setText(QString());
+        pushButton->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        day_label->setText(QCoreApplication::translate("Peritia", "Day label", nullptr));
+        clock_label->setText(QCoreApplication::translate("Peritia", "Display clock.  ", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        label_3->setText(QCoreApplication::translate("Peritia", "TextLabel", nullptr));
         menuFile->setTitle(QCoreApplication::translate("Peritia", "File", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("Peritia", "Edit", nullptr));
         menuHelp->setTitle(QCoreApplication::translate("Peritia", "Help", nullptr));
+        menuPreference->setTitle(QCoreApplication::translate("Peritia", "Settings", nullptr));
     } // retranslateUi
 
 };

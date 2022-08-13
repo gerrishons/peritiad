@@ -84,9 +84,11 @@ private slots:
     void showHelp();
     void ShowSummary();
     void AboutScalabli();
+    void ZoominPeritia();
 
 protected:
-    void paintEvent(QPaintEvent *event) override;
+   // void paintEvent(QPaintEvent *event) override;
+    void timerEvent(QTimerEvent *event);
 
 private:
     Ui::Peritia *ui;
