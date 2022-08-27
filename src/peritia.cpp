@@ -1,57 +1,3 @@
-/****************************************************************************
-**
-** Copyright (C) 2017 The Qt Company Ltd.
-** Contact: https://www.qt.io/licensing/
-**
-** This file is part of the documentation of the Qt Toolkit.
-**
-** $QT_BEGIN_LICENSE:BSD$
-** Commercial License Usage
-** Licensees holding valid commercial Qt licenses may use this file in
-** accordance with the commercial license agreement provided with the
-** Software or, alternatively, in accordance with the terms contained in
-** a written agreement between you and The Qt Company. For licensing terms
-** and conditions see https://www.qt.io/terms-conditions. For further
-** information use the contact form at https://www.qt.io/contact-us.
-**
-** BSD License Usage
-** Alternatively, you may use this file under the terms of the BSD license
-** as follows:
-**
-** "Redistribution and use in source and binary forms, with or without
-** modification, are permitted provided that the following conditions are
-** met:
-**   * Redistributions of source code must retain the above copyright
-**     notice, this list of conditions and the following disclaimer.
-**   * Redistributions in binary form must reproduce the above copyright
-**     notice, this list of conditions and the following disclaimer in
-**     the documentation and/or other materials provided with the
-**     distribution.
-**   * Neither the name of The Qt Company Ltd nor the names of its
-**     contributors may be used to endorse or promote products derived
-**     from this software without specific prior written permission.
-**
-**
-** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
-**
-** $QT_END_LICENSE$
-**
-****************************************************************************/
-#include <iostream>
-#include <ctime>
-#include <stdio.h>
-#include <time.h>
-#include <chrono>
 #include <QLabel>
 #include <QFile>
 #include <QTime>
@@ -69,12 +15,16 @@
 #endif // QT_PRINTSUPPORT_LIB
 #include <QFont>
 #include <QFontDialog>
+#include <QCloseEvent>
 #include <QPainter>
+
+
 #include "peritia-about.cpp"
 #include "peritia-help.cpp"
+#include "peritia-properties.cpp"
 #include "peritia-summary.cpp"
 #include "peritia.h"
-
+#include "datetime.cpp"
 #include "ui_peritia.h"
 
 
@@ -84,38 +34,23 @@ Peritia::Peritia(QWidget *parent) :
 {
     ui->setupUi(this);
     startTimer(1000);
-   
-    using namespace std::chrono;
-    system_clock::time_point p = system_clock::now();
     
-    std::time_t t = system_clock::to_time_t(p);
-    auto tt = std::ctime(&t);
-    // turn UTC time tt into string
-    std::string Hour(std::ctime(&t));
-    std::string newHour = Hour.substr(11,2);
+    qDebug()<<"Current date and time: ->"<<currentTime;
 
-    std::string Day = Hour.substr(0,3);
 
+    /*convert string to QString*/
+    QString dayLabelIconQString = QString::fromStdString(dayLabelIcon);
+    ui->day_label->setText("");
+    ui->day_label->setStyleSheet(dayLabelIconQString);
 
     //convert string to QString
-    QString QDay = QString::fromStdString(Day);
-
-    ui->day_label->setText(QDay);
-    
-    std::cout << tt << std::endl;
-    // std::cout<<newHour<<std::endl;
-    // convert hour(string) to int
-    int hourStringToInt = std::stoi(newHour);
-    
-    //Add 3 to change it into East Africa Timezone (UTC+3)
-    int FinalHour = hourStringToInt+3;
-
-    std::cout<<FinalHour<<std::endl;
+    QString dateLabelIconQString = QString::fromStdString(dateLabelIcon);
+    ui->day_iconlbl->setStyleSheet(dateLabelIconQString);
 
     if (FinalHour <12) {
-	    //this special method will prevent the background image to be inherited by children
+	    /*This special method will prevent the background image to be inherited by the children*/
 	    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/water.jpg) }");
-	    //color Columbia Blue
+	    //rgb color Columbia Blue
 	    ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(155, 221, 255);"));
     }
 
@@ -136,8 +71,7 @@ Peritia::Peritia(QWidget *parent) :
    // ui->formLayout->addWidget(clockw);
   //  QPushButton *pushButtoasn = new QPushButton(ui->widget);
     //pushButtoasn->setText("Back");
-    //Label *qlbl = new QLabel(ui->centralwidget);
-    //QTimer *timer = new QTimer(ui->centralWidget->widget);
+    //Label *qlbl = new QLabel;
     
    // connect(timer, &QTimer::timeout, this, QOverload<>::of(&Peritia::update));
     //timer->start(1000);
@@ -151,13 +85,18 @@ Peritia::Peritia(QWidget *parent) :
 
 
     connect(ui->actionChangePic, &QAction::triggered, this, &Peritia::changePhoto);
+
+    //Full screen toggle
+    connect(ui->actionFullScreen, &QAction::triggered, this, &Peritia::showFullScreen);
    
     connect(ui->actionSummary, &QAction::triggered, this, &Peritia::ShowSummary);
+    connect(ui->actionStatus_Bar, &QAction::triggered, this, &Peritia::showStatusBar);
     connect(ui->actionOpen, &QAction::triggered, this, &Peritia::open);
     connect(ui->actionSave, &QAction::triggered, this, &Peritia::save);
     connect(ui->actionSave_as, &QAction::triggered, this, &Peritia::saveAs);
     connect(ui->actionPrint, &QAction::triggered, this, &Peritia::print);
-    connect(ui->actionExit, &QAction::triggered, this, &QWidget::close);
+    connect(ui->actionExit, &QAction::triggered, this, &Peritia::close);
+    connect(ui->actionMinimize, &QAction::triggered, this, &Peritia::showMinimized);
 #if QT_CONFIG(clipboard)
     //connect(ui->textEdit, &QTextEdit::copyAvailable, ui->actionCopy, &QAction::setEnabled);
    // connect(ui->actionCopy, &QAction::triggered, ui->textEdit, &QTextEdit::copy);
@@ -176,7 +115,16 @@ Peritia::Peritia(QWidget *parent) :
     connect(ui->actionAbout, &QAction::triggered, this, &Peritia::ShowAbout);
     //connect(ui->actionAboutScalabli, &QAction::triggered, this, &Peritia::AboutScalabli);
     connect(ui->actionHelp, &QAction::triggered, this, &Peritia::showHelp);
-    connect(ui->actionZoom_in, &QAction::triggered, this, &Peritia::ZoominPeritia);
+
+    connect(ui->actionPreference, &QAction::triggered, this, &Peritia::showPreference);
+
+    //This will maximize the screen
+    connect(ui->actionZoom_in, &QAction::triggered, this, &Peritia::showMaximized);
+
+    //This will change to the default size
+    connect(ui->actionZoom_out, &QAction::triggered, this, &Peritia::showNormal);
+    
+    //oominPeritia);
 
 // Disable menu actions for unavailable features
 #if !defined(QT_PRINTSUPPORT_LIB) || !QT_CONFIG(printer)
@@ -249,6 +197,73 @@ Peritia::~Peritia()
  //   ui->textEdit->setText(QString());
 //}
 
+
+
+/*oid Peritia::closeEvent(QCloseEvent *)
+{
+
+	QMessageBox::StandardButton resBtn =  QMessageBox::question( this,tr("You sure?\n"), QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes, QMessageBox::Yes);
+	
+	if (resBtn != QMessageBox::Yes) {
+		event->ignore();
+    }
+	else {
+		event->accept();
+	}
+	event->ignore();
+	if (QMessageBox::Yes == QMessageBox::question(this, "Close Confirmation", "Exit?", QMessageBox::Yes | QMessageBox::No))
+	{
+	      	event->accept();
+	}
+
+}
+//f (Peritia::closeWindow())
+//	event->accept();
+//	else	event->ignore();	
+
+bool Peritia::closeWindow()
+{
+	if (Peritia::close())
+	if (!isWindowModified())
+		QMessageBox::StandardButton answer = QMessageBox::question(
+			this,
+			tr("Close the Window"),
+			tr("Do you want to close the window?"),
+			QMessageBox::Yes | QMessageBox::No
+			);
+	return answer == QMessageBox::Yes;
+}
+*/
+
+
+/*void Peritia::webP() {
+
+	ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/lumbo-minar.jpeg) }");
+	
+	QProcess subprocess;
+	subprocess.start("webprobe", QStringList()  << "-u" << "anyword.com");
+	
+	//if (!subprocess.waitForStarted())
+		
+	   //   	return false;
+	
+	subprocess.write("LOAD test.mp3\n");
+	subprocess.closeWriteChannel();
+	
+//	if (!subprocess.waitForFinished())
+	 //      	return false;
+       
+	QByteArray result = subprocess.readAll();
+	
+	//QString program = "webprobe";
+       	//QStringList arguments;
+      // 	arguments << "-u" << "fusion.com";
+	
+//	QProcess *myProcess = new QProcess(parent);
+	
+//	myProcess->start(program, arguments);
+
+}*/
 void Peritia::open()
 {
     QString fileName = QFileDialog::getOpenFileName(this, "Open the file");
@@ -325,13 +340,36 @@ void Peritia::print()
 
 void Peritia::selectFont()
 {
+
     bool fontSelected;
     QFont font = QFontDialog::getFont(&fontSelected, this);
-    if (fontSelected)
-	    return; //not supposed to be here tho
+    if (fontSelected) {
+
+	    ui->centralWidget->setFont(font);
+	    QMessageBox *mbox = new QMessageBox;
+	    mbox->setWindowTitle(tr("Title"));
+	    mbox->setText(font.family());
+	    mbox->show();
+	    QTimer::singleShot(2000, mbox, SLOT(hide()));
+    }
       //  ui->textEdit->setFont(font);
 }
 
+
+void Peritia::showStatusBar()  {
+
+    if (ui->actionStatus_Bar->isChecked()) {
+        ui->statusBar->setVisible(true);
+        ui->actionStatus_Bar->setChecked(true);
+
+
+    } else {
+        ui->actionStatus_Bar->setChecked(false);
+
+
+        ui->statusBar->setVisible(false);
+    }
+}
 void Peritia::setFontUnderline(bool underline)
 {
     //ui->textEdit->setFontUnderline(underline);
@@ -348,26 +386,35 @@ void Peritia::setFontBold(bool bold)
         //  ui->textEdit->setFontWeight(QFont::Normal);
 }
 
-void Peritia::changePhoto()
-{
+void Peritia::changePhoto()  {
+
 	ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
 	ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/lumbo-minar.jpeg) }");
 }
+
+
 void Peritia::timerEvent(QTimerEvent *) {
 	QTime utctime;
+	
+	/*My Nethunter computer was only able to show utc + 0 so I used .addSecs to change to UTC+3
+	 * 3hrs, 60 mins, 60secs , the last bit +0 should indicate the minutes adde
+	 *
+	 * utctime = QTime::currentTime().addSecs(3 * 60 * 60 + 0); ->driver code
+	 */
+	//Display hours:minutes:seconds
+	utctime = QTime::currentTime();
+	if (Day == "Tue") {
+		ui->clock_label->setStyleSheet(QString::fromUtf8("color: rgb(155, 221, 255);background-color: rgb(155,221,255);"));
+	}
 
-	//We used .addSecs to change to UTC+3
-	//3hrs, 60 mins, 60secs , the last bit +0 should indicate the minutes added
-	utctime = QTime::currentTime().addSecs(3 * 60 * 60 + 0);
+	if (Day == "Wed") {
 
+		/*rgb color saddlebrown */
+		ui->clock_label->setStyleSheet(QString::fromUtf8("color: rgb(139, 69, 19);"));
+	}
+	
 	ui->clock_label->setText(utctime.toString("hh:mm:ss"));
 
-
-}
-
-void Peritia::ZoominPeritia()
-{
-	ui->centralWidget->resize(950,750);
 }
 
 /*void Peritia::paintEvent(QPaintEvent *)

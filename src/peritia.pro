@@ -2,8 +2,8 @@ TEMPLATE = app
 TARGET = peritia
 
 QT += widgets
-QT += webkit
-QT += webkitwidgets
+#QT += webkit
+#QT += webkitwidgets
 
 qtHaveModule(printsupport): QT += printsupport
 requires(qtConfig(fontdialog))

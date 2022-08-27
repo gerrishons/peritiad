@@ -11,4 +11,3 @@
 
 
 #include "peritia.h"
-//#include "version.h"

@@ -1,14 +1,55 @@
 <RCC>
     <qresource prefix="/">
-        <file>data/LICENSE</file>
+        <file>icons/date/date-1.png</file>
+        <file>icons/date/date-2.png</file>
+        <file>icons/date/date-3.png</file>
+        <file>icons/date/date-4.png</file>
+        <file>icons/date/date-5.png</file>
+        <file>icons/date/date-6.png</file>
+        <file>icons/date/date-7.png</file>
+        <file>icons/date/date-8.png</file>
+        <file>icons/date/date-9.png</file>
+        <file>icons/date/date-10.png</file>
+        <file>icons/date/date-11.png</file>
+        <file>icons/date/date-12.png</file>
+        <file>icons/date/date-13.png</file>
+        <file>icons/date/date-14.png</file>
+        <file>icons/date/date-15.png</file>
+        <file>icons/date/date-16.png</file>
+        <file>icons/date/date-17.png</file>
+        <file>icons/date/date-18.png</file>
+        <file>icons/date/date-19.png</file>
+        <file>icons/date/date-20.png</file>
+        <file>icons/date/date-21.png</file>
+        <file>icons/date/date-22.png</file>
+        <file>icons/date/date-23.png</file>
+        <file>icons/date/date-24.png</file>
+        <file>icons/date/date-25.png</file>
+        <file>icons/date/date-26.png</file>
+        <file>icons/date/date-27.png</file>
+        <file>icons/date/date-28.png</file>
+        <file>icons/date/date-29.png</file>
+        <file>icons/date/date-30.png</file>
+        <file>icons/date/date-31.png</file>
+        <file>icons/date/day-Mon.png</file>
+        <file>icons/date/day-Tue.png</file>
+        <file>icons/date/day-Wed.png</file>
+        <file>icons/date/day-Thu.png</file>
+        <file>icons/date/day-Fri.png</file>
+        <file>icons/date/day-Sat.png</file>
+        <file>icons/date/day-Sun.png</file>
+
+        <file>icons/statusbar/status-bar.png</file>
         <file>images/chevron-right.png</file>
         <file>images/daco.png</file>
         <file>images/daylight.jpg</file>
         <file>images/daylightsungif.gif</file>
         <file>images/evening.jpg</file>
+        <file>images/fullscreen.png</file>
         <file>images/help.png</file>
         <file>images/info.png</file>
         <file>images/lumbo-minar.jpeg</file>
+        <file>images/minimize.png</file>
         <file>images/right.png</file>
         <file>images/settings.png</file>
         <file>images/summary-pic.png</file>
