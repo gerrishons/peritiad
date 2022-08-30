@@ -112,7 +112,7 @@ Peritia::Peritia(QWidget *parent) :
     connect(ui->actionBold, &QAction::triggered, this, &Peritia::setFontBold);
     connect(ui->actionUnderline, &QAction::triggered, this, &Peritia::setFontUnderline);
     connect(ui->actionItalic, &QAction::triggered, this, &Peritia::setFontItalic);
-    connect(ui->actionAbout, &QAction::triggered, this, &Peritia::ShowAbout);
+    connect(ui->actionAbout, &QAction::triggered, this, &Peritia::showAbout);
     //connect(ui->actionAboutScalabli, &QAction::triggered, this, &Peritia::AboutScalabli);
     connect(ui->actionHelp, &QAction::triggered, this, &Peritia::showHelp);
 

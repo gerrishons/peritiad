@@ -1,3 +1,6 @@
+
+[![Logo](https://raw.githubusercontent.com/scalabli/peritia/main/src/logos/peritia-logo.png)](https://github.com/scalabli/peritia)
+
 The original version was coded in python.
 
 

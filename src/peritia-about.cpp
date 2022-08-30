@@ -1,131 +1,110 @@
 #pragma once
 
-//#include "peritia.h"
 #include "peritia-about.hpp"
 
-void Peritia::ShowAbout() {
-	
-	QDialog *DAbout = new QDialog();
-	QIcon icon1;
-	icon1.addFile(QString::fromUtf8(":/images/peritia-logo.png"), QSize(), QIcon::Normal, QIcon::Off);
-	DAbout->setWindowIcon(icon1);
-       	DAbout->setWindowTitle("About");
-	DAbout->setFixedSize(650,550);
-	
-	QHBoxLayout *hBoxLayout = new QHBoxLayout;
-	
-	QLabel *photo_label = new QLabel();
-	photo_label->setObjectName(QString::fromUtf8("photo_label"));
-       	photo_label->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
-	photo_label->setMinimumSize(100, 100);
-	hBoxLayout->addWidget(photo_label);
 
-	QVBoxLayout *vBoxLayout = new QVBoxLayout();
+void Peritia::showAbout() {
+
+	QDialog *aboutDialog;	
+	QLabel *logo_label;
+	QLabel *fyi_label;
+	QLabel *title_label;
+	QWidget *horizontalLayoutWidget;
+       	QHBoxLayout *horizontalLayout;
+       	QWidget *widget;
+       	QPushButton *pushButton_3;
+	QPushButton *pushButton;
+       	QPushButton *pushButton_2;
+       	QWidget *verticalLayoutWidget;
+       	QVBoxLayout *verticalLayout;
+      	QLabel *label_6;
+       	QSpacerItem *verticalSpacer;
+	QLabel *label_4;
+       	QLabel *label_5;
+
+	aboutDialog = new QDialog();
+	aboutDialog->resize(700, 450);
+	aboutDialog->setStyleSheet(QString::fromUtf8("background-color: rgb(41, 12, 53);"));
+	aboutDialog->setWindowTitle("About");
+
+	logo_label = new QLabel(aboutDialog);
+	logo_label->setGeometry(QRect(10, 20, 200, 200));//191 181
+	logo_label->setStyleSheet(QString::fromUtf8("image: url(:/logos/peritia-logo.png);"));
 	
-	QLabel *title_label = new QLabel();
-	title_label->setObjectName(QString::fromUtf8("title_label"));
-	title_label->setText(tr("<h6><b>PERITIA</b></h6>"));
-	title_label->setAlignment(Qt::AlignCenter);
-
-	QLabel *version_label = new QLabel();
-	version_label->setObjectName(QString::fromUtf8("version_label"));
-	//Check the bitness of your machine
-        QString bitness;
-	if (sizeof(void *) == 4)
-	       	bitness = " (32 bit)";
-       	else if (sizeof(void *) == 8)
-	       	bitness = " (64 bit)";
-	version_label->setText(peritiaVersion + bitness);
-	version_label->setAlignment(Qt::AlignCenter);
+	horizontalLayoutWidget = new QWidget(aboutDialog);
+	horizontalLayoutWidget->setGeometry(QRect(0, 390, 701, 61));
 	
-	//QGroupBox *groupBox = new QGroupBox();
-;
-      	//groupBox->setObjectName(QString::fromUtf8("groupBox"));
-	//groupBox->setMaximumSize(550, 550);
-       //	groupBox->setGeometry(QRect(0, 190, 500, 100));
+	horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+	horizontalLayout->setContentsMargins(0, 0, 0, 0);
+	widget = new QWidget(horizontalLayoutWidget);
 
-	QLabel *body_label = new QLabel();
-	body_label->setText(tr("<style> t {color: purple;}</style> <t><b>Peritia</b></t> is a Latin word which means experience or practical knowledge.<br>In this context peritia is a computer software for Textto ASL and Text to<br>Braille. It can also be used as a data analytics tool i.e to check and <br>analyse students` performance, teachers can use the output to set <br>reasonable and measurable goals based on current and historical data."));
-	body_label->setAlignment(Qt::AlignCenter);
+	widget->setStyleSheet(QString::fromUtf8("background-color: rgb(23, 9, 31);"));
+        pushButton_3 = new QPushButton(widget);
+	pushButton_3->setGeometry(QRect(240, 0, 191, 27));
+        pushButton_3->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+	pushButton_3->setText("End-User Rights");
+        pushButton_3->setFlat(true);
 
-	
-	QTabWidget *tabWidget = new QTabWidget();
-	tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-	//tabWidget->setMaximumSize(450, 250);
-	tabWidget->setGeometry(QRect(0, 310, 401, 151));
-	tabWidget->setTabPosition(QTabWidget::South);
-	
-	QWidget *tab1 = new QWidget();
-       	tab1->setObjectName(QString::fromUtf8("tab1"));
-	
-	QTextBrowser *textBrowser1 = new QTextBrowser(tab1);
-	textBrowser1->setObjectName(QString::fromUtf8("textBrowser1"));
-       	textBrowser1->setGeometry(QRect(0, 0, 341, 121));
+        pushButton = new QPushButton(widget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(490, 0, 231, 27));
+	pushButton->setText("Privacy Policy");
+	pushButton->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        pushButton->setFlat(true);
 
-	QString ff = "dkdieieie deieiiwiwi";
-	textBrowser1->setText(QString::fromUtf8("file: url(:/data/LICENSE);"));
-	//textBrowser1->setSource(QUrl::fromLocalFile("/root/git/peritia/notepad/data/LICENSE"));
-		//	QString::fromUtf8(":/data/LICENSE")));
-	//x->width, y->height
-	textBrowser1->setFixedSize(607, 321);
-       
-	QWidget *qW1 = new QWidget(tab1);
-	qW1->setObjectName(QString::fromUtf8("qW1"));
-	qW1->setGeometry(QRect(0, 10, 401, 91));
-       
-	QVBoxLayout *verticalLayout1 = new QVBoxLayout(qW1);
-	qW1->setObjectName(QString::fromUtf8("verticalLayout1"));
-       
-	verticalLayout1->setContentsMargins(0, 0, 0, 0);
-	QLabel *credits_label = new QLabel(qW1);
-	
-	credits_label->setObjectName(QString::fromUtf8("credits_label"));
-       	credits_label->setAlignment(Qt::AlignCenter);
-	
-	QIcon icon3;
-       	icon3.addFile(QString::fromUtf8(":/images/peritia-logo.png"), QSize(), QIcon::Normal, QIcon::Off);
-       	tabWidget->addTab(tab1, icon3, QString("Credits"));
-	
-	QHBoxLayout *buttonLayout = new QHBoxLayout;
+        fyi_label = new QLabel(widget);
+	fyi_label->setText("<html><head/><body><p align=\"center\"><span style=\" font-style:italic; color:#9a9996;\">Peritia and Peritia logos are trademarks of Scalabli</span></p></body></html>");
+        fyi_label->setGeometry(QRect(170, 30, 350, 20));
+        fyi_label->setMaximumSize(QSize(350, 20));
 
+        fyi_label->setStyleSheet(QString::fromUtf8("background-color: rgb(23, 9, 31);"));
+        pushButton_2 = new QPushButton(widget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(-10, 0, 222, 27));
+        pushButton_2->setFocusPolicy(Qt::ClickFocus);
+	pushButton_2->setText("Licensing Information");
+        pushButton_2->setStyleSheet(QString::fromUtf8("color: rgb(246, 245, 244);"));
+        pushButton_2->setFlat(true);
 
-	QPushButton *pushButton = new QPushButton("Back");
-	pushButton->setObjectName(QString::fromUtf8("pushButton"));
-	pushButton->setGeometry(QRect(410, 430, 87, 27));
-//	pushButton->setStyleSheet(QString::fromUtf8("background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 235, 235, 206), stop:0.35 rgba(255, 188, 188, 80), stop:0.4 rgba(255, 162, 162, 80), stop:0.425 rgba(255, 132, 132, 156), stop:0.44 rgba(252, 128, 128, 80), stop:1 rgba(255, 255, 255, 0));"));
-	QIcon back_icon;
-	back_icon.addFile(QString::fromUtf8(":/images/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
-	pushButton->setIcon(back_icon);
-	pushButton->setFixedSize(60,30);
-	//pushButton->setAlignment(Qt::AlignRight);
-	buttonLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(widget);
 
-	vBoxLayout->addLayout(hBoxLayout);
-	vBoxLayout->addWidget(title_label);
-	vBoxLayout->addWidget(version_label);
-	vBoxLayout->addWidget(body_label);
-	vBoxLayout->addWidget(tabWidget);
-	vBoxLayout->addLayout(buttonLayout);
-	//BoxLayout->addWidget(pushButton);
+        verticalLayoutWidget = new QWidget(aboutDialog);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(340, 10, 1379, 361));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        
+        title_label = new QLabel(verticalLayoutWidget);
+        title_label->setText("<html><head/><body><p><span style=\" font-size:16pt; font-weight:600; color:#f6f5f4;\">PERITIA</span></p><p><br/></p></body></html>");
+        title_label->setMinimumSize(QSize(260, 35));
+        title_label->setMaximumSize(QSize(260, 35));
 
-	DAbout->setLayout(vBoxLayout);
+        verticalLayout->addWidget(title_label);
+	label_6 = new QLabel(verticalLayoutWidget);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setMinimumSize(QSize(25, 10));
+        label_6->setMaximumSize(QSize(200, 25));
 
-	DAbout->show();
+        verticalLayout->addWidget(label_6);
 
-	DAbout->connect(pushButton,SIGNAL(clicked()),DAbout,SLOT(close()));
+        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout->addItem(verticalSpacer);
+
+        label_4 = new QLabel(verticalLayoutWidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+
+        verticalLayout->addWidget(label_4);
+
+        label_5 = new QLabel(verticalLayoutWidget);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setMaximumSize(QSize(200, 30));
+
+        verticalLayout->addWidget(label_5);
+
+	aboutDialog->show();
 
 }
 
-void Peritia::AboutScalabli()
-{
-	QString str;
-       	str = QString(tr("More info about Scalabli"));
-	QMessageBox::about(this, tr("About Scalabli"),str);
-}
 
-
-
-/*std::string path;
-	QString error = "Error! File could not be read.\n\n \
-		Go to: https://github.com/obsproject/obs-studio/blob/master/COPYING";
-*/

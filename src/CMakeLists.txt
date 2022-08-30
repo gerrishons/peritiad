@@ -73,6 +73,8 @@ set(peritia_resource_files
     "icons/date/day-Sun.png"
 
     "icons/statusbar/status-bar.png"
+
+    "logos/peritia-logo.png"
     "images/bold.png"
     "images/chevron-right.png"
     "images/daco.png"

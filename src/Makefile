@@ -451,7 +451,8 @@ qrc_peritia.cpp: peritia.qrc \
 		icons/date/date-13.png \
 		icons/date/date-9.png \
 		icons/date/date-20.png \
-		icons/date/day-Wed.png
+		icons/date/day-Wed.png \
+		logos/peritia-logo.png
 	/usr/lib/qt5/bin/rcc -name peritia peritia.qrc -o qrc_peritia.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h

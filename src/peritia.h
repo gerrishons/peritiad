@@ -30,12 +30,11 @@ private slots:
     void setFontBold(bool bold);
     void setFontUnderline(bool underline);
     void setFontItalic(bool italic);
-    void ShowAbout();
+    void showAbout();
     void showHelp();
     void showPreference();
     void showStatusBar();
     void ShowSummary();
-    void AboutScalabli();
 
 protected:
    // void paintEvent(QPaintEvent *event) override;
