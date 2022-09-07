@@ -23,3 +23,5 @@ RESOURCES += \
 target.path = $$[QT_INSTALL_EXAMPLES]/widgets/tutorials/peritia
 INSTALLS += target
 
+win32:RC_ICONS += your_icon.ico
+

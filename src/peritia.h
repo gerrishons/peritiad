@@ -1,6 +1,7 @@
 #ifndef PERITIA_H
 #define PERITIA_H
 
+//#include <QListWidgetItem>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +22,7 @@ public:
 //	void addButtonClicked();
 	
 private slots:
+
     void changePhoto();
     void open();
     void save();
@@ -35,9 +37,11 @@ private slots:
     void showPreference();
     void showStatusBar();
     void ShowSummary();
+    void text2ASL();
 
 protected:
-   // void paintEvent(QPaintEvent *event) override;
+   // void text2ASL(QPaintEvent *event);//d paintEvent(QPaintEvent *event) override;
+    //void itemsClickedSlot(QListWidgetItem *itemClicked);
     void timerEvent(QTimerEvent *event);
 
 private:

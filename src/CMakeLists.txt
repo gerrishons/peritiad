@@ -33,15 +33,18 @@ target_link_libraries(peritia PUBLIC
 
 # Resources:
 set(peritia_resource_files
-    "icons/date/date-1.png"
-    "icons/date/date-2.png"
-    "icons/date/date-3.png"
-    "icons/date/date-4.png"
-    "icons/date/date-5.png"
-    "icons/date/date-6.png"
-    "icons/date/date-7.png"
-    "icons/date/date-8.png"
-    "icons/date/date-9.png"
+    "icons/buttons/sign-language.png"
+
+
+    "icons/date/date-01.png"
+    "icons/date/date-02.png"
+    "icons/date/date-03.png"
+    "icons/date/date-04.png"
+    "icons/date/date-05.png"
+    "icons/date/date-06.png"
+    "icons/date/date-07.png"
+    "icons/date/date-08.png"
+    "icons/date/date-09.png"
     "icons/date/date-10.png"
     "icons/date/date-11.png"
     "icons/date/date-12.png"
@@ -71,6 +74,14 @@ set(peritia_resource_files
     "icons/date/day-Fri.png"
     "icons/date/day-Sat.png"
     "icons/date/day-Sun.png"
+
+    "icons/illustrations/3-people.png"
+    "icons/illustrations/boy-and--girl-sitting-in-chairs.png"
+    "icons/illustrations/boy-and-girl-standing-and-laughing.png"
+    "icons/illustrations/girl-and-boy-with-laptop.png"
+    "icons/illustrations/man-search-music-with-phone.png"
+    "icons/illustrations/people-standing-talking.png"
+    "icons/illustrations/woman-in-glasses-sitting-and-reading-book.png"
 
     "icons/statusbar/status-bar.png"
 

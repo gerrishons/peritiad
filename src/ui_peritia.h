@@ -13,15 +13,14 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QDockWidget>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
@@ -60,25 +59,30 @@ public:
     QAction *actionMinimize;
     QAction *actionWebprobe;
     QAction *actionStatus_Bar;
+    QAction *actionAlign_ToolBar;
+    QAction *actiontext2ASL;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QGridLayout *gridLayout_2;
-    QLabel *label_3;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_6;
+    QLabel *label;
+    QHBoxLayout *horizontalLayout;
     QLabel *label_2;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
-    QCheckBox *checkBox;
-    QPushButton *pushButton;
-    QLabel *day_iconlbl;
+    QVBoxLayout *verticalLayout_3;
+    QPushButton *pushButton_8;
+    QPushButton *pushButton_9;
+    QPushButton *pushButton_11;
+    QPushButton *pushButton_10;
+    QPushButton *pushButton_7;
+    QVBoxLayout *verticalLayout_2;
+    QPushButton *pushButton_6;
+    QGridLayout *gridLayout_3;
     QVBoxLayout *verticalLayout;
     QLabel *clock_label;
     QLabel *day_label;
-    QLabel *label;
-    QGroupBox *groupBox;
-    QSpinBox *spinBox;
+    QLabel *day_iconlbl;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_2;
+    QVBoxLayout *verticalLayout_4;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -87,12 +91,14 @@ public:
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
     QToolBar *toolBar;
+    QDockWidget *dockWidget;
+    QWidget *dockWidgetContents_2;
 
     void setupUi(QMainWindow *Peritia)
     {
         if (Peritia->objectName().isEmpty())
             Peritia->setObjectName(QString::fromUtf8("Peritia"));
-        Peritia->resize(900, 700);
+        Peritia->resize(900, 816);
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -244,6 +250,10 @@ public:
         QIcon icon23;
         icon23.addFile(QString::fromUtf8(":/icons/statusbar/status-bar.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionStatus_Bar->setIcon(icon23);
+        actionAlign_ToolBar = new QAction(Peritia);
+        actionAlign_ToolBar->setObjectName(QString::fromUtf8("actionAlign_ToolBar"));
+        actiontext2ASL = new QAction(Peritia);
+        actiontext2ASL->setObjectName(QString::fromUtf8("actiontext2ASL"));
         centralWidget = new QWidget(Peritia);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -253,74 +263,90 @@ public:
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setSpacing(6);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        label_3 = new QLabel(centralWidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setMinimumSize(QSize(300, 200));
+        label->setMaximumSize(QSize(300, 200));
+        label->setStyleSheet(QString::fromUtf8("image: url(:/logos/peritia-logo.png);"));
 
-        gridLayout_2->addWidget(label_3, 2, 3, 1, 1);
+        gridLayout_2->addWidget(label, 0, 0, 1, 1);
 
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(245, 224, 176, 255), stop:0.09 rgba(246, 189, 237, 255), stop:0.14 rgba(194, 207, 246, 255), stop:0.19 rgba(184, 160, 168, 255), stop:0.25 rgba(171, 186, 248, 255), stop:0.32 rgba(243, 248, 224, 255), stop:0.385 rgba(249, 162, 183, 255), stop:0.47 rgba(100, 115, 124, 255), stop:0.58 rgba(251, 205, 202, 255), stop:0.65 rgba(170, 128, 185, 255), stop:0.75 rgba(252, 222, 204, 255), stop:0.805 rgba(206, 122, 218, 255), stop:0.86 rgba(254, 223, 175, 255), stop:0.91 rgba(254, 236, 244, 255), stop:1 rgba(255, 191, 221, 255));"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setMinimumSize(QSize(200, 200));
+        label_2->setMaximumSize(QSize(200, 200));
 
-        gridLayout_2->addWidget(pushButton_2, 11, 1, 1, 1);
+        horizontalLayout->addWidget(label_2, 0, Qt::AlignTop);
+
+
+        gridLayout_2->addLayout(horizontalLayout, 6, 0, 1, 1);
+
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        pushButton_8 = new QPushButton(centralWidget);
+        pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
+        pushButton_8->setMaximumSize(QSize(100, 16777215));
+        QIcon icon24;
+        icon24.addFile(QString::fromUtf8(":/icons/buttons/sign-language.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_8->setIcon(icon24);
+        pushButton_8->setIconSize(QSize(25, 25));
+
+        verticalLayout_3->addWidget(pushButton_8);
+
+        pushButton_9 = new QPushButton(centralWidget);
+        pushButton_9->setObjectName(QString::fromUtf8("pushButton_9"));
+        pushButton_9->setMaximumSize(QSize(100, 27));
+
+        verticalLayout_3->addWidget(pushButton_9);
+
+        pushButton_11 = new QPushButton(centralWidget);
+        pushButton_11->setObjectName(QString::fromUtf8("pushButton_11"));
+        pushButton_11->setMaximumSize(QSize(100, 27));
+
+        verticalLayout_3->addWidget(pushButton_11);
+
+        pushButton_10 = new QPushButton(centralWidget);
+        pushButton_10->setObjectName(QString::fromUtf8("pushButton_10"));
+        pushButton_10->setMaximumSize(QSize(100, 27));
+
+        verticalLayout_3->addWidget(pushButton_10);
+
+        pushButton_7 = new QPushButton(centralWidget);
+        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+        pushButton_7->setMaximumSize(QSize(100, 27));
+
+        verticalLayout_3->addWidget(pushButton_7);
+
+
+        gridLayout_2->addLayout(verticalLayout_3, 7, 0, 1, 1);
+
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+
+        gridLayout_2->addLayout(verticalLayout_2, 6, 1, 1, 1);
 
         pushButton_6 = new QPushButton(centralWidget);
         pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
         pushButton_6->setMinimumSize(QSize(100, 80));
         pushButton_6->setMaximumSize(QSize(100, 70));
-        QIcon icon24;
-        icon24.addFile(QString::fromUtf8(":/images/right.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_6->setIcon(icon24);
+        QIcon icon25;
+        icon25.addFile(QString::fromUtf8(":/images/right.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_6->setIcon(icon25);
         pushButton_6->setIconSize(QSize(100, 100));
         pushButton_6->setFlat(true);
 
-        gridLayout_2->addWidget(pushButton_6, 2, 2, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
+        gridLayout_2->addWidget(pushButton_6, 10, 0, 1, 1);
 
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/vine.png);"));
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
 
-        gridLayout_2->addWidget(label_2, 7, 1, 1, 1);
-
-        pushButton_5 = new QPushButton(centralWidget);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-
-        gridLayout_2->addWidget(pushButton_5, 13, 2, 1, 1);
-
-        pushButton_3 = new QPushButton(centralWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setFocusPolicy(Qt::ClickFocus);
-        pushButton_3->setLayoutDirection(Qt::LeftToRight);
-        pushButton_3->setAutoFillBackground(false);
-        pushButton_3->setFlat(false);
-
-        gridLayout_2->addWidget(pushButton_3, 13, 7, 1, 1);
-
-        pushButton_4 = new QPushButton(centralWidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-
-        gridLayout_2->addWidget(pushButton_4, 14, 1, 1, 1);
-
-        checkBox = new QCheckBox(centralWidget);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-
-        gridLayout_2->addWidget(checkBox, 9, 1, 1, 1);
-
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setFocusPolicy(Qt::WheelFocus);
-        pushButton->setAutoFillBackground(false);
-        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(152, 106, 68);"));
-        pushButton->setFlat(true);
-
-        gridLayout_2->addWidget(pushButton, 10, 1, 1, 1);
-
-        day_iconlbl = new QLabel(centralWidget);
-        day_iconlbl->setObjectName(QString::fromUtf8("day_iconlbl"));
-        day_iconlbl->setMinimumSize(QSize(85, 85));
-        day_iconlbl->setMaximumSize(QSize(96, 96));
-
-        gridLayout_2->addWidget(day_iconlbl, 0, 7, 1, 1);
+        gridLayout_2->addLayout(gridLayout_3, 10, 2, 1, 1);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(1);
@@ -343,31 +369,41 @@ public:
 
         day_label = new QLabel(centralWidget);
         day_label->setObjectName(QString::fromUtf8("day_label"));
-        day_label->setMinimumSize(QSize(75, 50));
+        day_label->setMinimumSize(QSize(75, 65));
         day_label->setFrameShadow(QFrame::Sunken);
 
-        verticalLayout->addWidget(day_label, 0, Qt::AlignRight);
+        verticalLayout->addWidget(day_label, 0, Qt::AlignRight|Qt::AlignTop);
 
 
-        gridLayout_2->addLayout(verticalLayout, 0, 5, 1, 1);
+        gridLayout_2->addLayout(verticalLayout, 0, 3, 1, 1);
 
-        label = new QLabel(centralWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setMinimumSize(QSize(100, 100));
-        label->setMaximumSize(QSize(150, 100));
-        label->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
+        day_iconlbl = new QLabel(centralWidget);
+        day_iconlbl->setObjectName(QString::fromUtf8("day_iconlbl"));
+        day_iconlbl->setMinimumSize(QSize(85, 85));
+        day_iconlbl->setMaximumSize(QSize(96, 96));
 
-        gridLayout_2->addWidget(label, 0, 1, 1, 1, Qt::AlignTop);
+        gridLayout_2->addWidget(day_iconlbl, 0, 5, 1, 1, Qt::AlignTop);
 
-        groupBox = new QGroupBox(centralWidget);
-        groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setStyleSheet(QString::fromUtf8("image: url(:/images/daylight.jpg);"));
-        groupBox->setFlat(false);
-        spinBox = new QSpinBox(groupBox);
-        spinBox->setObjectName(QString::fromUtf8("spinBox"));
-        spinBox->setGeometry(QRect(50, 70, 45, 28));
+        pushButton_3 = new QPushButton(centralWidget);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setFocusPolicy(Qt::ClickFocus);
+        pushButton_3->setLayoutDirection(Qt::LeftToRight);
+        pushButton_3->setAutoFillBackground(false);
+        pushButton_3->setFlat(false);
 
-        gridLayout_2->addWidget(groupBox, 7, 2, 1, 1);
+        gridLayout_2->addWidget(pushButton_3, 12, 5, 1, 1);
+
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(245, 224, 176, 255), stop:0.09 rgba(246, 189, 237, 255), stop:0.14 rgba(194, 207, 246, 255), stop:0.19 rgba(184, 160, 168, 255), stop:0.25 rgba(171, 186, 248, 255), stop:0.32 rgba(243, 248, 224, 255), stop:0.385 rgba(249, 162, 183, 255), stop:0.47 rgba(100, 115, 124, 255), stop:0.58 rgba(251, 205, 202, 255), stop:0.65 rgba(170, 128, 185, 255), stop:0.75 rgba(252, 222, 204, 255), stop:0.805 rgba(206, 122, 218, 255), stop:0.86 rgba(254, 223, 175, 255), stop:0.91 rgba(254, 236, 244, 255), stop:1 rgba(255, 191, 221, 255));"));
+
+        gridLayout_2->addWidget(pushButton_2, 12, 3, 1, 1);
+
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+
+        gridLayout_2->addLayout(verticalLayout_4, 6, 3, 2, 1);
 
 
         gridLayout->addLayout(gridLayout_2, 0, 0, 1, 1);
@@ -376,8 +412,160 @@ public:
         menuBar = new QMenuBar(Peritia);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 900, 24));
+        QPalette palette;
+        QBrush brush(QColor(246, 245, 244, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        QBrush brush1(QColor(36, 31, 49, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush1);
+        QBrush brush2(QColor(134, 94, 60, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Highlight, brush2);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette.setBrush(QPalette::Active, QPalette::PlaceholderText, brush);
+#endif
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Highlight, brush2);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush);
+#endif
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        QBrush brush3(QColor(145, 145, 145, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Highlight, brush3);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush);
+#endif
+        menuBar->setPalette(palette);
+        menuBar->setFocusPolicy(Qt::TabFocus);
+        menuBar->setStyleSheet(QString::fromUtf8("background-color: rgb(36, 31, 49);\n"
+"color: rgb(246, 245, 244);\n"
+"border-radius:9999px;"));
+        menuBar->setNativeMenuBar(true);
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        QPalette palette1;
+        QBrush brush4(QColor(0, 0, 0, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush4);
+        QLinearGradient gradient(0, 0, 1, 1);
+        gradient.setSpread(QGradient::PadSpread);
+        gradient.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient.setColorAt(0, QColor(155, 147, 255, 255));
+        gradient.setColorAt(0.940369, QColor(249, 240, 107, 255));
+        gradient.setColorAt(0.957219, QColor(255, 0, 0, 255));
+        gradient.setColorAt(1, QColor(255, 255, 255, 255));
+        QBrush brush5(gradient);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush5);
+        palette1.setBrush(QPalette::Active, QPalette::Text, brush4);
+        palette1.setBrush(QPalette::Active, QPalette::ButtonText, brush4);
+        QLinearGradient gradient1(0, 0, 1, 1);
+        gradient1.setSpread(QGradient::PadSpread);
+        gradient1.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient1.setColorAt(0, QColor(155, 147, 255, 255));
+        gradient1.setColorAt(0.940369, QColor(249, 240, 107, 255));
+        gradient1.setColorAt(0.957219, QColor(255, 0, 0, 255));
+        gradient1.setColorAt(1, QColor(255, 255, 255, 255));
+        QBrush brush6(gradient1);
+        palette1.setBrush(QPalette::Active, QPalette::Base, brush6);
+        QLinearGradient gradient2(0, 0, 1, 1);
+        gradient2.setSpread(QGradient::PadSpread);
+        gradient2.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient2.setColorAt(0, QColor(155, 147, 255, 255));
+        gradient2.setColorAt(0.940369, QColor(249, 240, 107, 255));
+        gradient2.setColorAt(0.957219, QColor(255, 0, 0, 255));
+        gradient2.setColorAt(1, QColor(255, 255, 255, 255));
+        QBrush brush7(gradient2);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush7);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette::Active, QPalette::PlaceholderText, brush4);
+#endif
+        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush4);
+        QLinearGradient gradient3(0, 0, 1, 1);
+        gradient3.setSpread(QGradient::PadSpread);
+        gradient3.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient3.setColorAt(0, QColor(155, 147, 255, 255));
+        gradient3.setColorAt(0.940369, QColor(249, 240, 107, 255));
+        gradient3.setColorAt(0.957219, QColor(255, 0, 0, 255));
+        gradient3.setColorAt(1, QColor(255, 255, 255, 255));
+        QBrush brush8(gradient3);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush8);
+        palette1.setBrush(QPalette::Inactive, QPalette::Text, brush4);
+        palette1.setBrush(QPalette::Inactive, QPalette::ButtonText, brush4);
+        QLinearGradient gradient4(0, 0, 1, 1);
+        gradient4.setSpread(QGradient::PadSpread);
+        gradient4.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient4.setColorAt(0, QColor(155, 147, 255, 255));
+        gradient4.setColorAt(0.940369, QColor(249, 240, 107, 255));
+        gradient4.setColorAt(0.957219, QColor(255, 0, 0, 255));
+        gradient4.setColorAt(1, QColor(255, 255, 255, 255));
+        QBrush brush9(gradient4);
+        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush9);
+        QLinearGradient gradient5(0, 0, 1, 1);
+        gradient5.setSpread(QGradient::PadSpread);
+        gradient5.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient5.setColorAt(0, QColor(155, 147, 255, 255));
+        gradient5.setColorAt(0.940369, QColor(249, 240, 107, 255));
+        gradient5.setColorAt(0.957219, QColor(255, 0, 0, 255));
+        gradient5.setColorAt(1, QColor(255, 255, 255, 255));
+        QBrush brush10(gradient5);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush10);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush4);
+#endif
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush4);
+        QLinearGradient gradient6(0, 0, 1, 1);
+        gradient6.setSpread(QGradient::PadSpread);
+        gradient6.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient6.setColorAt(0, QColor(155, 147, 255, 255));
+        gradient6.setColorAt(0.940369, QColor(249, 240, 107, 255));
+        gradient6.setColorAt(0.957219, QColor(255, 0, 0, 255));
+        gradient6.setColorAt(1, QColor(255, 255, 255, 255));
+        QBrush brush11(gradient6);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush11);
+        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush4);
+        palette1.setBrush(QPalette::Disabled, QPalette::ButtonText, brush4);
+        QLinearGradient gradient7(0, 0, 1, 1);
+        gradient7.setSpread(QGradient::PadSpread);
+        gradient7.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient7.setColorAt(0, QColor(155, 147, 255, 255));
+        gradient7.setColorAt(0.940369, QColor(249, 240, 107, 255));
+        gradient7.setColorAt(0.957219, QColor(255, 0, 0, 255));
+        gradient7.setColorAt(1, QColor(255, 255, 255, 255));
+        QBrush brush12(gradient7);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush12);
+        QLinearGradient gradient8(0, 0, 1, 1);
+        gradient8.setSpread(QGradient::PadSpread);
+        gradient8.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient8.setColorAt(0, QColor(155, 147, 255, 255));
+        gradient8.setColorAt(0.940369, QColor(249, 240, 107, 255));
+        gradient8.setColorAt(0.957219, QColor(255, 0, 0, 255));
+        gradient8.setColorAt(1, QColor(255, 255, 255, 255));
+        QBrush brush13(gradient8);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush13);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush4);
+#endif
+        menuFile->setPalette(palette1);
+        menuFile->setStyleSheet(QString::fromUtf8("border-radius: 9999px;\n"
+"font: 11pt \"Liberation Mono\";\n"
+"color: rgb(0, 0, 0);\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(155, 147, 255, 255), stop:0.940369 rgba(249, 240, 107, 255), stop:0.957219 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));"));
         menuEdit = new QMenu(menuBar);
         menuEdit->setObjectName(QString::fromUtf8("menuEdit"));
         menuHelp = new QMenu(menuBar);
@@ -398,6 +586,8 @@ public:
         font1.setBold(true);
         font1.setWeight(75);
         statusBar->setFont(font1);
+        statusBar->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(143, 240, 164);"));
         Peritia->setStatusBar(statusBar);
         toolBar = new QToolBar(Peritia);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
@@ -406,6 +596,12 @@ public:
         toolBar->setStyleSheet(QString::fromUtf8("color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(245, 224, 176, 255), stop:0.09 rgba(246, 189, 237, 255), stop:0.14 rgba(194, 207, 246, 255), stop:0.19 rgba(184, 160, 168, 255), stop:0.25 rgba(171, 186, 248, 255), stop:0.32 rgba(243, 248, 224, 255), stop:0.385 rgba(249, 162, 183, 255), stop:0.47 rgba(100, 115, 124, 255), stop:0.58 rgba(251, 205, 202, 255), stop:0.65 rgba(170, 128, 185, 255), stop:0.75 rgba(252, 222, 204, 255), stop:0.805 rgba(206, 122, 218, 255), stop:0.86 rgba(254, 223, 175, 255), stop:0.91 rgba(254, 236, 244, 255), stop:1 rgba(255, 191, 221, 255));"));
         toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
         Peritia->addToolBar(Qt::LeftToolBarArea, toolBar);
+        dockWidget = new QDockWidget(Peritia);
+        dockWidget->setObjectName(QString::fromUtf8("dockWidget"));
+        dockWidgetContents_2 = new QWidget();
+        dockWidgetContents_2->setObjectName(QString::fromUtf8("dockWidgetContents_2"));
+        dockWidget->setWidget(dockWidgetContents_2);
+        Peritia->addDockWidget(Qt::RightDockWidgetArea, dockWidget);
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuEdit->menuAction());
@@ -430,6 +626,7 @@ public:
         menuEdit->addAction(actionZoom_out);
         menuEdit->addAction(actionFullScreen);
         menuEdit->addAction(actionMinimize);
+        menuEdit->addSeparator();
         menuEdit->addAction(actionStatus_Bar);
         menuHelp->addAction(actionHelp);
         menuHelp->addAction(actionAbout);
@@ -466,9 +663,9 @@ public:
         QObject::connect(pushButton_6, SIGNAL(clicked()), actionSummary, SLOT(trigger()));
         QObject::connect(actionWebprobe, SIGNAL(triggered()), actionFont, SLOT(trigger()));
         QObject::connect(pushButton_3, SIGNAL(clicked()), actionPrint, SLOT(trigger()));
+        QObject::connect(pushButton_8, SIGNAL(clicked()), actiontext2ASL, SLOT(trigger()));
 
         pushButton_3->setDefault(true);
-        pushButton->setDefault(true);
 
 
         QMetaObject::connectSlotsByName(Peritia);
@@ -603,22 +800,18 @@ public:
         actionWebprobe->setShortcut(QCoreApplication::translate("Peritia", "P", nullptr));
 #endif // QT_CONFIG(shortcut)
         actionStatus_Bar->setText(QCoreApplication::translate("Peritia", "Status Bar", nullptr));
-        label_3->setText(QCoreApplication::translate("Peritia", "TextLabel", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        actionAlign_ToolBar->setText(QCoreApplication::translate("Peritia", "Align Tool Bar", nullptr));
+        actiontext2ASL->setText(QCoreApplication::translate("Peritia", "text2ASL", nullptr));
+        label_2->setText(QString());
+        pushButton_8->setText(QCoreApplication::translate("Peritia", "Text To ASL", nullptr));
+        pushButton_9->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        pushButton_11->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        pushButton_10->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        pushButton_7->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
 #if QT_CONFIG(statustip)
         pushButton_6->setStatusTip(QCoreApplication::translate("Peritia", "Click this button to see various tools incorporated in this software", nullptr));
 #endif // QT_CONFIG(statustip)
         pushButton_6->setText(QString());
-        label_2->setText(QString());
-        pushButton_5->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-        checkBox->setText(QCoreApplication::translate("Peritia", "CheckBox", nullptr));
-        pushButton->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
-#if QT_CONFIG(statustip)
-        day_iconlbl->setStatusTip(QCoreApplication::translate("Peritia", "Calender showing today's date", nullptr));
-#endif // QT_CONFIG(statustip)
-        day_iconlbl->setText(QString());
 #if QT_CONFIG(statustip)
         clock_label->setStatusTip(QCoreApplication::translate("Peritia", "Clock showing current time", nullptr));
 #endif // QT_CONFIG(statustip)
@@ -633,7 +826,12 @@ public:
         day_label->setWhatsThis(QCoreApplication::translate("Peritia", "fgghgg", nullptr));
 #endif // QT_CONFIG(whatsthis)
         day_label->setText(QCoreApplication::translate("Peritia", "Day label", nullptr));
-        groupBox->setTitle(QCoreApplication::translate("Peritia", "GroupBox", nullptr));
+#if QT_CONFIG(statustip)
+        day_iconlbl->setStatusTip(QCoreApplication::translate("Peritia", "Calender showing today's date", nullptr));
+#endif // QT_CONFIG(statustip)
+        day_iconlbl->setText(QString());
+        pushButton_3->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("Peritia", "PushButton", nullptr));
         menuFile->setTitle(QCoreApplication::translate("Peritia", "File", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("Peritia", "View", nullptr));
         menuHelp->setTitle(QCoreApplication::translate("Peritia", "Help", nullptr));

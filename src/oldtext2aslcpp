@@ -1,0 +1,70 @@
+
+void Peritia::text2ASL() {
+
+	QDialog *text2ASLDialog;
+	QLabel *label;
+	QLineEdit *lineEdit;
+	QListWidget *listWidget;
+	QPushButton *pushButton;
+	QPushButton *pushButton_2;
+	QPushButton *pushButton_3;
+	QHBoxLayout *horizontalLayout;
+	QWidget *horizontalLayoutWidget;
+	QVBoxLayout *verticalLayout;
+        QWidget *verticalLayoutWidget;
+
+	text2ASLDialog = new QDialog;
+	text2ASLDialog->resize(800, 600);
+	text2ASLDialog->setWindowOpacity(7.000000000000000);
+	text2ASLDialog-> setWindowTitle("Text to ASL");
+	
+	listWidget = new QListWidget(text2ASLDialog);
+	
+	QIcon icon(QIcon::fromTheme(QString::fromUtf8("utilities")));
+	
+	QListWidgetItem *__qlistwidgetitem = new QListWidgetItem(listWidget);
+        __qlistwidgetitem->setIcon(icon);
+	
+	new QListWidgetItem(listWidget);
+       	new QListWidgetItem(listWidget);
+	
+	listWidget->setGeometry(QRect(20, 110, 171, 471));
+       	label = new QLabel(text2ASLDialog);
+
+        label->setGeometry(QRect(700, 50, 66, 19));
+
+        horizontalLayoutWidget = new QWidget(text2ASLDialog);
+        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(600, 550, 182, 41));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        pushButton_2 = new QPushButton(horizontalLayoutWidget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+
+        horizontalLayout->addWidget(pushButton_2);
+
+        pushButton = new QPushButton(horizontalLayoutWidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        horizontalLayout->addWidget(pushButton);
+
+        verticalLayoutWidget = new QWidget(text2ASLDialog);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(20, 10, 160, 80));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        lineEdit = new QLineEdit(verticalLayoutWidget);
+        lineEdit->setPlaceholderText("  Type a letter");
+	lineEdit->setClearButtonEnabled(true);
+
+        verticalLayout->addWidget(lineEdit);
+
+        pushButton_3 = new QPushButton(verticalLayoutWidget);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+
+        verticalLayout->addWidget(pushButton_3);
+
+	text2ASLDialog->show();
+}

@@ -16,16 +16,20 @@
 #include <QFont>
 #include <QFontDialog>
 #include <QCloseEvent>
-#include <QPainter>
-
+#include <QMovie>
+#include <QGraphicsOpacityEffect>
+#include <QStackedWidget>
+#include <QListWidget>
 
 #include "peritia-about.cpp"
 #include "peritia-help.cpp"
 #include "peritia-properties.cpp"
 #include "peritia-summary.cpp"
 #include "peritia.h"
-#include "datetime.cpp"
 #include "ui_peritia.h"
+
+#include "datetime.cpp"
+#include "random-quote.cpp"
 
 
 Peritia::Peritia(QWidget *parent) :
@@ -35,6 +39,24 @@ Peritia::Peritia(QWidget *parent) :
     ui->setupUi(this);
     startTimer(1000);
     
+    srand(time(0));
+    randomize();
+    std::vector<int> randomResult = randomize();
+    for (std::vector<int>::const_iterator iter = randomResult.begin(), iterEnd = randomResult.end();
+
+		    iter != iterEnd; ++iter)
+
+	    switch(*iter) {
+		    case 7: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/guitar.png);"));
+			    break;
+		    case 8: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/3-people.png);"));
+			    break;
+		    default: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/girl-and-boy-with-laptop.png);"));
+			     break;
+	    }
+
+
+    
     qDebug()<<"Current date and time: ->"<<currentTime;
 
 
@@ -43,9 +65,42 @@ Peritia::Peritia(QWidget *parent) :
     ui->day_label->setText("");
     ui->day_label->setStyleSheet(dayLabelIconQString);
 
-    //convert string to QString
-    QString dateLabelIconQString = QString::fromStdString(dateLabelIcon);
-    ui->day_iconlbl->setStyleSheet(dateLabelIconQString);
+    /* When grepping date values, we encountered an
+     * issue when grepping single digit values
+     * so we had to improvise */
+    
+    //Convert string to int
+    int finalDate = std::stoi(Date);
+
+    if (finalDate < 10) {
+	    switch (finalDate) {
+		    case 1: ui->day_iconlbl->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-01.png);"));
+			    break;
+
+		    case 2: ui->day_iconlbl->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-02.png);"));
+			    break;
+	            case 3: ui->day_iconlbl->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-03.png);"));
+			    break;
+		    case 4: ui->day_iconlbl->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-04.png);"));
+			    break;
+		    case 5: ui->day_iconlbl->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-05.png);"));
+			    break;
+		    case 6: ui->day_iconlbl->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-06.png);"));
+			    break;
+		    case 7: ui->day_iconlbl->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-07.png);"));
+			    break;
+		    case 8: ui->day_iconlbl->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-08.png);"));
+                            break;
+		    case 9: ui->day_iconlbl->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-09.png);"));
+			    break;
+	    }
+    
+    } else {
+	    QString dateLabelIconQString = QString::fromStdString(dateLabelIcon);
+	    ui->day_iconlbl->setStyleSheet(dateLabelIconQString);
+    }
+   
+
 
     if (FinalHour <12) {
 	    /*This special method will prevent the background image to be inherited by the children*/
@@ -65,6 +120,11 @@ Peritia::Peritia(QWidget *parent) :
 	    // bronze color
 	    ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(205, 127, 50);"));
     }
+
+    QLabel *hhs = new QLabel;
+    hhs->setText("rgre");
+
+    ui->verticalLayout_3->addWidget(hhs);
 
     //QWidget *clockw = new QWidget;
     //Timer *timer = new QTimer(clockw);
@@ -107,7 +167,8 @@ Peritia::Peritia(QWidget *parent) :
    // connect(ui->actionUndo, &QAction::triggered, ui->textEdit, &QTextEdit::undo);
    // connect(ui->textEdit, &QTextEdit::redoAvailable, ui->actionRedo, &QAction::setEnabled);
     //connect(ui->actionRedo, &QAction::triggered, ui->textEdit, &QTextEdit::redo);
-
+    //onnect(ui->actionAlign_ToolBar, &QAction::triggered, this, &Peritia::alignToolBar);i
+    
     connect(ui->actionFont, &QAction::triggered, this, &Peritia::selectFont);
     connect(ui->actionBold, &QAction::triggered, this, &Peritia::setFontBold);
     connect(ui->actionUnderline, &QAction::triggered, this, &Peritia::setFontUnderline);
@@ -117,12 +178,16 @@ Peritia::Peritia(QWidget *parent) :
     connect(ui->actionHelp, &QAction::triggered, this, &Peritia::showHelp);
 
     connect(ui->actionPreference, &QAction::triggered, this, &Peritia::showPreference);
+    connect(ui->actiontext2ASL, &QAction::triggered, this, &Peritia::text2ASL);
 
     //This will maximize the screen
     connect(ui->actionZoom_in, &QAction::triggered, this, &Peritia::showMaximized);
 
     //This will change to the default size
     connect(ui->actionZoom_out, &QAction::triggered, this, &Peritia::showNormal);
+    //QObject::connect(listWidget, SIGNAL(currentRowChanged(int)), stackedWidget, SLOT(setCurrentIndex(int)));
+
+    //connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(Peritia::itemClickedSlot(QListWidgetItem *)));
     
     //oominPeritia);
 
@@ -264,6 +329,11 @@ bool Peritia::closeWindow()
 //	myProcess->start(program, arguments);
 
 }*/
+
+//void Peritia::itemsClickedSlot() {
+//	ui->pushButton_3->setText->("fffff");
+//}
+
 void Peritia::open()
 {
     QString fileName = QFileDialog::getOpenFileName(this, "Open the file");
@@ -388,10 +458,33 @@ void Peritia::setFontBold(bool bold)
 
 void Peritia::changePhoto()  {
 
-	ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
+//	ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
 	ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/lumbo-minar.jpeg) }");
 }
 
+void Peritia::text2ASL() {
+
+
+	QFrame *txt2ASLFrame = new QFrame();
+	QLabel *txt2ASLFrameLabel = new QLabel(txt2ASLFrame);
+	QGraphicsOpacityEffect *goe = new QGraphicsOpacityEffect(txt2ASLFrame);
+	goe->setOpacity(0.5);//0 to 1 will cause the fade effect to kick in
+        txt2ASLFrame->setGraphicsEffect(goe);
+	txt2ASLFrame->setAutoFillBackground(true);
+
+	//txt2ASLFrameLabel->setMinimumsize(500, 599);
+	QMovie *movie = new QMovie(":/images/daylightsungif.gif");
+	txt2ASLFrameLabel->setMovie(movie);
+	movie->start();
+	txt2ASLFrame->setFrameShape(QFrame::StyledPanel);
+	QLineEdit *phoneEdit = new QLineEdit();
+	QLabel *phoneLabel = new QLabel("&Phone:", txt2ASLFrame);
+	phoneLabel->setBuddy(phoneEdit);
+	//ui->verticalLayout_4->addWidget(phoneLabel);
+	ui->verticalLayout_4->addWidget(txt2ASLFrame);
+	ui->pushButton_8->setEnabled(false);
+	
+}
 
 void Peritia::timerEvent(QTimerEvent *) {
 	QTime utctime;

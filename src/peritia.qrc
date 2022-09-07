@@ -1,14 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>icons/date/date-1.png</file>
-        <file>icons/date/date-2.png</file>
-        <file>icons/date/date-3.png</file>
-        <file>icons/date/date-4.png</file>
-        <file>icons/date/date-5.png</file>
-        <file>icons/date/date-6.png</file>
-        <file>icons/date/date-7.png</file>
-        <file>icons/date/date-8.png</file>
-        <file>icons/date/date-9.png</file>
+
+
+        <file>icons/buttons/sign-language.png</file>
+
+        <file>icons/date/date-01.png</file>
+        <file>icons/date/date-02.png</file>
+        <file>icons/date/date-03.png</file>
+        <file>icons/date/date-04.png</file>
+        <file>icons/date/date-05.png</file>
+        <file>icons/date/date-06.png</file>
+        <file>icons/date/date-07.png</file>
+        <file>icons/date/date-08.png</file>
+        <file>icons/date/date-09.png</file>
         <file>icons/date/date-10.png</file>
         <file>icons/date/date-11.png</file>
         <file>icons/date/date-12.png</file>
@@ -38,6 +42,10 @@
         <file>icons/date/day-Fri.png</file>
         <file>icons/date/day-Sat.png</file>
         <file>icons/date/day-Sun.png</file>
+
+        <file>icons/illustrations/3-people.png</file>
+        <file>icons/illustrations/guitar.png</file>
+        <file>icons/illustrations/girl-and-boy-with-laptop.png</file>
 
         <file>icons/statusbar/status-bar.png</file>
 

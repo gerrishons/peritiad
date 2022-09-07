@@ -30,6 +30,11 @@ std::string Day = DateTime.substr(0,3);
 std::string dayLabelIcon = "image: url(:/icons/date/day-"+Day+".png);";
 /*Grab characters respresenting current date*/
 std::string Date = DateTime.substr(8,2);
+//std::cout<<Date.size()<<std::endl;
+
+//if(Date.size() !=2) {
+//	std::cout<<"rrr"<<std:endl;
+
 std::string dateLabelIcon = "image: url(:/icons/date/date-"+Date+".png);";
 
 

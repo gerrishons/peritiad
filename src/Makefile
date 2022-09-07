@@ -414,42 +414,46 @@ qrc_peritia.cpp: peritia.qrc \
 		images/water.jpg \
 		images/italic.png \
 		icons/statusbar/status-bar.png \
-		icons/date/date-8.png \
+		icons/illustrations/3-people.png \
+		icons/illustrations/girl-and-boy-with-laptop.png \
+		icons/illustrations/guitar.png \
+		icons/buttons/sign-language.png \
 		icons/date/date-12.png \
 		icons/date/date-29.png \
-		icons/date/date-7.png \
+		icons/date/date-04.png \
 		icons/date/date-11.png \
 		icons/date/date-28.png \
-		icons/date/date-6.png \
+		icons/date/date-03.png \
 		icons/date/date-10.png \
 		icons/date/date-27.png \
+		icons/date/date-02.png \
 		icons/date/day-Tue.png \
 		icons/date/date-19.png \
-		icons/date/date-5.png \
 		icons/date/date-26.png \
+		icons/date/date-01.png \
 		icons/date/day-Sat.png \
 		icons/date/date-18.png \
-		icons/date/date-4.png \
 		icons/date/date-25.png \
 		icons/date/date-17.png \
-		icons/date/date-3.png \
+		icons/date/date-09.png \
 		icons/date/date-24.png \
 		icons/date/day-Mon.png \
 		icons/date/date-16.png \
+		icons/date/date-08.png \
 		icons/date/date-31.png \
-		icons/date/date-2.png \
 		icons/date/date-23.png \
 		icons/date/day-Fri.png \
 		icons/date/date-15.png \
 		icons/date/day-Thu.png \
+		icons/date/date-07.png \
 		icons/date/day-Sun.png \
 		icons/date/date-30.png \
-		icons/date/date-1.png \
 		icons/date/date-22.png \
 		icons/date/date-14.png \
+		icons/date/date-06.png \
 		icons/date/date-21.png \
 		icons/date/date-13.png \
-		icons/date/date-9.png \
+		icons/date/date-05.png \
 		icons/date/date-20.png \
 		icons/date/day-Wed.png \
 		logos/peritia-logo.png
@@ -503,8 +507,9 @@ peritia.o: peritia.cpp peritia-about.cpp \
 		peritia-properties.hpp \
 		peritia-summary.cpp \
 		peritia-summary.hpp \
+		ui_peritia.h \
 		datetime.cpp \
-		ui_peritia.h
+		random-quote.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o peritia.o peritia.cpp
 
 qrc_peritia.o: qrc_peritia.cpp 
