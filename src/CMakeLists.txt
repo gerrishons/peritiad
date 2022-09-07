@@ -79,6 +79,7 @@ set(peritia_resource_files
     "icons/illustrations/boy-and--girl-sitting-in-chairs.png"
     "icons/illustrations/boy-and-girl-standing-and-laughing.png"
     "icons/illustrations/girl-and-boy-with-laptop.png"
+    "icons/illustratuons/man-playing-with-dog-on-the-couch.png"
     "icons/illustrations/man-search-music-with-phone.png"
     "icons/illustrations/people-standing-talking.png"
     "icons/illustrations/woman-in-glasses-sitting-and-reading-book.png"

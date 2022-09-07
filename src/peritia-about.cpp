@@ -9,6 +9,7 @@ void Peritia::showAbout() {
 	QLabel *logo_label;
 	QLabel *fyi_label;
 	QLabel *title_label;
+	QLabel *versionLabel;
 	QWidget *horizontalLayoutWidget;
        	QHBoxLayout *horizontalLayout;
        	QWidget *widget;
@@ -17,7 +18,6 @@ void Peritia::showAbout() {
        	QPushButton *pushButton_2;
        	QWidget *verticalLayoutWidget;
        	QVBoxLayout *verticalLayout;
-      	QLabel *label_6;
        	QSpacerItem *verticalSpacer;
 	QLabel *label_4;
        	QLabel *label_5;
@@ -81,12 +81,22 @@ void Peritia::showAbout() {
         title_label->setMaximumSize(QSize(260, 35));
 
         verticalLayout->addWidget(title_label);
-	label_6 = new QLabel(verticalLayoutWidget);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setMinimumSize(QSize(25, 10));
-        label_6->setMaximumSize(QSize(200, 25));
+	versionLabel = new QLabel(verticalLayoutWidget);
+        versionLabel->setMinimumSize(QSize(25, 10));
+        versionLabel->setMaximumSize(QSize(200, 25));
+	
+	/*Check the bitness of your machine*/
+	
+	QString bitness;
+	if (sizeof(void *) == 4)
+		bitness = " (32 bit)";
+	
+	else if (sizeof(void *) == 8)
+	       
+		bitness = " (64 bit)";
+        versionLabel->setText(peritiaVersion + bitness);
 
-        verticalLayout->addWidget(label_6);
+        verticalLayout->addWidget(versionLabel);
 
         verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
 

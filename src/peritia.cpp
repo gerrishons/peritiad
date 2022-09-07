@@ -29,7 +29,7 @@
 #include "ui_peritia.h"
 
 #include "datetime.cpp"
-#include "random-quote.cpp"
+#include "random-int.cpp"
 
 
 Peritia::Peritia(QWidget *parent) :
@@ -47,9 +47,23 @@ Peritia::Peritia(QWidget *parent) :
 		    iter != iterEnd; ++iter)
 
 	    switch(*iter) {
-		    case 7: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/guitar.png);"));
+		    case 1: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/boy-and-girl-standing-and-laughing.png);"));
 			    break;
-		    case 8: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/3-people.png);"));
+		    case 2: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/boy-girl-sitting-in-chairs.png);"));
+			    break;
+		    case 3: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/girl-playing-playstation-with-brother.png);"));
+			    break;
+		    case 4: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/man-playing-with-dog-on-the-couch.png);"));
+			    break;
+		    case 5: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/man-search-music-with-phone.png);"));
+			    break;
+		    case 6: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/people-standing-talking.png);"));
+			    break;
+		    case 7: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/woman-in-glasses-sitting-and-reading-book.png);"));
+			    break;
+		    case 8: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/woman-in-glasses-sitting-next-to-a-dog.png);"));
+			    break;
+		    case 9: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/guitar.png);"));
 			    break;
 		    default: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/girl-and-boy-with-laptop.png);"));
 			     break;

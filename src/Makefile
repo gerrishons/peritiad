@@ -415,8 +415,13 @@ qrc_peritia.cpp: peritia.qrc \
 		images/italic.png \
 		icons/statusbar/status-bar.png \
 		icons/illustrations/3-people.png \
+		icons/illustrations/boy-and-girl-standing-and-laughing.png \
+		icons/illustrations/woman-in-glasses-sitting-and-reading-book.png \
+		icons/illustrations/man-playing-with-dog-on-the-couch.png \
+		icons/illustrations/people-standing-talking.png \
 		icons/illustrations/girl-and-boy-with-laptop.png \
-		icons/illustrations/guitar.png \
+		icons/illustrations/man-search-music-with-phone.png \
+		icons/illustrations/boy-girl-sitting-in-chairs.png \
 		icons/buttons/sign-language.png \
 		icons/date/date-12.png \
 		icons/date/date-29.png \
@@ -509,7 +514,7 @@ peritia.o: peritia.cpp peritia-about.cpp \
 		peritia-summary.hpp \
 		ui_peritia.h \
 		datetime.cpp \
-		random-quote.cpp
+		random-int.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o peritia.o peritia.cpp
 
 qrc_peritia.o: qrc_peritia.cpp 
