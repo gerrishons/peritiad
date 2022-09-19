@@ -98,6 +98,7 @@
         
         <file>media/sounds/beep.mp3</file>
         <file>media/sounds/fullscreenmode.mp3</file>
+        <file>media/sounds/fullscreen-mode-is-active.mp3</file>
         <file>media/sounds/statusbarhidden.mp3</file>
         <file>media/sounds/statusbarshown.mp3</file>
     </qresource>

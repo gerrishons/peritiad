@@ -626,17 +626,24 @@ void Peritia::removeWidgetOnStatusBar()  {
 }
 void Peritia::showFullScreen() {
 
-    if (Peritia::isFullScreen()) {
-        qDebug()<<"Fullscreen mode is already active";
-    } else {
-
     QMediaPlayer * fullscreenPlayer = new QMediaPlayer;
     QAudioOutput * fullscreenAudioOutput =new QAudioOutput;
     fullscreenPlayer->setAudioOutput(fullscreenAudioOutput);
+
+    if (Peritia::isFullScreen()) {       
+        QUrl audioUrl = QUrl("qrc:/media/sounds/fullscreen-mode-is-active.mp3");
+        fullscreenPlayer->setSource(audioUrl);
+        fullscreenAudioOutput->setVolume(50);
+        fullscreenPlayer->play();
+
+        qDebug()<<"Fullscreen mode is already active";
+    } else {
     QUrl audioUrl = QUrl("qrc:/media/sounds/fullscreenmode.mp3");
     fullscreenPlayer->setSource(audioUrl);
     fullscreenAudioOutput->setVolume(50);
     fullscreenPlayer->play();
+
+    qDebug()<<"Fullscreen mode set";
 
     return QMainWindow::showFullScreen();
 
