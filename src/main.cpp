@@ -14,7 +14,8 @@ int main(int argc, char *argv[])
     Peritia w;
 
 
-#if __linux__
+
+/*#if __linux__
     std::string file_name = "/root/.peritia/autotheme.yml";
     std::ifstream my_file(file_name);
     
@@ -62,7 +63,7 @@ int main(int argc, char *argv[])
 	    }
     }
 
-#endif
+#endif*/
 
     w.show();
     return a.exec();

@@ -17,9 +17,11 @@
 #include <QFontDialog>
 #include <QCloseEvent>
 #include <QMovie>
-#include <QGraphicsOpacityEffect>
+//#include <QGraphicsOpacityEffect>
 #include <QStackedWidget>
 #include <QListWidget>
+#include <QtMultimedia/QMediaPlayer>
+#include <QtMultimedia/QAudioOutput>
 
 #include "peritia-about.cpp"
 #include "peritia-help.cpp"
@@ -138,33 +140,87 @@ Peritia::Peritia(QWidget *parent) :
     QLabel *hhs = new QLabel;
     hhs->setText("rgre");
 
+
     ui->verticalLayout_3->addWidget(hhs);
 
-    //QWidget *clockw = new QWidget;
-    //Timer *timer = new QTimer(clockw);
-   // ui->formLayout->addWidget(clockw);
-  //  QPushButton *pushButtoasn = new QPushButton(ui->widget);
-    //pushButtoasn->setText("Back");
-    //Label *qlbl = new QLabel;
-    
-   // connect(timer, &QTimer::timeout, this, QOverload<>::of(&Peritia::update));
-    //timer->start(1000);
-    //i->widget->resize(200,200);
-   // ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/blake.png) }").flush();
-    //unsleep(5);
-   /* unsigned int microsecond = 1000000;
-    usleep(3 * microsecond);//sleeps for 3 second
-    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/peritia-logo.png) }");*/
+
+
+   // QMediaPlayer * soundPlay = new QMediaPlayer;
+  //  QAudioOutput * audioOutput =new QAudioOutput;
+
+   // soundPlay->setAudioOutput(audioOutput);
+
+   // if(ui->label->focusWidget()) {
+      //  QUrl audioUrl = QUrl("qrc:/media/sounds/beep.mp3");
+
+      //  soundPlay->setSource(audioUrl);
+     //   audioOutput->setVolume(50);
+       // soundPlay->play();
+
+     //   qDebug()<<"Peritia logo description";
+
+   // }
+   // else {
+      //  soundPlay->stop();
+    //}
+
+
+
+    QPushButton *wis = new QPushButton();
+    QLabel *lk = new QLabel();
+    lk->setText("cggfg");
+    QIcon ic(":/images/scalabli-logo.png");
+    wis->setIcon(ic);
+
+
+    //QPushButton *leftToolbarButton = new QPushButton();
+
+
+    /*Default state of the show status bar QAction is checked*/
+    ui->actionShowStatusBar->setChecked(true);
+
+
+    ui->statusBar->addWidget(wis);
+
+    if(ui->toolBar->isHidden()) {
+
+        ui->statusBar->addPermanentWidget(wis);
+
+}
+
+
+
+   // if(!ui->toolBar-isHidden()) {
+
+     //   ui->statusBar->removeWidget(wis);
+//
+   //     qDebug()<<"NOT";
+
+   // }
+
+
+       //     ()
+      //  ui->statusBar->removeWidget(wis);
+   // } else {
+     ////\   ui->sta
+    //}
+    connect(ui->actionMuteSound, &QAction::triggered, this, &Peritia::playSound);
 
 
 
     connect(ui->actionChangePic, &QAction::triggered, this, &Peritia::changePhoto);
+    connect(ui->actionEchoChanged, &QAction::triggered, this, &Peritia::changeText);
 
     //Full screen toggle
     connect(ui->actionFullScreen, &QAction::triggered, this, &Peritia::showFullScreen);
-   
+
+    connect(ui->actionHideLeftToolBar, &QAction::triggered, this, &Peritia::hideLeftToolBar);
+
+
+    connect(ui->actionHideStatusBar, &QAction::triggered, this, &Peritia::hideStatusBar);
+
     connect(ui->actionSummary, &QAction::triggered, this, &Peritia::ShowSummary);
-    connect(ui->actionStatus_Bar, &QAction::triggered, this, &Peritia::showStatusBar);
+    connect(ui->actionShowStatusBar, &QAction::triggered, this, &Peritia::showStatusBar);
     connect(ui->actionOpen, &QAction::triggered, this, &Peritia::open);
     connect(ui->actionSave, &QAction::triggered, this, &Peritia::save);
     connect(ui->actionSave_as, &QAction::triggered, this, &Peritia::saveAs);
@@ -192,7 +248,7 @@ Peritia::Peritia(QWidget *parent) :
     connect(ui->actionHelp, &QAction::triggered, this, &Peritia::showHelp);
 
     connect(ui->actionPreference, &QAction::triggered, this, &Peritia::showPreference);
-    connect(ui->actiontext2ASL, &QAction::triggered, this, &Peritia::text2ASL);
+    connect(ui->actionText2ASL, &QAction::triggered, this, &Peritia::text2ASL);
 
     //This will maximize the screen
     connect(ui->actionZoom_in, &QAction::triggered, this, &Peritia::showMaximized);
@@ -348,6 +404,11 @@ bool Peritia::closeWindow()
 //	ui->pushButton_3->setText->("fffff");
 //}
 
+
+void Peritia::changeText() {
+
+    //ui->label->setText(ui->lineEdit->text());
+}
 void Peritia::open()
 {
     QString fileName = QFileDialog::getOpenFileName(this, "Open the file");
@@ -365,6 +426,40 @@ void Peritia::open()
     //ui->textEdit->setText(text);
     file.close();
 }
+
+
+
+void Peritia::playSound() {
+
+    QMediaPlayer * player = new QMediaPlayer;
+    QAudioOutput * audioo =new QAudioOutput;
+
+    if(ui->label->underMouse()) {
+
+
+
+        player->setAudioOutput(audioo);
+        QUrl audioUrl = QUrl("qrc:/media/sounds/beep.mp3");
+
+        player->setSource(audioUrl);
+        audioo->setVolume(50);
+        player->play();
+
+        qDebug()<<"has";
+
+    } else {
+        player->deleteLater();
+       player->stop();
+    }
+
+
+
+
+
+    }
+
+
+
 
 void Peritia::save()
 {
@@ -442,16 +537,19 @@ void Peritia::selectFont()
 
 void Peritia::showStatusBar()  {
 
-    if (ui->actionStatus_Bar->isChecked()) {
+    if(ui->actionShowStatusBar->isChecked()) {
+
+        QMediaPlayer * player = new QMediaPlayer;
+        QAudioOutput * audioo =new QAudioOutput;
+        player->setAudioOutput(audioo);
         ui->statusBar->setVisible(true);
-        ui->actionStatus_Bar->setChecked(true);
+        ui->actionShowStatusBar->setChecked(true);
+        ui->actionHideStatusBar->setChecked(false);
+        QUrl audioUrl = QUrl("qrc:/media/sounds/statusbarshown.mp3");
 
-
-    } else {
-        ui->actionStatus_Bar->setChecked(false);
-
-
-        ui->statusBar->setVisible(false);
+        player->setSource(audioUrl);
+        audioo->setVolume(50);
+        player->play();
     }
 }
 void Peritia::setFontUnderline(bool underline)
@@ -476,27 +574,151 @@ void Peritia::changePhoto()  {
 	ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/lumbo-minar.jpeg) }");
 }
 
+
+void Peritia::hideLeftToolBar()   {
+
+    ui->toolBar->hide();
+
+    if(ui->toolBar->isHidden()) {
+        QPushButton *leftToolbarButton = new QPushButton();
+
+
+        ui->statusBar->addWidget(leftToolbarButton);
+    }
+      connect(leftToolbarButton, SIGNAL(clicked()), this, SLOT(close));
+
+
+
+}
+
+void Peritia::hideStatusBar() {
+    if(ui->actionHideStatusBar->isChecked())
+    {
+        ui->statusBar->setVisible(false);
+        ui->actionShowStatusBar->setChecked(false);
+        QMediaPlayer * player = new QMediaPlayer;
+        QAudioOutput * audioo =new QAudioOutput;
+        player->setAudioOutput(audioo);
+        QUrl audioUrl = QUrl("qrc:/media/sounds/statusbarhidden.mp3");
+        player->setSource(audioUrl);
+        audioo->setVolume(50);
+        player->play();
+
+    }
+
+
+
+
+
+
+}
+
+
+void Peritia::removeWidgetOnStatusBar()  {
+
+  // if(ui->toolBar->isHidden()) {
+ // ui->statusBar->c
+
+   //}
+
+
+
+}
+void Peritia::showFullScreen() {
+
+    if (Peritia::isFullScreen()) {
+        qDebug()<<"Fullscreen mode is already active";
+    } else {
+
+    QMediaPlayer * fullscreenPlayer = new QMediaPlayer;
+    QAudioOutput * fullscreenAudioOutput =new QAudioOutput;
+    fullscreenPlayer->setAudioOutput(fullscreenAudioOutput);
+    QUrl audioUrl = QUrl("qrc:/media/sounds/fullscreenmode.mp3");
+    fullscreenPlayer->setSource(audioUrl);
+    fullscreenAudioOutput->setVolume(50);
+    fullscreenPlayer->play();
+
+    return QMainWindow::showFullScreen();
+
+
+    }
+
+
+}
+
 void Peritia::text2ASL() {
 
 
-	QFrame *txt2ASLFrame = new QFrame();
-	QLabel *txt2ASLFrameLabel = new QLabel(txt2ASLFrame);
-	QGraphicsOpacityEffect *goe = new QGraphicsOpacityEffect(txt2ASLFrame);
-	goe->setOpacity(0.5);//0 to 1 will cause the fade effect to kick in
-        txt2ASLFrame->setGraphicsEffect(goe);
-	txt2ASLFrame->setAutoFillBackground(true);
+    QGroupBox *txt2ASLGroupBox = new QGroupBox();
+    txt2ASLGroupBox->setTitle("Text to American Sign Language");
+    txt2ASLGroupBox->setStyleSheet(QString::fromUtf8("QGroupBox {border: 1px solid red; border-radius: 9px; margin-top:0.5em;} QGroup::title {subcontrol-origin: margin; left: 10px; padding:0 3px 0 3px }"));
+
+
+    QGridLayout *txt2ASLGridLayout = new QGridLayout(txt2ASLGroupBox);
+
+
+    QLabel *txt2ASLGifLabel = new QLabel("KKK");
+    txt2ASLGifLabel->setFrameShape(QFrame::StyledPanel);
+    txt2ASLGifLabel->setFrameShadow(QFrame::Sunken);
+    txt2ASLGifLabel->setStyleSheet(QString::fromUtf8("QLabel {border: 1px solid green; border-radius: 9px; margin-top:0.5em;}"));
+    txt2ASLGifLabel->setAlignment(Qt::AlignLeft);
+
+    QMovie *gifMovie = new QMovie(":/media/gifs/girl-working-at-home.gif");
+    txt2ASLGifLabel->setMovie(gifMovie);
+    gifMovie->start();
+    txt2ASLGridLayout->addWidget(txt2ASLGifLabel, 0, 0);
+
+    QLabel  *txt2ASLFrameLabeld = new QLabel("ff");
+
+    txt2ASLFrameLabeld->setFrameShape(QFrame::StyledPanel);
+    txt2ASLFrameLabeld->setFrameShadow(QFrame::Sunken);
+    txt2ASLFrameLabeld->setAlignment(Qt::AlignLeft);
+
+    QLabel *searchLabel = new QLabel(txt2ASLFrameLabeld);
+    searchLabel->setText("JJJJJJ");
+    searchLabel->setAlignment(Qt::AlignCenter);
+
+    //QLineEdit * lineEdit = new QLineEdit(txt2ASLFrameLabeld);
+//lineEdit->setAlignment(Qt::AlignRight);
+
+    //lineEdit->setFrame(QFrame::Box);
+   // lineEdit->setPlaceholderText("dkdkkd text ");
+    //txt2ASLFrameLabeld->
+
+    txt2ASLGridLayout->addWidget(txt2ASLFrameLabeld, 0, 2);
+
+
+
+
+    QFrame *txt2ASLFrameLabela = new QFrame();//lineEdit); //wjjtxt2ASLFrame");
+   // txt2ASLFrameLabela->setBuddy(lineEdit);
+    txt2ASLFrameLabela->setFrameShape(QFrame::StyledPanel);
+    txt2ASLFrameLabela->setFrameShadow(QFrame::Sunken);
+    //txt2ASLFrameLabela->setAlignment(Qt::AlignLeft);
+
+    QVBoxLayout * qvb = new QVBoxLayout;
+   // qvb->addWidget(lineEdit);
+
+
+    txt2ASLGridLayout->addWidget(txt2ASLFrameLabela, 1, 3);
+    //txt2ASLGridLayout->addWidget(qvb);
+
+    //QGraphicsOpacityEffect *goe = new QGraphicsOpacityEffect(txt2ASLFrame);
+    //goe->setOpacity(0.5);//0 to 1 will cause the fade effect to kick in
+      //  txt2ASLFrame->setGraphicsEffect(goe);
+    //txt2ASLFrame->setAutoFillBackground(true);
 
 	//txt2ASLFrameLabel->setMinimumsize(500, 599);
-	QMovie *movie = new QMovie(":/images/daylightsungif.gif");
-	txt2ASLFrameLabel->setMovie(movie);
-	movie->start();
-	txt2ASLFrame->setFrameShape(QFrame::StyledPanel);
-	QLineEdit *phoneEdit = new QLineEdit();
-	QLabel *phoneLabel = new QLabel("&Phone:", txt2ASLFrame);
-	phoneLabel->setBuddy(phoneEdit);
+//	QMovie *movie = new QMovie(":/images/daylightsungif.gif");
+    //txt2ASLFrameLabel->setMovie(movie);
+    //movie->start();
+    //txt2ASLFrame->setFrameShape(QFrame::StyledPanel);
+    //QLineEdit *phoneEdit = new QLineEdit();
+    //QLabel *phoneLabel = new QLabel("&Phone:", txt2ASLFrame);
+    //phoneLabel->setBuddy(phoneEdit);
 	//ui->verticalLayout_4->addWidget(phoneLabel);
-	ui->verticalLayout_4->addWidget(txt2ASLFrame);
-	ui->pushButton_8->setEnabled(false);
+    ui->verticalLayout_4->addWidget(txt2ASLGroupBox);
+    ui->text2ASLButton->setEnabled(false);
 	
 }
 
@@ -524,62 +746,4 @@ void Peritia::timerEvent(QTimerEvent *) {
 
 }
 
-/*void Peritia::paintEvent(QPaintEvent *)
-{
-	static const QPoint hourHand[3] = {
-		QPoint(7, 8),
-		QPoint(-7, 8),
-	       	QPoint(0, -40)
-       	};
-
-	static const QPoint minuteHand[3] = {
-	       	QPoint(7, 8),
-		QPoint(-7, 8),
-	       	QPoint(0, -70)
-	};
-	
-	QColor hourColor(127, 0, 127);
-	QColor minuteColor(0, 127, 127, 191);
-	
-	int side = qMin(width(), height());
-	
-	QTime time = QTime::currentTime();
-	
-	QPainter painter(this);
-	
-	painter.setRenderHint(QPainter::Antialiasing);
-	
-	painter.translate(width() / 2, height() / 2);
-	painter.scale(side / 200.0, side / 200.0);
-	
-	painter.setPen(Qt::NoPen);
-	painter.setBrush(hourColor);
-	painter.save();
-	painter.rotate(30.0 * ((time.hour() + time.minute() / 60.0)));
-       	painter.drawConvexPolygon(hourHand, 3);
-       	painter.restore();
-	painter.setPen(hourColor);
-	
-	for (int i = 0; i < 12; ++i) {
-	       	painter.drawLine(88, 0, 96, 0);
-		painter.rotate(30.0);
-	}
-	
-	painter.setPen(Qt::NoPen);
-	painter.setBrush(minuteColor);
-	painter.save();
-	
-	painter.rotate(6.0 * (time.minute() + time.second() / 60.0));
-       	painter.drawConvexPolygon(minuteHand, 3);
-	painter.restore();
-	painter.setPen(minuteColor);
-	
-	for (int j = 0; j < 60; ++j) {
-		if ((j % 5) != 0)
-		       	painter.drawLine(92, 0, 96, 0);
-	       	painter.rotate(6.0);
-	}
-//	ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
-}
-*/
 

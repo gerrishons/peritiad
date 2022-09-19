@@ -125,6 +125,10 @@ set(peritia_resource_files
     "images/save_as.png"
     "images/underline.png"
     "images/vine.png"
+    
+    "media/gifs/girl-working-at-home.gif"
+    "media/sounds/beep.mp3"
+    "media/sounds/fullscreenmode.mp3"
 )
 
 qt_add_resources(peritia "peritia"

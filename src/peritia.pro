@@ -2,19 +2,24 @@ TEMPLATE = app
 TARGET = peritia
 
 QT += widgets
+QT += multimedia
 #QT += webkit
 #QT += webkitwidgets
 
-qtHaveModule(printsupport): QT += printsupport
-requires(qtConfig(fontdialog))
+#qtHaveModule(printsupport): QT += printsupport
+#requires(qtConfig(fontdialog))
 
 SOURCES += \
+    aboutdialog.cpp \
     main.cpp\
     peritia.cpp \
+    peritia-about.cpp
 
-HEADERS += peritia.h
+HEADERS += peritia.h \
+    aboutdialog.h
 
 FORMS += peritia.ui
+
 
 RESOURCES += \
     peritia.qrc

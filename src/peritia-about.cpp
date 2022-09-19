@@ -5,31 +5,34 @@
 
 void Peritia::showAbout() {
 
-	QDialog *aboutDialog;	
+    QDialog *aboutDialog;
 	QLabel *logo_label;
 	QLabel *fyi_label;
 	QLabel *title_label;
 	QLabel *versionLabel;
-	QWidget *horizontalLayoutWidget;
-       	QHBoxLayout *horizontalLayout;
-       	QWidget *widget;
-       	QPushButton *pushButton_3;
-	QPushButton *pushButton;
-       	QPushButton *pushButton_2;
-       	QWidget *verticalLayoutWidget;
-       	QVBoxLayout *verticalLayout;
-       	QSpacerItem *verticalSpacer;
-	QLabel *label_4;
-       	QLabel *label_5;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QWidget *widget;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer;
+    QLabel *label_4;
+    QLabel *label_5;
 
 	aboutDialog = new QDialog();
-	aboutDialog->resize(700, 450);
+    aboutDialog->resize(665, 305);
 	aboutDialog->setStyleSheet(QString::fromUtf8("background-color: rgb(41, 12, 53);"));
-	aboutDialog->setWindowTitle("About");
+    aboutDialog->setWindowTitle("About Peritia");
+    QGridLayout *gridLayout = new QGridLayout(aboutDialog);
+    gridLayout->setGeometry(QRect(-1, -1, 671, 311));
 
-	logo_label = new QLabel(aboutDialog);
-	logo_label->setGeometry(QRect(10, 20, 200, 200));//191 181
-	logo_label->setStyleSheet(QString::fromUtf8("image: url(:/logos/peritia-logo.png);"));
+    //logo_label = new QLabel(aboutDialog);
+    //logo_label->setGeometry(QRect(10, 20, 200, 200));//191 181
+    //logo_label->setStyleSheet(QString::fromUtf8("image: url(:/logos/peritia-logo.png);"));
 	
 	horizontalLayoutWidget = new QWidget(aboutDialog);
 	horizontalLayoutWidget->setGeometry(QRect(0, 390, 701, 61));
@@ -87,7 +90,6 @@ void Peritia::showAbout() {
 	
 	/*Check the bitness of your machine*/
 	
-	QString bitness;
 	if (sizeof(void *) == 4)
 		bitness = " (32 bit)";
 	
