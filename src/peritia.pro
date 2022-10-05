@@ -10,23 +10,37 @@ QT += multimedia
 #requires(qtConfig(fontdialog))
 
 SOURCES += \
-    aboutdialog.cpp \
+    logger.cpp \
+    loginwidget.cpp \
     main.cpp\
     peritia.cpp \
-    peritia-about.cpp
+    aboutdialog.cpp\
+    random-int.cpp\
+    welcomedialog.cpp \
+    welcomedialog.cpp
 
-HEADERS += peritia.h \
-    aboutdialog.h
+HEADERS += peritia.h\
+           aboutdialog.h \
+           logger.h \
+           loginwidget.h \
+           welcomedialog.h
 
-FORMS += peritia.ui
+FORMS += peritia.ui #\ text2aslinputdialog.ui
+
 
 
 RESOURCES += \
     peritia.qrc
 
 # install
-target.path = $$[QT_INSTALL_EXAMPLES]/widgets/tutorials/peritia
+target.path = /usr/local/peritia #$$[QT_INSTALL_EXAMPLES]/widgets/tutorials/peritia
+target.files = /usr/local/peritia
 INSTALLS += target
+
+CONFIG += create_prl
+
+message("hello there")
+
 
 win32:RC_ICONS += your_icon.ico
 

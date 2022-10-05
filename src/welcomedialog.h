@@ -1,26 +1,43 @@
-#ifndef ABOUTDIALOG_H
-#define ABOUTDIALOG_H
+#ifndef WELCOMEDIALOG_H
+#define WELCOMEDIALOG_H
 
 
 #include <QDialog>
-#include <QGridLayout>
-#include <QLabel>
-#include <QPushButton>
+#include <QTimer>
+#include <QProgressBar>
+//#include <QGridLayout>
+//#include <QLabel>
+//#include <QPushButton>
 #include <QGraphicsDropShadowEffect>
 
 
-class AboutDialog : public QDialog
+class WelcomeDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit AboutDialog(QWidget *parent = nullptr);
+    explicit WelcomeDialog(QWidget *parent = nullptr);
+
+
 
 
 
 private:
-
     QGraphicsDropShadowEffect *shadow;
+    QProgressBar *progressBar;
+    QTimer *progressTimer;
+
+private slots:
+    void valueProgress();
+
+
+
+
+
+
+
+
+  /*  QGraphicsDropShadowEffect *shadow;
 
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
@@ -49,9 +66,11 @@ private:
     QWidget *verticalLayoutWidget2;
     QWidget *widget1;
     QWidget *widget2;
-    QWidget *widget3;
+    QWidget *widget3;*/
 
 
 };
 
-#endif
+
+
+#endif // WELCOMEDIALOG_H

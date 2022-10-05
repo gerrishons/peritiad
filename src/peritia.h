@@ -1,16 +1,24 @@
 #ifndef PERITIA_H
 #define PERITIA_H
 
-//#include <QListWidgetItem>
-#include "qpushbutton.h"
+#include "qboxlayout.h"
+#include "qlabel.h"
+#include <QFile>
+#include <QListWidgetItem>
+#include <QPushButton>
 #include <QMediaPlayer>
 #include <QMainWindow>
+
+
+
+//#include "aboutdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Peritia;
 }
 QT_END_NAMESPACE
+
 
 class Peritia : public QMainWindow
 {
@@ -20,7 +28,10 @@ public:
     explicit Peritia (QWidget *parent = nullptr);
     ~Peritia();
 
-//public slots:
+
+
+public slots:
+    void getText(QString text);
 //	void addButtonClicked();
 	
 private slots:
@@ -29,6 +40,8 @@ private slots:
     void changeText();
     void hideLeftToolBar();
     void hideStatusBar();
+    void listWidgetItemClicked(QListWidget *itemClicked);
+    void makeADonationStatus();
     void open();
     void playSound();//QMediaPlayer::MediaStatus status);
     void save();
@@ -41,11 +54,17 @@ private slots:
     void setFontItalic(bool italic);
     void showAbout();
     void showFullScreen();
+    void showLeftToolBar();
+    void showLogin();
     void showHelp();
     void showPreference();
     void showStatusBar();
     void ShowSummary();
     void text2ASL();
+    void timer();
+    void ss();
+
+
 
 protected:
    // void text2ASL(QPaintEvent *event);//d paintEvent(QPaintEvent *event) override;
@@ -55,10 +74,20 @@ protected:
 
 private:
     Ui::Peritia *ui;
+    QDialog *aboutDialog;
+  //  QLabel *statusBarClockLabel;
+    QFile *myInfo;
+    QLabel *label_2;
+    QLabel *label_4;
+    QLabel *label;
+     QLabel *label_3;
+     QLineEdit *lineEdit_3;
+
     QString currentFile;
     bool closeWindow();
-    QString bitness;
+
     QPushButton *leftToolbarButton;
+    QVBoxLayout *verticalLayout;
 };
 
 #endif // PERITIA_H

@@ -1,8 +1,10 @@
 #pragma once
 
-#include "peritia-about.hpp"
+#include "peritia.cpp"
 
+//#include "peritia-about.hpp"
 
+#include "version.h"
 void Peritia::showAbout() {
 
     QDialog *aboutDialog;
@@ -115,8 +117,14 @@ void Peritia::showAbout() {
 
         verticalLayout->addWidget(label_5);
 
-	aboutDialog->show();
+    aboutDialog->show();
+    ui->actionAbout->setEnabled(false);
+
+
+
+
 
 }
+
 
 

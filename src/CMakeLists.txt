@@ -126,6 +126,8 @@ set(peritia_resource_files
     "images/underline.png"
     "images/vine.png"
     
+    "media/backgrounds/osman-rana.jpg"
+    
     "media/gifs/girl-working-at-home.gif"
     "media/sounds/beep.mp3"
     "media/sounds/fullscreenmode.mp3"

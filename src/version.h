@@ -1,1 +1,1 @@
-QString peritiaVersion = "2022.1";
+QString peritiahVersion = "2022.1";

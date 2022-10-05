@@ -1,9 +1,12 @@
-#include <QLabel>
+
+//#include <QLabel>
 #include <QFile>
+#include <QInputDialog>
 #include <QTime>
 #include <QTimer>
 #include <QFileDialog>
 #include <QTextStream>
+
 #if defined(QT_PRINTSUPPORT_LIB)
 #include <QtPrintSupport/qtprintsupportglobal.h>
 #if QT_CONFIG(printer)
@@ -17,14 +20,15 @@
 #include <QFontDialog>
 #include <QCloseEvent>
 #include <QMovie>
-//#include <QGraphicsOpacityEffect>
-#include <QStackedWidget>
-#include <QListWidget>
+#include <QGraphicsOpacityEffect>
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimedia/QAudioOutput>
 
-#include "peritia-about.cpp"
-#include "peritia-help.cpp"
+
+//#include "peritia-about.cpp"
+//#include "peritia-help.cpp"
+
+
 #include "peritia-properties.cpp"
 #include "peritia-summary.cpp"
 #include "peritia.h"
@@ -32,6 +36,10 @@
 
 #include "datetime.cpp"
 #include "random-int.cpp"
+#include "aboutdialog.cpp"
+
+#include "loginwidget.h" /*including the cpp file here throws some error*/
+#include "welcomedialog.cpp"
 
 
 Peritia::Peritia(QWidget *parent) :
@@ -40,7 +48,7 @@ Peritia::Peritia(QWidget *parent) :
 {
     ui->setupUi(this);
     startTimer(1000);
-    
+
     srand(time(0));
     randomize();
     std::vector<int> randomResult = randomize();
@@ -74,6 +82,101 @@ Peritia::Peritia(QWidget *parent) :
 
     
     qDebug()<<"Current date and time: ->"<<currentTime;
+
+    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/media/backgrounds/osman-rana.jpg) }");
+
+    //LoginWidget *loginWidget = new LoginWidget;
+
+    ui->dockWidget_2->hide();
+
+
+   /// label_2 = new QLabel(ui->dockWidget);//->verdockWidget);
+
+   // verticalLayout->addWidget(label_2);
+    label_4 = new QLabel(ui->dockWidget);
+            label_4->setObjectName(QString::fromUtf8("label_4"));
+            label_4->setGeometry(QRect(100, 110, 90, 40));
+            QFont font;
+            font.setFamilies({QString::fromUtf8("DejaVu Sans")});
+            font.setPointSize(12);
+            font.setBold(true);
+            label_4->setFont(font);
+            label_4->setStyleSheet(QString::fromUtf8("color:rgba(255,255,255,210);"));
+            label_4->setAlignment(Qt::AlignCenter);
+
+
+
+
+    label_2 = new QLabel(ui->dockWidget);
+    label_2->setStyleSheet(QString::fromUtf8(";\n"
+    "background-color: qconicalgradient(cx:0, cy:0, angle:135, stop:0 rgba(255, 255, 0, 69), stop:0.375 rgba(255, 255, 0, 69), stop:0.423533 rgba(251, 255, 0, 145), stop:0.45 rgba(247, 255, 0, 208), stop:0.477581 rgba(255, 244, 71, 130), stop:0.518717 rgba(255, 218, 71, 130), stop:0.55 rgba(255, 255, 0, 255), stop:0.57754 rgba(255, 203, 0, 130), stop:0.625 rgba(255, 255, 0, 69), stop:1 rgba(255, 255, 0, 69));\n"
+    "border-radius:20px;"));
+    label_2->setGeometry(QRect(100, 0, 291, 411));
+
+    label = new QLabel(ui->dockWidget);
+           label->setGeometry(QRect(0, -20, 300, 420));
+           label->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
+   "border-radius:20px;"));
+           label_3 = new QLabel(ui->dockWidget);
+                   label_3->setObjectName(QString::fromUtf8("label_3"));
+                   label_3->setGeometry(QRect(0, 10, 280, 390));
+                   label_3->setStyleSheet(QString::fromUtf8("background-color:rgba(0,0,0,100);\n"
+           "border-radius:15px;"));
+
+                   lineEdit_3 = new QLineEdit(ui->dockWidget);
+                           lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+                           lineEdit_3->setGeometry(QRect(50, 140, 200, 40));
+                           lineEdit_3->setStyleSheet(QString::fromUtf8("background-color:rgba(0,0,0,0);\n"
+                   "border:none;\n"
+                   "border-bottom: 2px solid rgba(105,118, 132, 255);\n"
+                   "color:rgba(255,255,255,230);\n"
+                   "padding-bottom:7px;"));
+                           lineEdit_3->setFrame(true);
+                           lineEdit_3->setEchoMode(QLineEdit::Normal);
+                           lineEdit_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+
+
+     ui->dockWidget->hide();
+    //verticalLayout->addWidget(label_2);
+
+    //ui->dockWidget->setLayout(verticalLayout);
+
+
+    //ui->dockWidget->setLayout(verticalLayout);
+
+   // AboutDialog welcomeDialog;// = new AboutDialog();
+   // QProgressBar *progressBar;
+
+
+   // progressBar = new QProgressBar(welcomeDialog);
+    //progressBar->setGeometry(QRect(87, 273, 491, 16));
+
+
+   // aboutDialog->exec();
+    //QTimer::singleShot(4000, welcomeDialog, SLOT(close()));
+
+   // AboutDialog dialog;// = new AboutDialog;
+   // dialog->show();
+   // dialog.exec();
+   // sleep(1);
+   // dialog.close();
+
+
+   // QTimer::singleShot(2000, dialog, SLOT(hide()));
+
+ #if __linux__
+    myInfo = new QFile;
+     myInfo->setFileName("/home/sirere/.peritia/auth");
+     if(!myInfo->open(QIODevice::Append | QIODevice::Text)) {
+            qDebug()<<"its not open";
+
+     }
+
+
+#endif
+
+
+
 
 
     /*convert string to QString*/
@@ -120,28 +223,31 @@ Peritia::Peritia(QWidget *parent) :
 
     if (FinalHour <12) {
 	    /*This special method will prevent the background image to be inherited by the children*/
-	    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/water.jpg) }");
+       // ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/water.jpg) }");
 	    //rgb color Columbia Blue
-	    ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(155, 221, 255);"));
+       // ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(155, 221, 255);"));
     }
 
     //use of logical operators
     if(12 <= FinalHour && FinalHour <=18) {
-	    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/daylight.jpg) }");
-	    ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(173, 216, 230);"));
+      //  ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/daylight.jpg) }");
+       // ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(173, 216, 230);"));
 	}
     
     if(FinalHour > 18) {
-	    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/evening.jpg) }"); 
+       // ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/evening.jpg) }");
 	    // bronze color
-	    ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(205, 127, 50);"));
+      //  ui->mainToolBar->setStyleSheet(QString::fromUtf8("background-color: rgb(205, 127, 50);"));
     }
 
-    QLabel *hhs = new QLabel;
-    hhs->setText("rgre");
+   // ui->listWidget->itemWidget()
+
+   // QLabel *hhs = new QLabel;
+   // hhs->setText("rgre");
 
 
-    ui->verticalLayout_3->addWidget(hhs);
+    //ui->verticalLayout_2->addWidget(hhs);
+
 
 
 
@@ -166,11 +272,34 @@ Peritia::Peritia(QWidget *parent) :
 
 
 
-    QPushButton *wis = new QPushButton();
-    QLabel *lk = new QLabel();
-    lk->setText("cggfg");
-    QIcon ic(":/images/scalabli-logo.png");
-    wis->setIcon(ic);
+  //  QPushButton *wis = new QPushButton();
+  //  QLabel *lk = new QLabel();
+ //   lk->setText("cggfg");
+ //   QIcon ic(":/images/scalabli-logo.png");
+  //  wis->setIcon(ic);
+
+
+    QWidget *emptyWidget = new QWidget();
+
+    /*   QSizePolicy::Expanding, QSizePolicy::Preferred works with vertical toolbars (top or bottom)
+     *
+     *   */
+
+    emptyWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    ui->toolBar->addWidget(emptyWidget);
+    ui->toolBar->addAction(ui->actionPreference);
+    ui->toolBar->addAction(ui->actionFullScreen);
+    ui->toolBar->addAction(ui->actionLogin);
+    ui->toolBar->addAction(ui->actionHideLeftToolBar);
+
+    ui->toolBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+
+
+
+
+
 
 
     //QPushButton *leftToolbarButton = new QPushButton();
@@ -180,13 +309,20 @@ Peritia::Peritia(QWidget *parent) :
     ui->actionShowStatusBar->setChecked(true);
 
 
-    ui->statusBar->addWidget(wis);
+   // ui->statusBar->addWidget(wis);
 
     if(ui->toolBar->isHidden()) {
 
-        ui->statusBar->addPermanentWidget(wis);
+      //  ui->statusBar->addPermanentWidget(wis);
 
 }
+
+    int currentRow = ui->listWidget->currentRow();
+    std::cout<<currentRow;
+
+    QObject::connect(ui->listWidget, SIGNAL(currentRowChanged(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
+
+
 
 
 
@@ -208,7 +344,7 @@ Peritia::Peritia(QWidget *parent) :
 
 
 
-    connect(ui->actionChangePic, &QAction::triggered, this, &Peritia::changePhoto);
+    connect(ui->actionGoHome, &QAction::triggered, this, &Peritia::changePhoto);
     connect(ui->actionEchoChanged, &QAction::triggered, this, &Peritia::changeText);
 
     //Full screen toggle
@@ -245,8 +381,11 @@ Peritia::Peritia(QWidget *parent) :
     connect(ui->actionItalic, &QAction::triggered, this, &Peritia::setFontItalic);
     connect(ui->actionAbout, &QAction::triggered, this, &Peritia::showAbout);
     //connect(ui->actionAboutScalabli, &QAction::triggered, this, &Peritia::AboutScalabli);
-    connect(ui->actionHelp, &QAction::triggered, this, &Peritia::showHelp);
+    //connect(ui->actionHelp, &QAction::triggered, this, &Peritia::showHelp);
+   // connect(ui->actionMakeADonationStatus, &QAction::triggered, this, &Peritia::makeADonationStatus);
+   // connect(ui->actionListWidgetItemClicked, &QAction::triggered, this, &Peritia::listWidgetItemClicked);
 
+    connect(ui->actionLogin, &QAction::triggered, this, &Peritia::showLogin);
     connect(ui->actionPreference, &QAction::triggered, this, &Peritia::showPreference);
     connect(ui->actionText2ASL, &QAction::triggered, this, &Peritia::text2ASL);
 
@@ -442,7 +581,7 @@ void Peritia::playSound() {
         QUrl audioUrl = QUrl("qrc:/media/sounds/beep.mp3");
 
         player->setSource(audioUrl);
-        audioo->setVolume(50);
+        audioo->setVolume(0);
         player->play();
 
         qDebug()<<"has";
@@ -571,23 +710,46 @@ void Peritia::setFontBold(bool bold)
 void Peritia::changePhoto()  {
 
 //	ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/scalabli-logo.png);"));
-	ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/lumbo-minar.jpeg) }");
+    ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/images/lumbo-minar.jpeg) }");
+    ui->clock_label->clear();
+
 }
 
+
+void Peritia::makeADonationStatus()  {
+
+
+    QLabel *mbox = new QLabel;
+    mbox->setWindowTitle(tr("Title"));
+    mbox->setText(font().family());
+    ui->statusBar->addPermanentWidget(mbox);
+    QTimer::singleShot(2000, mbox, SLOT(hide()));
+
+
+}
 
 void Peritia::hideLeftToolBar()   {
 
     ui->toolBar->hide();
+    //LoginWidget *LOLO = new LoginWidget(this);
+   // ui->horizontalLayout->replaceWidget(ui->label_2, LOLO);
+    //ui->horizontalLayout->addWidget(LOLO);
+   // ui->verticalLayout_2->removeWidget(ui->listWidget);
 
-    if(ui->toolBar->isHidden()) {
-        QPushButton *leftToolbarButton = new QPushButton();
+    QPushButton *leftToolbarButton = new QPushButton();
+
+    leftToolbarButton->setIcon(QIcon::fromTheme("go-next"));
+    leftToolbarButton->setFlat(true);
+    leftToolbarButton->setToolTip("Show left toolbar");
 
 
-        ui->statusBar->addWidget(leftToolbarButton);
-    }
-      connect(leftToolbarButton, SIGNAL(clicked()), this, SLOT(close));
 
 
+
+
+    ui->statusBar->addWidget(leftToolbarButton);
+
+    connect(leftToolbarButton, &QPushButton::clicked, this, &Peritia::showLeftToolBar);
 
 }
 
@@ -614,6 +776,16 @@ void Peritia::hideStatusBar() {
 }
 
 
+void Peritia::listWidgetItemClicked(QListWidget *itemClicked)   {
+
+   if(ui->listWidget->currentRow() == 1) {
+       qDebug()<<"kkkkk";
+   }
+
+
+
+
+}
 void Peritia::removeWidgetOnStatusBar()  {
 
   // if(ui->toolBar->isHidden()) {
@@ -624,6 +796,26 @@ void Peritia::removeWidgetOnStatusBar()  {
 
 
 }
+
+void Peritia::showAbout() {
+
+    AboutDialog  *dialog = new AboutDialog;
+   // AboutDialog dialog(this);
+    //dialog.exec();
+
+    dialog->show();
+    //if(dialog->isVisible()) {
+      //  qDebug()<<"it is visible";
+        //QMessageBox *aboutMessageBox = new QMessageBox();
+        //boutMessageBox->setText("Press Esc to close the about section");
+
+        //aboutMessageBox->show();
+        //
+    //}
+}
+
+
+
 void Peritia::showFullScreen() {
 
     QMediaPlayer * fullscreenPlayer = new QMediaPlayer;
@@ -632,9 +824,22 @@ void Peritia::showFullScreen() {
 
     if (Peritia::isFullScreen()) {       
         QUrl audioUrl = QUrl("qrc:/media/sounds/fullscreen-mode-is-active.mp3");
-        fullscreenPlayer->setSource(audioUrl);
-        fullscreenAudioOutput->setVolume(50);
-        fullscreenPlayer->play();
+        //bool isPlaying = QMediaPlayer::PlayingState;
+        if(fullscreenPlayer) {
+            fullscreenPlayer->stop();
+
+
+            fullscreenPlayer->setSource(audioUrl);
+
+            fullscreenAudioOutput->setVolume(50);
+            fullscreenPlayer->play();
+
+
+            qDebug()<<"Loading audio";
+        } else {
+
+        }
+
 
         qDebug()<<"Fullscreen mode is already active";
     } else {
@@ -653,7 +858,40 @@ void Peritia::showFullScreen() {
 
 }
 
+
+void Peritia::showLogin()   {
+
+    ui->dockWidget->show();
+}
+void Peritia::showLeftToolBar()  {
+
+
+    ui->toolBar->show();
+
+    /*This activate the left tool bar and hides to button on statusbar after clicking it*/
+    QPushButton *leftToolbarButton =(QPushButton*)sender();
+    leftToolbarButton->hide();
+
+}
+
+
+
+
+void Peritia::showHelp() {
+
+
+
+}
+
 void Peritia::text2ASL() {
+
+    //AboutDialog::show();
+
+    //w.show();
+
+    //Text2ASLDialog jjj;
+   // jjj.show();
+
 
 
     QGroupBox *txt2ASLGroupBox = new QGroupBox();
@@ -670,29 +908,83 @@ void Peritia::text2ASL() {
     txt2ASLGifLabel->setStyleSheet(QString::fromUtf8("QLabel {border: 1px solid green; border-radius: 9px; margin-top:0.5em;}"));
     txt2ASLGifLabel->setAlignment(Qt::AlignLeft);
 
+    //#include <QGraphicsOpacityEffect>
+    QGraphicsOpacityEffect *goe = new QGraphicsOpacityEffect(txt2ASLGifLabel);
+    goe->setOpacity(1);//0 to 1 will cause the fade effect to kick in
+    txt2ASLGifLabel->setGraphicsEffect(goe);
+    txt2ASLGifLabel->setAutoFillBackground(true);
+
     QMovie *gifMovie = new QMovie(":/media/gifs/girl-working-at-home.gif");
     txt2ASLGifLabel->setMovie(gifMovie);
     gifMovie->start();
     txt2ASLGridLayout->addWidget(txt2ASLGifLabel, 0, 0);
 
-    QLabel  *txt2ASLFrameLabeld = new QLabel("ff");
+    QLabel  *txt2ASLLabel2= new QLabel("ff");
 
-    txt2ASLFrameLabeld->setFrameShape(QFrame::StyledPanel);
-    txt2ASLFrameLabeld->setFrameShadow(QFrame::Sunken);
-    txt2ASLFrameLabeld->setAlignment(Qt::AlignLeft);
+    txt2ASLLabel2->setFrameShape(QFrame::StyledPanel);
+    txt2ASLLabel2->setFrameShadow(QFrame::Sunken);
+    txt2ASLLabel2->setAlignment(Qt::AlignLeft);
 
-    QLabel *searchLabel = new QLabel(txt2ASLFrameLabeld);
-    searchLabel->setText("JJJJJJ");
-    searchLabel->setAlignment(Qt::AlignCenter);
+    QVBoxLayout *txt2ASLVerticalLayout = new QVBoxLayout(txt2ASLLabel2);
 
-    //QLineEdit * lineEdit = new QLineEdit(txt2ASLFrameLabeld);
-//lineEdit->setAlignment(Qt::AlignRight);
 
-    //lineEdit->setFrame(QFrame::Box);
-   // lineEdit->setPlaceholderText("dkdkkd text ");
-    //txt2ASLFrameLabeld->
+    QLabel *searchLogoLabel = new QLabel();
+    searchLogoLabel->setText("Search logo label");
+    searchLogoLabel->setAlignment(Qt::AlignCenter);
+    searchLogoLabel->setMaximumSize(100, 100);
+    txt2ASLVerticalLayout->addWidget(searchLogoLabel);
 
-    txt2ASLGridLayout->addWidget(txt2ASLFrameLabeld, 0, 2);
+    QHBoxLayout *txt2ASLHorizontalLayout = new QHBoxLayout();
+    txt2ASLVerticalLayout->addLayout(txt2ASLHorizontalLayout);
+
+    QLabel *magnifyLabel = new QLabel();
+    magnifyLabel->setText("maginify");
+    magnifyLabel->setAlignment(Qt::AlignLeft);
+    txt2ASLHorizontalLayout->addWidget(magnifyLabel);
+
+
+
+  //
+   // static QString jj = lineEdit->text();
+    //ss(QString::toStdString(jj);
+
+   // QLineEdit * lineEdit = new QLineEdit();
+   // lineEdit->setAlignment(Qt::AlignCenter);
+
+   // lineEdit->setFrame(QFrame::Box);
+    //lineEdit->setPlaceholderText("Please type something");
+   // lineEdit->setClearButtonEnabled(true);
+  //  lineEdit->setMaximumSize(200, 25);
+   // txt2ASLHorizontalLayout->addWidget(lineEdit);
+
+    QPushButton *txt2ASLButton = new QPushButton;
+    txt2ASLButton->setText("Check");
+    txt2ASLHorizontalLayout->addWidget(txt2ASLButton);
+
+    QObject::connect(txt2ASLButton, &QPushButton::clicked, this, &Peritia::ss);
+
+
+
+
+    /* Modern syntax aoids obsecure runtime errors by implementing this method */
+  //  QObject::connect(lineEdit, &QLineEdit::textChanged, this, &Peritia::ss);
+
+
+   // QString texts = lineEdit->text();
+   // ui->label->setText(texts);
+    /* instead of this me thod
+     *
+     *
+     * connect(lineEdit,SIGNAL(textChanged()), this, SLOT(close()));
+
+    */
+
+
+
+
+    //magnifyLabel->setText()//lineEdit->text());
+
+    txt2ASLGridLayout->addWidget(txt2ASLLabel2, 0, 2);
 
 
 
@@ -703,7 +995,7 @@ void Peritia::text2ASL() {
     txt2ASLFrameLabela->setFrameShadow(QFrame::Sunken);
     //txt2ASLFrameLabela->setAlignment(Qt::AlignLeft);
 
-    QVBoxLayout * qvb = new QVBoxLayout;
+   // QVBoxLayout * qvb = new QVBoxLayout;
    // qvb->addWidget(lineEdit);
 
 
@@ -724,9 +1016,19 @@ void Peritia::text2ASL() {
     //QLabel *phoneLabel = new QLabel("&Phone:", txt2ASLFrame);
     //phoneLabel->setBuddy(phoneEdit);
 	//ui->verticalLayout_4->addWidget(phoneLabel);
-    ui->verticalLayout_4->addWidget(txt2ASLGroupBox);
-    ui->text2ASLButton->setEnabled(false);
+
+
+  //  ui->verticalLayout_4->addWidget(txt2ASLGroupBox);
+   //
+   // ui->text2ASLButton->setEnabled(false);
 	
+}
+
+void Peritia::timer() {
+
+
+
+
 }
 
 void Peritia::timerEvent(QTimerEvent *) {
@@ -751,6 +1053,44 @@ void Peritia::timerEvent(QTimerEvent *) {
 	
 	ui->clock_label->setText(utctime.toString("hh:mm:ss"));
 
+
 }
 
 
+
+void Peritia::ss() {
+    bool ok;
+
+    //QPixmap pix (":/images/blake.png");
+
+    QString ttx = QInputDialog::getText(this, tr("Enter a letter/number"),tr("username"), QLineEdit::Normal, QDir::home().dirName(), &ok);
+
+    QLabel *jjjj  = new QLabel(ttx);
+    ui->verticalLayout_4->addWidget(jjjj);
+
+
+    //QLabel *qlbl = new QLabel();
+  //  ui->text2ASLButton->setText
+
+    //qlbl->setText(ui->)
+
+    //qDebug()<<Peritia::text2ASL()
+
+
+
+//ui->verticalLayout_4->addWidget(qlbl);
+
+}
+
+void Peritia::getText(QString text){
+
+   // if(!ui->text2ASLButton->isEnabled())  {
+
+      //  return ui->txt2ASLGroupBox
+
+
+   // }
+
+    //return ui-
+
+}

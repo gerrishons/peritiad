@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>859</width>
+    <width>1216</width>
     <height>813</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="peritia.qrc">
-    <normaloff>:/images/peritia-logo.png</normaloff>:/images/peritia-logo.png</iconset>
+    <normaloff>:/icons/buttons/accessibility.png</normaloff>:/icons/buttons/accessibility.png</iconset>
   </property>
   <property name="whatsThis">
    <string/>
@@ -45,96 +45,33 @@
    <enum>QTabWidget::Triangular</enum>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 0, 0);</string>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
+    <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="8" column="0">
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <widget class="QPushButton" name="text2ASLButton">
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="focusPolicy">
-           <enum>Qt::TabFocus</enum>
-          </property>
-          <property name="whatsThis">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jkjlllj&lt;img src=&quot;:/icons/buttons/sign-language.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Text To ASL</string>
-          </property>
-          <property name="icon">
-           <iconset resource="peritia.qrc">
-            <normaloff>:/icons/buttons/sign-language.png</normaloff>:/icons/buttons/sign-language.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_9">
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>27</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>PushButton</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_11">
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>27</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>PushButton</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_10">
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>27</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>PushButton</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_7">
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>27</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>PushButton</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+      <item row="1" column="4" alignment="Qt::AlignTop">
+       <widget class="QLabel" name="day_iconlbl">
+        <property name="minimumSize">
+         <size>
+          <width>85</width>
+          <height>85</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>96</width>
+          <height>96</height>
+         </size>
+        </property>
+        <property name="statusTip">
+         <string>Calender showing today's date</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
       <item row="9" column="4">
        <widget class="QPushButton" name="pushButton_6">
@@ -168,16 +105,6 @@
         </property>
         <property name="flat">
          <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="4">
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="styleSheet">
-         <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(245, 224, 176, 255), stop:0.09 rgba(246, 189, 237, 255), stop:0.14 rgba(194, 207, 246, 255), stop:0.19 rgba(184, 160, 168, 255), stop:0.25 rgba(171, 186, 248, 255), stop:0.32 rgba(243, 248, 224, 255), stop:0.385 rgba(249, 162, 183, 255), stop:0.47 rgba(100, 115, 124, 255), stop:0.58 rgba(251, 205, 202, 255), stop:0.65 rgba(170, 128, 185, 255), stop:0.75 rgba(252, 222, 204, 255), stop:0.805 rgba(206, 122, 218, 255), stop:0.86 rgba(254, 223, 175, 255), stop:0.91 rgba(254, 236, 244, 255), stop:1 rgba(255, 191, 221, 255));</string>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
         </property>
        </widget>
       </item>
@@ -253,71 +180,7 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="pushButton">
-        <property name="maximumSize">
-         <size>
-          <width>15</width>
-          <height>15</height>
-         </size>
-        </property>
-        <property name="toolTip">
-         <string>About Peritia</string>
-        </property>
-        <property name="whatsThis">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;fffffff&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="4">
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-        <property name="default">
-         <bool>true</bool>
-        </property>
-        <property name="flat">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item alignment="Qt::AlignTop">
-         <widget class="QLabel" name="label_2">
-          <property name="minimumSize">
-           <size>
-            <width>200</width>
-            <height>200</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>200</width>
-            <height>200</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="0">
+      <item row="1" column="0" alignment="Qt::AlignLeft|Qt::AlignTop">
        <widget class="QLabel" name="label">
         <property name="minimumSize">
          <size>
@@ -348,30 +211,27 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="4" alignment="Qt::AlignTop">
-       <widget class="QLabel" name="day_iconlbl">
-        <property name="minimumSize">
-         <size>
-          <width>85</width>
-          <height>85</height>
-         </size>
+      <item row="11" column="0">
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="focusPolicy">
+         <enum>Qt::ClickFocus</enum>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>96</width>
-          <height>96</height>
-         </size>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
         </property>
-        <property name="statusTip">
-         <string>Calender showing today's date</string>
+        <property name="autoFillBackground">
+         <bool>false</bool>
         </property>
         <property name="text">
-         <string/>
+         <string>PushButton</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
         </property>
        </widget>
-      </item>
-      <item row="7" column="2" rowspan="3">
-       <layout class="QVBoxLayout" name="verticalLayout_4"/>
       </item>
       <item row="11" column="2">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -408,6 +268,114 @@
         </item>
        </layout>
       </item>
+      <item row="8" column="4">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="styleSheet">
+         <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(245, 224, 176, 255), stop:0.09 rgba(246, 189, 237, 255), stop:0.14 rgba(194, 207, 246, 255), stop:0.19 rgba(184, 160, 168, 255), stop:0.25 rgba(171, 186, 248, 255), stop:0.32 rgba(243, 248, 224, 255), stop:0.385 rgba(249, 162, 183, 255), stop:0.47 rgba(100, 115, 124, 255), stop:0.58 rgba(251, 205, 202, 255), stop:0.65 rgba(170, 128, 185, 255), stop:0.75 rgba(252, 222, 204, 255), stop:0.805 rgba(206, 122, 218, 255), stop:0.86 rgba(254, 223, 175, 255), stop:0.91 rgba(254, 236, 244, 255), stop:1 rgba(255, 191, 221, 255));</string>
+        </property>
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2" rowspan="3">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QStackedWidget" name="stackedWidget">
+          <widget class="QWidget" name="page_3"/>
+          <widget class="QWidget" name="page_4"/>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="11" column="4" alignment="Qt::AlignRight">
+       <widget class="QPushButton" name="aboutPushButton">
+        <property name="maximumSize">
+         <size>
+          <width>17</width>
+          <height>17</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::ClickFocus</enum>
+        </property>
+        <property name="toolTip">
+         <string>About Peritia</string>
+        </property>
+        <property name="whatsThis">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;fffffff&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="icon">
+         <iconset theme="dialog-question">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item alignment="Qt::AlignLeft|Qt::AlignTop">
+         <widget class="QPushButton" name="pushButton">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>PushButton</string>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignLeft|Qt::AlignTop">
+         <widget class="QLabel" name="label_2">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="7" column="0" rowspan="3">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QListWidget" name="listWidget">
+          <item>
+           <property name="text">
+            <string>Appearance</string>
+           </property>
+           <property name="icon">
+            <iconset theme="applications-multimedia">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Behavior</string>
+           </property>
+           <property name="icon">
+            <iconset theme="audio-x-generic">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
      </layout>
     </item>
    </layout>
@@ -417,7 +385,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>859</width>
+     <width>1216</width>
      <height>23</height>
     </rect>
    </property>
@@ -1057,7 +1025,7 @@ border-radius:9999px;</string>
      </palette>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 9999px;
+     <string notr="true">border-radius: 9px;
 font: 11pt &quot;Liberation Mono&quot;;
 color: rgb(0, 0, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(155, 147, 255, 255), stop:0.940369 rgba(249, 240, 107, 255), stop:0.957219 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
@@ -1107,6 +1075,12 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <string>Help</string>
     </property>
     <addaction name="actionHelp"/>
+    <addaction name="actionKeyBoard_shortcuts"/>
+    <addaction name="separator"/>
+    <addaction name="actionGetInvolved"/>
+    <addaction name="actionMakeADonation"/>
+    <addaction name="actionSubmitFeedback"/>
+    <addaction name="separator"/>
     <addaction name="actionAbout"/>
     <addaction name="separator"/>
    </widget>
@@ -1122,11 +1096,17 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>40</height>
+    </size>
+   </property>
    <property name="focusPolicy">
     <enum>Qt::WheelFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 190, 111);</string>
+    <string notr="true">background-color: rgb(0, 0, 0);</string>
    </property>
    <property name="movable">
     <bool>false</bool>
@@ -1162,14 +1142,17 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
    <addaction name="separator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar">
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>27</height>
+    </size>
+   </property>
    <property name="font">
     <font>
      <family>Nimbus Mono PS</family>
      <bold>true</bold>
     </font>
-   </property>
-   <property name="cursor">
-    <cursorShape>BusyCursor</cursorShape>
    </property>
    <property name="accessibleName">
     <string>acc</string>
@@ -1178,11 +1161,19 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <string>okay gerry</string>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
-color: rgb(143, 240, 164);</string>
+    <string notr="true">background-color: rgb(61, 56, 70);</string>
+   </property>
+   <property name="sizeGripEnabled">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QToolBar" name="toolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="minimumSize">
     <size>
      <width>0</width>
@@ -1191,9 +1182,12 @@ color: rgb(143, 240, 164);</string>
    </property>
    <property name="maximumSize">
     <size>
-     <width>50</width>
+     <width>35</width>
      <height>16777215</height>
     </size>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="windowTitle">
     <string>toolBar</string>
@@ -1201,8 +1195,14 @@ color: rgb(143, 240, 164);</string>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(61, 56, 70);</string>
    </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <property name="floatable">
+    <bool>true</bool>
    </property>
    <attribute name="toolBarArea">
     <enum>LeftToolBarArea</enum>
@@ -1210,11 +1210,78 @@ color: rgb(143, 240, 164);</string>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionChangePic"/>
+   <addaction name="actionGoHome"/>
+   <addaction name="actionText2ASL"/>
    <addaction name="actionExit"/>
+   <addaction name="actionWebprobe"/>
    <addaction name="actionPreference"/>
    <addaction name="actionHideLeftToolBar"/>
    <addaction name="separator"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="minimumSize">
+    <size>
+     <width>291</width>
+     <height>59</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>291</width>
+     <height>524287</height>
+    </size>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::CustomContextMenu</enum>
+   </property>
+   <property name="acceptDrops">
+    <bool>true</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>hhh</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>9</y>
+       <width>281</width>
+       <height>691</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_2">
+   <property name="minimumSize">
+    <size>
+     <width>100</width>
+     <height>36</height>
+    </size>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3"/>
   </widget>
   <action name="actionAbout">
    <property name="icon">
@@ -1222,10 +1289,10 @@ color: rgb(143, 240, 164);</string>
      <normaloff>:/images/info.png</normaloff>:/images/info.png</iconset>
    </property>
    <property name="text">
-    <string>About</string>
+    <string> About Peritia</string>
    </property>
    <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;About Peritia &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;About&lt;span style=&quot; font-style:italic;&quot;&gt; Peritia&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="shortcut">
     <string>Shift+F1</string>
@@ -1472,22 +1539,25 @@ color: rgb(143, 240, 164);</string>
     <string>Sample</string>
    </property>
   </action>
-  <action name="actionChangePic">
+  <action name="actionGoHome">
    <property name="icon">
-    <iconset resource="peritia.qrc">
+    <iconset theme="computer" resource="peritia.qrc">
      <normaloff>:/images/celebratory.png</normaloff>:/images/celebratory.png</iconset>
    </property>
    <property name="text">
-    <string>ChangePic</string>
+    <string>Go Home</string>
+   </property>
+   <property name="toolTip">
+    <string>Go to Home Page</string>
    </property>
   </action>
   <action name="actionHelp">
    <property name="icon">
-    <iconset resource="peritia.qrc">
+    <iconset>
      <normaloff>:/images/peritia-logo.png</normaloff>:/images/peritia-logo.png</iconset>
    </property>
    <property name="text">
-    <string>Help</string>
+    <string>Peritia Help</string>
    </property>
    <property name="shortcut">
     <string>F1</string>
@@ -1514,7 +1584,7 @@ color: rgb(143, 240, 164);</string>
     <string>Zoom in</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl++</string>
+    <string>Ctrl+Up</string>
    </property>
   </action>
   <action name="actionZoom_out">
@@ -1526,7 +1596,7 @@ color: rgb(143, 240, 164);</string>
     <string>Zoom out</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+-</string>
+    <string>Ctrl+Down</string>
    </property>
   </action>
   <action name="actionFullScreen">
@@ -1557,6 +1627,10 @@ color: rgb(143, 240, 164);</string>
    </property>
   </action>
   <action name="actionWebprobe">
+   <property name="icon">
+    <iconset theme="applications-science">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
    <property name="text">
     <string>Webprobe</string>
    </property>
@@ -1570,6 +1644,10 @@ color: rgb(143, 240, 164);</string>
    </property>
   </action>
   <action name="actionText2ASL">
+   <property name="icon">
+    <iconset theme="system-software-update">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
    <property name="text">
     <string>Text2ASL</string>
    </property>
@@ -1609,7 +1687,7 @@ color: rgb(143, 240, 164);</string>
   </action>
   <action name="actionHideLeftToolBar">
    <property name="icon">
-    <iconset theme="application-exit">
+    <iconset theme="go-previous">
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
@@ -1617,6 +1695,63 @@ color: rgb(143, 240, 164);</string>
    </property>
    <property name="toolTip">
     <string>Hide left Toolbar</string>
+   </property>
+  </action>
+  <action name="actionListWidgetItemClicked">
+   <property name="text">
+    <string>ListWidgetItemClicked</string>
+   </property>
+  </action>
+  <action name="actionKeyBoard_shortcuts">
+   <property name="icon">
+    <iconset theme="preferences-desktop-keyboard">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Keyboard Shortcuts</string>
+   </property>
+  </action>
+  <action name="actionGetInvolved">
+   <property name="icon">
+    <iconset theme="accessories-character-map">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Get Involved</string>
+   </property>
+  </action>
+  <action name="actionMakeADonation">
+   <property name="icon">
+    <iconset theme="help-contents">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Make a Donation</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Make a &lt;/span&gt;&lt;a href=&quot;https://ko-fi.com/scalabli&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Donation&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionSubmitFeedback">
+   <property name="icon">
+    <iconset theme="mail-signed-verified">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Submit Feedback</string>
+   </property>
+  </action>
+  <action name="actionMakeADonationStatus">
+   <property name="text">
+    <string>Make a Donation Status</string>
+   </property>
+  </action>
+  <action name="actionLogin">
+   <property name="icon">
+    <iconset theme="emblem-favorite"/>
+   </property>
+   <property name="text">
+    <string>Login</string>
    </property>
   </action>
  </widget>
@@ -1628,12 +1763,12 @@ color: rgb(143, 240, 164);</string>
   <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
-   <receiver>actionChangePic</receiver>
+   <receiver>actionGoHome</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>166</x>
-     <y>569</y>
+     <x>848</x>
+     <y>588</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
@@ -1648,8 +1783,8 @@ color: rgb(143, 240, 164);</string>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>601</y>
+     <x>848</x>
+     <y>746</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
@@ -1680,24 +1815,8 @@ color: rgb(143, 240, 164);</string>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>841</x>
-     <y>617</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>text2ASLButton</sender>
-   <signal>clicked()</signal>
-   <receiver>actionText2ASL</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>510</y>
+     <x>848</x>
+     <y>774</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
@@ -1714,6 +1833,54 @@ color: rgb(143, 240, 164);</string>
     <hint type="sourcelabel">
      <x>449</x>
      <y>802</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidget</sender>
+   <signal>itemClicked(QListWidgetItem*)</signal>
+   <receiver>actionListWidgetItemClicked</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>209</x>
+     <y>576</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMakeADonation</sender>
+   <signal>hovered()</signal>
+   <receiver>actionMakeADonationStatus</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>aboutPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAbout</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>372</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
