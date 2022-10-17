@@ -1,5 +1,9 @@
 
-[![Logo](https://raw.githubusercontent.com/scalabli/peritia/main/resources/logos/peritia-logo.png)](https://github.com/scalabli/peritia)
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/scalabli/peritia/main/resources/logos/peritia-logo.png", width="600"/>
+</p>
 
 The original version was coded in python.
 
