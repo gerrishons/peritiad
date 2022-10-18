@@ -1,1 +1,3 @@
-QString peritiahVersion = "2022.1";
+extern QString Version = "2022.1";
+
+

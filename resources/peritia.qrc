@@ -1,0 +1,87 @@
+<RCC>
+    <qresource prefix="/">
+
+
+        
+        
+        
+        <file>icons/date/date-01.png</file>
+        <file>icons/date/date-02.png</file>
+        <file>icons/date/date-03.png</file>
+        <file>icons/date/date-04.png</file>
+        <file>icons/date/date-05.png</file>
+        <file>icons/date/date-06.png</file>
+        <file>icons/date/date-07.png</file>
+        <file>icons/date/date-08.png</file>
+        <file>icons/date/date-09.png</file>
+        <file>icons/date/date-10.png</file>
+        <file>icons/date/date-11.png</file>
+        <file>icons/date/date-12.png</file>
+        <file>icons/date/date-13.png</file>
+        <file>icons/date/date-14.png</file>
+        <file>icons/date/date-15.png</file>
+        <file>icons/date/date-16.png</file>
+        <file>icons/date/date-17.png</file>
+        <file>icons/date/date-18.png</file>
+        <file>icons/date/date-19.png</file>
+        <file>icons/date/date-20.png</file>
+        <file>icons/date/date-21.png</file>
+        <file>icons/date/date-22.png</file>
+        <file>icons/date/date-23.png</file>
+        <file>icons/date/date-24.png</file>
+        <file>icons/date/date-25.png</file>
+        <file>icons/date/date-26.png</file>
+        <file>icons/date/date-27.png</file>
+        <file>icons/date/date-28.png</file>
+        <file>icons/date/date-29.png</file>
+        <file>icons/date/date-30.png</file>
+        <file>icons/date/date-31.png</file>
+        <file>icons/date/day-Mon.png</file>
+        <file>icons/date/day-Tue.png</file>
+        <file>icons/date/day-Wed.png</file>
+        <file>icons/date/day-Thu.png</file>
+        <file>icons/date/day-Fri.png</file>
+        <file>icons/date/day-Sat.png</file>
+        <file>icons/date/day-Sun.png</file>
+
+        
+
+
+        <file>logos/peritia-logo.png</file>
+
+        
+        
+        
+        <file>backgrounds/osman-rana.jpg</file>
+        <file>backgrounds/pexels-dids.jpg</file>  
+        <file>backgrounds/pexels-sergej-eckhardt.jpg</file>
+        
+        <file>docs/LICENSE.md</file>
+              
+        <file>gifs/girl-working-at-home.gif</file>
+        
+        <file>icons/buttons/accessibility.png</file>
+        <file>icons/buttons/account.png</file> 
+        <file>icons/buttons/back-arrow.png</file> 
+        <file>icons/buttons/exit.png</file> 
+        <file>icons/buttons/right-arrow.png</file>
+        <file>icons/buttons/settings-1.png</file>
+        <file>icons/buttons/settings-2.png</file> 
+        <file>icons/buttons/sign-language.png</file>
+        
+        <file>illustrations/3-people.png</file>
+        <file>illustrations/boy-girl-sitting-in-chairs.png</file>
+        <file>illustrations/boy-and-girl-standing-and-laughing.png</file>
+        <file>illustrations/girl-and-boy-with-laptop.png</file>
+        <file>illustrations/man-playing-with-dog-on-the-couch.png</file>
+        <file>illustrations/man-search-music-with-phone.png</file>
+        <file>illustrations/people-standing-talking.png</file>
+        <file>illustrations/woman-in-glasses-sitting-and-reading-book.png</file>
+                 
+        <file>sounds/beep.mp3</file>
+        <file>sounds/fullscreenmode.mp3</file>
+        <file>sounds/fullscreen-mode-is-active.mp3</file>
+        <file>sounds/statusbarhidden.mp3</file>
+        <file>sounds/statusbarshown.mp3</file>
+    </qresource>
+</RCC>

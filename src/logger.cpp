@@ -28,7 +28,7 @@ void Logger::init()  {
 
 
     logFile = new QFile;
-    logFile->setFileName("/home/sirere/peritia.log");
+    logFile->setFileName("/home/gerry/peritia.log");
     logFile->open(QIODevice::Append | QIODevice::Text);
 
     qInstallMessageHandler(Logger::messageOutput);
@@ -44,7 +44,7 @@ void Logger::clean()   {
 
     if(logFile != Q_NULLPTR) {
         logFile->close();
-        delete logFile;
+      //  delete logFile;
     }
 }
 
