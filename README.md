@@ -1,5 +1,4 @@
-
-
+[![RTD](https://readthedocs.org/projects/quo/badge/)](https://quo.readthedocs.io)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/scalabli/peritia/main/resources/logos/peritia-logo.png", width="600"/>
