@@ -4,7 +4,6 @@ TARGET = peritia
 
 message("Loading Peritia Installer...")
 
-QT += dbus
 QT += widgets
 QT += multimedia
 #QT += webkit
@@ -14,11 +13,11 @@ QT += multimedia
 #requires(qtConfig(fontdialog))
 
 SOURCES +=  src/logger.cpp \
-            src/dialogs/licensedialog.cpp \
-            src/loginwidget.cpp \
             src/app/main.cpp\
             src/app/peritia.cpp \
             src/dialogs/aboutdialog.cpp\
+            src/dialogs/licensedialog.cpp \
+            src/dialogs/settingsdialog.cpp \
             src/dialogs/welcomedialog.cpp \
             src/widgets/wigglylabel.cpp
    
@@ -26,12 +25,14 @@ SOURCES +=  src/logger.cpp \
 HEADERS += src/app/peritia.h\
            src/dialogs/aboutdialog.h \
            src/dialogs/licensedialog.h \
+           src/dialogs/settingsdialog.h\
            src/dialogs/welcomedialog.h \
            src/logger.h \
-           src/loginwidget.h \
            src/widgets/wigglylabel.h
 
-FORMS += src/app/peritia.ui #\ text2aslinputdialog.ui
+FORMS += src/forms/peritia.ui \
+         src/forms/settingsdialog.ui \
+         src/forms/licensedialog.ui
 
 
 

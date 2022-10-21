@@ -42,8 +42,9 @@
 #include "src/utils/random-int.cpp"
 
 #include "src/dialogs/aboutdialog.cpp"
+#include "src/dialogs/settingsdialog.h"
 //#include "loginwidget.h" /*including the cpp file here throws some error*/
-#include "src/dialogs/welcomedialog.cpp"
+//#include "src/dialogs/welcomedialog.cpp"
 
 
 Peritia::Peritia(QWidget *parent) :
@@ -107,12 +108,12 @@ Peritia::Peritia(QWidget *parent) :
     ui->label_4->setMovie(gifMovie);
     gifMovie->start();
 
-    QPropertyAnimation *anim = new QPropertyAnimation(ui->clockLabel, "pos", this);
-    anim->setDuration(10000);
-    anim->setStartValue(QPoint(0, 0));
-    anim->currentTime();
-    anim->setEndValue(QPoint(1400,0));
-    anim->start();
+//QPropertyAnimation *anim = new QPropertyAnimation(ui->clockLabel, "pos", this);
+   // anim->setDuration(10000);
+   // anim->setStartValue(QPoint(0, 0));
+   // anim->currentTime();
+  //  anim->setEndValue(QPoint(1400,0));
+   // anim->start();
 
 
 
@@ -211,99 +212,9 @@ Peritia::Peritia(QWidget *parent) :
 
 
 
-    /*convert string to QString*/
-    QString dayLabelIconQString = QString::fromStdString(dayLabelIcon);
-
-    ui->dayLabel->setStyleSheet(dayLabelIconQString);
-    if (dayLabelIconQString.contains("Sun")) {
-
-        qDebug()<<"Has sun";
 
 
-    }
 
-    /* When grepping date values, we encountered an
-     * issue when grepping single digit values
-     * so we had to improvise */
-    
-    //Convert string to int
-    int finalDate = std::stoi(Date);
-
-    if (finalDate < 10) {
-	    switch (finalDate) {
-            case 1: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-01.png);"));
-                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-			    break;
-            case 2: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-02.png);"));
-                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-			    break;
-            case 3: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-03.png);"));
-			    break;
-            case 4: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-04.png);"));
-                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
-			    break;
-            case 5: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-05.png);"));
-                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
-			    break;
-            case 6: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-06.png);"));
-                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-			    break;
-            case 7: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-07.png);"));
-                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
-			    break;
-            case 8: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-08.png);"));
-                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-                break;
-            case 9: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-09.png);"));
-                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
-			    break;
-	    }
-    
-    } else {
-	    QString dateLabelIconQString = QString::fromStdString(dateLabelIcon);
-        ui->dateLabel->setStyleSheet(dateLabelIconQString);
-    }
-
-    if(finalDate >= 10) {
-        switch (finalDate) {
-            case 10:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
-                break;
-            case 11:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-                break;
-            case 12:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
-                break;
-            case 13:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
-                break;
-            case 14:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-                break;
-            case 15:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
-                break;
-            case 16:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
-                break;
-            case 17:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
-                break;
-            case 18:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-                break;
-            case 20:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
-                break;
-            case 21:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
-                break;
-            case 23:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-                break;
-            case 24:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-                break;
-            case 25:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-                break;
-            case 26:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
-                break;
-            case 28:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
-                break;
-            case 29:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
-                break;
-            case 30:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
-                break;
-    }
-    }
 
    
 
@@ -477,7 +388,7 @@ Peritia::Peritia(QWidget *parent) :
    // connect(ui->actionListWidgetItemClicked, &QAction::triggered, this, &Peritia::listWidgetItemClicked);
 
     connect(ui->actionAccount, &QAction::triggered, this, &Peritia::showLogin);
-    connect(ui->actionPreference, &QAction::triggered, this, &Peritia::close);//showPreference);
+    connect(ui->actionPreference, &QAction::triggered, this, &Peritia::showSettings);
     connect(ui->actionText2ASL, &QAction::triggered, this, &Peritia::text2ASL);
 
     //This will maximize the screen
@@ -830,7 +741,7 @@ void Peritia::hideLeftToolBar()   {
     QPushButton *leftToolbarButton = new QPushButton();
     QIcon icon1;
 
-    icon1.addFile(QString::fromUtf8(":/media/icons/buttons/right-arrow.png"), QSize(50, 50));
+    icon1.addFile(QString::fromUtf8(":/icons/buttons/right-arrow.png"), QSize(50, 50));
 
     leftToolbarButton->setIcon(icon1);
     leftToolbarButton->setFlat(true);
@@ -1011,6 +922,17 @@ void Peritia::showHelp() {
 
 }
 
+void Peritia::showSettings() {
+
+  SettingsDialog *settingsDialog = new SettingsDialog(this);
+
+  settingsDialog->show();
+
+
+
+
+
+}
 void Peritia::text2ASL() {
 
     //AboutDialog::show();
@@ -1160,7 +1082,7 @@ void Peritia::timer() {
 }
 
 void Peritia::timerEvent(QTimerEvent *) {
-	QTime utctime;
+    QTime utcTime;
 	
 	/*My Nethunter computer was only able to show utc + 0 so I used .addSecs to change to UTC+3
 	 * 3hrs, 60 mins, 60secs , the last bit +0 should indicate the minutes adde
@@ -1168,12 +1090,114 @@ void Peritia::timerEvent(QTimerEvent *) {
 	 * utctime = QTime::currentTime().addSecs(3 * 60 * 60 + 0); ->driver code
 	 */
 	//Display hours:minutes:seconds
-	utctime = QTime::currentTime();
+    utcTime = QTime::currentTime();
 
 
+    QString timeText = utcTime.toString("hh:mm");
+
+    if ((utcTime.second() % 2)== 0) {
+
+        timeText[2] = ' ';
 
 
-    ui->clockLabel->setText(utctime.toString("hh:mm"));
+    }
+
+    ui->clockLabel->setText(timeText);//utctime.toString("hh:mm"));
+
+    /*convert string to QString*/
+    QString dayLabelIconQString = QString::fromStdString(dayLabelIcon);
+
+    ui->dayLabel->setStyleSheet(dayLabelIconQString);
+
+
+    /* When grepping date values, we encountered an
+     * issue when grepping single digit values
+     * so we had to improvise */
+
+    //Convert string to int
+    int finalDate = std::stoi(Date);
+
+    if (finalDate < 10) {
+        switch (finalDate) {
+            case 1: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-01.png);"));
+                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 2: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-02.png);"));
+                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 3: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-03.png);"));
+                break;
+            case 4: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-04.png);"));
+                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
+                break;
+            case 5: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-05.png);"));
+                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
+                break;
+            case 6: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-06.png);"));
+                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 7: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-07.png);"));
+                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
+                break;
+            case 8: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-08.png);"));
+                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 9: ui->dateLabel->setStyleSheet(QString::fromUtf8("image: url(:/icons/date/date-09.png);"));
+                    ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
+                break;
+        }
+
+    } else {
+        QString dateLabelIconQString = QString::fromStdString(dateLabelIcon);
+        ui->dateLabel->setStyleSheet(dateLabelIconQString);
+    }
+
+    if(finalDate >= 10) {
+        switch (finalDate) {
+            case 10:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
+                break;
+            case 11:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 12:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
+                break;
+            case 13:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
+                break;
+            case 14:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 15:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
+                break;
+            case 16:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
+                break;
+            case 17:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
+                break;
+            case 18:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 19: ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(246, 97, 81);"));
+                break;
+            case 20:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
+                break;
+            case 21:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
+                break;
+            case 22: ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(246, 97, 81);"));
+                break;
+            case 23:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 24:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 25:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 26:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(53, 132, 228);"));
+                break;
+            case 27: ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(246, 97, 81);"));
+                break;
+            case 28:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(51, 209, 122);"));
+                break;
+            case 29:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
+                break;
+            case 30:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
+                break;
+    }
+    }
 
 
 }

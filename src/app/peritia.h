@@ -14,7 +14,8 @@
 
 
 
-#include "src/dialogs/aboutdialog.h"
+//#include "src/dialogs/aboutdialog.h"
+#include "src/dialogs/settingsdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -60,6 +61,7 @@ private slots:
     void showLeftToolBar();
     void showLogin();
     void showHelp();
+    void showSettings();
 //void showPreference();
     void showStatusBar();
  //   void showSummary();
@@ -77,7 +79,8 @@ protected:
 
 private:
     Ui::Peritia *ui;
-    QDialog *aboutDialog;
+  //  AboutDialog *aboutDialog;
+    SettingsDialog *settingsDialog;
   //  QLabel *statusBarClockLabel;
     QFile *myInfo;
     QLabel *label_2;

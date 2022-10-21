@@ -60,10 +60,14 @@
               
         <file>gifs/girl-working-at-home.gif</file>
         
+        
         <file>icons/buttons/accessibility.png</file>
         <file>icons/buttons/account.png</file> 
         <file>icons/buttons/back-arrow.png</file> 
-        <file>icons/buttons/exit.png</file> 
+        <file>icons/buttons/donate.png</file>
+        <file>icons/buttons/exit.png</file>
+        <file>icons/buttons/fullscreen.png</file>
+        <file>icons/buttons/info.png</file>
         <file>icons/buttons/right-arrow.png</file>
         <file>icons/buttons/settings-1.png</file>
         <file>icons/buttons/settings-2.png</file> 

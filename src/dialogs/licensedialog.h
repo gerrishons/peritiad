@@ -2,29 +2,20 @@
 #define LICENSEDIALOG_H
 
 #include <QDialog>
-#include <QPushButton>
-#include <QTextBrowser>
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class LicenseDialog; }
+QT_END_NAMESPACE
 
 class LicenseDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit LicenseDialog(QWidget *parent = nullptr);
-
-
-
-private slots:
-    void onLaunchAbout();
-
-
+    LicenseDialog(QWidget *parent = nullptr);
+    ~LicenseDialog();
 
 private:
-    QPushButton *okButton;
-    QPushButton *cancelButton;
-    QTextBrowser *licenseBrowser;
+    Ui::LicenseDialog *ui;
 };
-
-
-
 #endif // LICENSEDIALOG_H

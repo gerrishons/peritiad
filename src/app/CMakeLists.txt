@@ -1,5 +1,5 @@
 add_executable(peritia
-    peritia.ui
+    forms/peritia.ui
     peritia.cpp
     main.cpp
     )

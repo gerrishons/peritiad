@@ -21,7 +21,7 @@
 
 
 #include "src/logger.h"
-#include "src/dialogs/welcomedialog.h"
+#include "src/dialogs/welcomedialog.cpp"
 
 
 int main(int argc, char *argv[])

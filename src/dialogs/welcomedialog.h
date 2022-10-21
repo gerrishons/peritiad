@@ -3,7 +3,7 @@
 
 
 
-#include <QDBusInterface>
+//#include <QDBusInterface>
 
 #include <QDialog>
 #include <QLabel>
