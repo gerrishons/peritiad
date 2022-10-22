@@ -18,6 +18,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    'secretum_sphinx_theme'
 ]
 
 intersphinx_mapping = {
@@ -30,9 +31,8 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 
-os.system("pip install secretum_sphinx_theme") 
-import secretum_sphinx_theme
-html_theme = 'secretum_sphinx_theme'
+
+html_theme = 'rtd_sphinx_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
