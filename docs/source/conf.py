@@ -29,7 +29,7 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 
-html_theme = 'secretum_rtd_theme'
+html_theme = 'secretum_sphinx_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
