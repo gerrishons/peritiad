@@ -4,3 +4,28 @@ sphinx_rtd_theme==1.0.0
 secretum_sphinx_theme==2022.2
 myst_parser
 furo
+# core
+sphinx~=2.4.0
+
+# extensions
+nbsphinx
+ipykernel
+matplotlib
+
+sphinx-notfound-page
+sphinx-version-warning
+sphinx-prompt
+sphinxemoji
+sphinx-copybutton
+sphinx-autoapi
+myst-parser[sphinx]
+sphinxcontrib-httpdomain
+sphinx-last-updated-by-git
+
+# themes
+sphinx-material
+sphinx-rtd-theme
+sphinx-typlog-theme
+
+# local building
+sphinx-autobuild
