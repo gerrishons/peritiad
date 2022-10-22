@@ -33,6 +33,8 @@ templates_path = ['_templates']
 
 
 html_theme = 'rtd_sphinx_theme'
+html_logo = "resources/logos/peritia-logo.png"
+
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
