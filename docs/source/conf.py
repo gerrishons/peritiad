@@ -1,6 +1,7 @@
 # Configuration file for the Sphinx documentation builder.
 
 # -- Project information
+import os
 
 project = 'Peritia'
 copyright = '2022, Scalabli'
@@ -29,6 +30,8 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 
+os.system("pip install secretum_sphinx_theme") 
+import secretum_sphinx_theme
 html_theme = 'secretum_sphinx_theme'
 
 # -- Options for EPUB output
