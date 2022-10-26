@@ -33,7 +33,7 @@ templates_path = ['_templates']
 
 
 html_theme = 'furo' #rtd_sphinx_theme'
-html_logo = "resources/logos/peritia-logo.png"
+html_logo = "images/peritia-logo.jpg"
 
 
 # -- Options for EPUB output
