@@ -8,7 +8,7 @@ copyright = '2022, Scalabli'
 author = 'Gerrishon Sirere'
 
 release = '0.1'
-version = '0.1.0'
+version = '2022.1'
 
 # -- General configuration
 
