@@ -32,7 +32,7 @@ templates_path = ['_templates']
 # -- Options for HTML output
 
 
-html_theme = 'rtd_sphinx_theme'
+html_theme = 'furo' #rtd_sphinx_theme'
 html_logo = "resources/logos/peritia-logo.png"
 
 
