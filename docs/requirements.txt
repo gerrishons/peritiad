@@ -4,8 +4,6 @@ sphinx_rtd_theme==1.0.0
 secretum_sphinx_theme==2022.2
 myst_parser
 furo
-# core
-sphinx~=2.4.0
 
 # extensions
 nbsphinx
