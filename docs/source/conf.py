@@ -7,7 +7,7 @@ project = 'Peritia'
 copyright = '2022, Scalabli'
 author = 'Gerrishon Sirere'
 
-release = '0.1'
+release = '2022.1'
 version = '2022.1'
 
 # -- General configuration
@@ -31,6 +31,8 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 
+# The suffix of source filenames.
+source_suffix = [".rst", ".md"]
 
 html_theme = 'furo' #rtd_sphinx_theme'
 html_logo = "images/peritia-logo.jpg"
