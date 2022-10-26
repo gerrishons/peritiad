@@ -32,7 +32,7 @@ templates_path = ['_templates']
 # -- Options for HTML output
 
 # The suffix of source filenames.
-#source_suffix = [".rst", ".md"]
+source_suffix = [".md"]
 
 html_theme = 'furo' #rtd_sphinx_theme'
 html_logo = "images/peritia-logo.png"
