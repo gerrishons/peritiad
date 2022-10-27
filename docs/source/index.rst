@@ -7,6 +7,7 @@ Peritia
 
 .. toctree::
    :maxdepth: 2
+   :caption: Why
 
    summary
    introduction
