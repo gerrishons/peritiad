@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Peritia
+Comment=All in one assistive technology
+Exec=/usr/bin/peritia %U
+Icon=peritia
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Accesories;Application;
+Name[en_US]=Peritia

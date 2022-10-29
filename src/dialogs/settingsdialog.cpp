@@ -13,5 +13,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 SettingsDialog::~SettingsDialog()
 {
     delete ui;
+    qInfo()<<">>>>>>Closing settings dialog<<<<<<<<<";
 }
 

@@ -1,46 +1,29 @@
 #ifndef WELCOMEDIALOG_H
 #define WELCOMEDIALOG_H
 
-
-
-//#include <QDBusInterface>
-
 #include <QDialog>
-#include <QLabel>
 #include <QTimer>
-#include <QProgressBar>
-//#include <QGridLayout>
-//#include <QPushButton>
-#include <QGraphicsDropShadowEffect>
 
-//#include "version.h"
-
+QT_BEGIN_NAMESPACE
+namespace Ui { class WelcomeDialog; }
+QT_END_NAMESPACE
 
 class WelcomeDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit WelcomeDialog(QWidget *parent = nullptr);
-
-
-
-
+    WelcomeDialog(QWidget *parent = nullptr);
+    ~WelcomeDialog();
 
 private:
-    QGraphicsDropShadowEffect *shadow;
-    QLabel *versionLabel;
-    QProgressBar *progressBar;
+    Ui::WelcomeDialog *ui;
     QTimer *progressTimer;
+
+
 
 private slots:
     void valueProgress();
 
-
-
-
 };
-
-
-
 #endif // WELCOMEDIALOG_H

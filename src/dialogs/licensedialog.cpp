@@ -16,5 +16,6 @@ LicenseDialog::LicenseDialog(QWidget *parent)
 LicenseDialog::~LicenseDialog()
 {
     delete ui;
+     qInfo()<<">>>>>>Closing license dialog<<<<<<<<<";
 }
 

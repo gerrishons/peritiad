@@ -49,6 +49,7 @@ private:
     QString bitness;
     QString hostName;
     QString osVersion;
+    QString version;
 
 
     QVBoxLayout*verticalLayout1;

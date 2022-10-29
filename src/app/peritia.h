@@ -15,7 +15,9 @@
 
 
 //#include "src/dialogs/aboutdialog.h"
-#include "src/dialogs/settingsdialog.h"
+#include "src/widgets/loginwidget.h"
+//#include "src/dialogs/settingsdialog.h"
+//#include "src/dialogs/shortcutsdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -42,6 +44,9 @@ private slots:
 
     void changePhoto();
     void changeText();
+    void closeDockWidget();
+   // void checkInternetStatus();
+    void dockWidgetExpand();
     void hideLeftToolBar();
     void hideStatusBar();
     void listWidgetItemClicked(QListWidget *itemClicked);
@@ -57,9 +62,13 @@ private slots:
     void setFontUnderline(bool underline);
     void setFontItalic(bool italic);
     void showAbout();
+    void showAccount();
+    void showCurrentDateTime();
     void showFullScreen();
+    void showInternetConnection();
+    void showInternetConnectionError();
+    void showKeyBoardShortcuts();
     void showLeftToolBar();
-    void showLogin();
     void showHelp();
     void showSettings();
 //void showPreference();
@@ -71,16 +80,17 @@ private slots:
 
 
 
+
+
 protected:
-   // void text2ASL(QPaintEvent *event);//d paintEvent(QPaintEvent *event) override;
-    //void itemsClickedSlot(QListWidgetItem *itemClicked);
-    //void playSound(QMediaPlayer::MediaStatus *status);
+    void connectionEvent(QTimerEvent *event);
     void timerEvent(QTimerEvent *event);
+
 
 private:
     Ui::Peritia *ui;
   //  AboutDialog *aboutDialog;
-    SettingsDialog *settingsDialog;
+   // SettingsDialog *settingsDialog;
   //  QLabel *statusBarClockLabel;
     QFile *myInfo;
     QLabel *label_2;
@@ -90,10 +100,14 @@ private:
      QLineEdit *lineEdit_3;
 
     QString currentFile;
+    QTimer *expansionTimer;
     bool closeWindow();
+
+    QPushButton *internetConnectionStatusButton;
 
     QPushButton *leftToolbarButton;
     QVBoxLayout *verticalLayout;
+
 };
 
 #endif // PERITIA_H

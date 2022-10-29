@@ -1,10 +1,7 @@
 
 
 #include "src/dialogs/aboutdialog.h"
-
-
-//#include "version.h"
-
+#include "src/version.cpp"
 
 
 AboutDialog::AboutDialog(QWidget *parent)
@@ -93,7 +90,8 @@ AboutDialog::AboutDialog(QWidget *parent)
 
     hostName = QSysInfo::machineHostName();
     osVersion = QSysInfo::prettyProductName();
-    QString versioni = "sldd";
+    PeritiaVersion version;
+
 
     if (sizeof(void *) == 4)
         bitness = " (32 bit)";
@@ -102,17 +100,16 @@ AboutDialog::AboutDialog(QWidget *parent)
 
 
 
-#ifdef Q_OS_LINUX
-
-
-    versionLabel->setText("Peritia version " + versioni + "\nBuilt for " +osVersion + bitness + "\n" + hostName);
-
+#ifdef Q_OS_LINUX 
+    versionLabel->setText("Peritia version " + version.premier() + "\nBuilt for " +osVersion + bitness + "\n");
 #endif
 
-#ifdef Q_OS_MACX
+#ifdef Q_OS_MACOS
+    versionLabel->setText("Peritia version " + version.premier() + "\nBuilt for " +osVersion  + bitness +"\n");
+#endif
 
-    versionLabel->setText("Peritia version" + peritiaVersion + "\nBuilt for Mac " + bitness);
-
+#ifdef Q_OS_WIN
+    versionLabel->setText("Peritia version " + version.premier() + "\nBuilt for " +osVersion + bitness + "\n");
 #endif
 
 
@@ -123,7 +120,8 @@ AboutDialog::AboutDialog(QWidget *parent)
 
 
     descriptionLabel = new QLabel(verticalLayoutWidget2);
-    descriptionLabel->setAlignment(Qt::AlignCenter);
+    descriptionLabel->setAlignment(Qt::AlignLeft);
+    descriptionLabel->setText("Go to source, inclusive, interactive all in one\n educational software for the decerning learner");
 
     verticalLayout2->addWidget(descriptionLabel);
 
@@ -131,6 +129,7 @@ AboutDialog::AboutDialog(QWidget *parent)
 
     widget3 = new QWidget(gridLayoutWidget);
     widget3->setStyleSheet(QString::fromUtf8("background-color: rgb(61, 56, 70);"));
+    //widget3->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0.068, x2:1, y2:0, stop:0 rgba(40, 221, 218, 255), stop:1 rgba(255, 255, 255, 255));"));
 
     horizontalLayoutWidget = new QWidget(widget3);
     horizontalLayoutWidget->setGeometry(QRect(-1, 0, 661, 500));

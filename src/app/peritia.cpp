@@ -30,7 +30,11 @@
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimedia/QAudioOutput>
 #include <QtMultimedia/QMediaCaptureSession>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QNetworkAccessManager>
 #include <QImageCapture>
+#include <QToolTip>
 
 
 //#include ".. peritia-properties.cpp"
@@ -42,7 +46,10 @@
 #include "src/utils/random-int.cpp"
 
 #include "src/dialogs/aboutdialog.cpp"
+#include "src/dialogs/datetimedialog.h"
 #include "src/dialogs/settingsdialog.h"
+#include "src/dialogs/shortcutdialog.h"
+
 //#include "loginwidget.h" /*including the cpp file here throws some error*/
 //#include "src/dialogs/welcomedialog.cpp"
 
@@ -61,38 +68,52 @@ Peritia::Peritia(QWidget *parent) :
 
 		    iter != iterEnd; ++iter)
 
-	    switch(*iter) {
-            case 1: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/boy-and-girl-standing-and-laughing.png);"));
+
+           switch(*iter) {
+            case 1: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/boy-and-girl-standing-and-laughing.png);"));
+               qInfo()<<"Random generated interger is "<<*iter;
 			    break;
-            case 2: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/boy-girl-sitting-in-chairs.png);"));
+            case 2: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/boy-girl-sitting-in-chairs.png);"));
+               qInfo()<<"Random generated interger is "<<*iter;
 			    break;
-            case 3: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/girl-playing-playstation-with-brother.png);"));
+            case 3: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/woman-in-glasses-sitting-and-reading-book.png);"));
+               qInfo()<<"Random generated interger is "<<*iter;
 			    break;
-            case 4: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/man-playing-with-dog-on-the-couch.png);"));
+            case 4: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/man-playing-with-dog-on-the-couch.png);"));
+               qInfo()<<"Random generated interger is "<<*iter;
 			    break;
-            case 5: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/man-search-music-with-phone.png);"));
+            case 5: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/man-search-music-with-phone.png);"));
+               qInfo()<<"Random generated interger is "<<*iter;
 			    break;
-            case 6: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/people-standing-talking.png);"));
+            case 6: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/people-standing-talking.png);"));
+               qInfo()<<"Random generated interger is "<<*iter;
 			    break;
-            case 7: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/woman-in-glasses-sitting-and-reading-book.png);"));
+            case 7: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/woman-in-glasses-sitting-and-reading-book.png);"));
+               qInfo()<<"Random generated interger is "<<*iter;
 			    break;
-            case 8: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/woman-in-glasses-sitting-next-to-a-dog.png);"));
+            case 8: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/woman-in-glasses-sitting-next-to-a-dog.png);"));
+               qInfo()<<"Random generated interger is "<<*iter;
 			    break;
-            case 9: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/girl-and-boy-with-laptop.png);"));
+            case 9: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/girl-and-boy-with-laptop.png);"));
+               qInfo()<<"Random generated interger is "<<*iter;
 			    break;
-            default: ui->label_2->setStyleSheet(QString::fromUtf8("image: url(:/icons/illustrations/girl-and-boy-with-laptop.png);"));
+            default: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/girl-and-boy-with-laptop.png);"));
+               qInfo()<<"Random generated interger is "<<*iter;
 			     break;
 	    }
 
-
     
-    qDebug()<<"Current date and time: ->"<<currentTime;
+
 
    // ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/media/backgrounds/osman-rana.jpg) }");
 
     //LoginWidget *loginWidget = new LoginWidget;
 
+    ui->dockWidget->hide();
+
     ui->dockWidget_2->hide();
+
+
 
     QCamera *cam = new QCamera;
     QMediaCaptureSession capture;
@@ -104,9 +125,19 @@ Peritia::Peritia(QWidget *parent) :
     cam->start();
     news->capture();
 
-    QMovie *gifMovie = new QMovie(":/media/gifs/girl-working-at-home.gif");
+    QMovie *gifMovie = new QMovie(":/gifs/girl-working-at-home.gif");
     ui->label_4->setMovie(gifMovie);
     gifMovie->start();
+
+    internetConnectionStatusButton = new QPushButton;//"Network unavailable");
+    internetConnectionStatusButton->setAccessibleName("connection status");
+    internetConnectionStatusButton->setFlat(true);
+
+    /*This adds the label to the right*/
+    ui->statusBar->addPermanentWidget(internetConnectionStatusButton);
+
+
+
 
 //QPropertyAnimation *anim = new QPropertyAnimation(ui->clockLabel, "pos", this);
    // anim->setDuration(10000);
@@ -114,6 +145,14 @@ Peritia::Peritia(QWidget *parent) :
    // anim->currentTime();
   //  anim->setEndValue(QPoint(1400,0));
    // anim->start();
+
+    /*This adds the label to the right*/
+   // ui->statusBar->addPermanentWidget(connectionErrorPushButton);
+   // ui->statusBar->findChildren(Qt::FindChildOption("pushButton"));
+
+
+
+
 
 
 
@@ -126,7 +165,7 @@ Peritia::Peritia(QWidget *parent) :
    /// label_2 = new QLabel(ui->dockWidget);//->verdockWidget);
 
    // verticalLayout->addWidget(label_2);
-    label_4 = new QLabel(ui->dockWidget);
+    /*label_4 = new QLabel(ui->dockWidget);
             label_4->setObjectName(QString::fromUtf8("label_4"));
             label_4->setGeometry(QRect(100, 110, 90, 40));
             QFont font;
@@ -135,12 +174,12 @@ Peritia::Peritia(QWidget *parent) :
             font.setBold(true);
             label_4->setFont(font);
             label_4->setStyleSheet(QString::fromUtf8("color:rgba(255,255,255,210);"));
-            label_4->setAlignment(Qt::AlignCenter);
+            label_4->setAlignment(Qt::AlignCenter);*/
 
 
 
 
-    label_2 = new QLabel(ui->dockWidget);
+    /*label_2 = new QLabel(ui->dockWidget);
     label_2->setStyleSheet(QString::fromUtf8(";\n"
     "background-color: qconicalgradient(cx:0, cy:0, angle:135, stop:0 rgba(255, 255, 0, 69), stop:0.375 rgba(255, 255, 0, 69), stop:0.423533 rgba(251, 255, 0, 145), stop:0.45 rgba(247, 255, 0, 208), stop:0.477581 rgba(255, 244, 71, 130), stop:0.518717 rgba(255, 218, 71, 130), stop:0.55 rgba(255, 255, 0, 255), stop:0.57754 rgba(255, 203, 0, 130), stop:0.625 rgba(255, 255, 0, 69), stop:1 rgba(255, 255, 0, 69));\n"
     "border-radius:20px;"));
@@ -167,9 +206,9 @@ Peritia::Peritia(QWidget *parent) :
                            lineEdit_3->setFrame(true);
                            lineEdit_3->setEchoMode(QLineEdit::Normal);
                            lineEdit_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+*/
 
-
-     ui->dockWidget->hide();
+    // ui->dockWidget->hide();
     //verticalLayout->addWidget(label_2);
 
     //ui->dockWidget->setLayout(verticalLayout);
@@ -217,9 +256,10 @@ Peritia::Peritia(QWidget *parent) :
 
 
    
-
+      ui->centralWidget->setStyleSheet(".QWidget {background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255)) }");
 
     if (FinalHour <12) {
+
 	    /*This special method will prevent the background image to be inherited by the children*/
         ui->centralWidget->setStyleSheet(".QWidget {background-image:url(:/media/backgrounds/osman-rana.jpg) }");
 	    //rgb color Columbia Blue
@@ -387,7 +427,11 @@ Peritia::Peritia(QWidget *parent) :
    // connect(ui->actionMakeADonationStatus, &QAction::triggered, this, &Peritia::makeADonationStatus);
    // connect(ui->actionListWidgetItemClicked, &QAction::triggered, this, &Peritia::listWidgetItemClicked);
 
-    connect(ui->actionAccount, &QAction::triggered, this, &Peritia::showLogin);
+    connect(ui->actionAccount, &QAction::triggered, this, &Peritia::showAccount);
+    connect(ui->actionCloseDockWidget, &QAction::triggered, this, &Peritia::closeDockWidget);
+    connect(ui->actionCurrentDateTime, &QAction::triggered, this, &Peritia::showCurrentDateTime);
+    connect(ui->actionKeyBoardShortcuts, &QAction::triggered, this, &Peritia::showKeyBoardShortcuts);
+
     connect(ui->actionPreference, &QAction::triggered, this, &Peritia::showSettings);
     connect(ui->actionText2ASL, &QAction::triggered, this, &Peritia::text2ASL);
 
@@ -401,6 +445,7 @@ Peritia::Peritia(QWidget *parent) :
     //connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(Peritia::itemClickedSlot(QListWidgetItem *)));
     
     //oominPeritia);
+
 
 // Disable menu actions for unavailable features
 #if !defined(QT_PRINTSUPPORT_LIB) || !QT_CONFIG(printer)
@@ -417,6 +462,8 @@ Peritia::Peritia(QWidget *parent) :
 Peritia::~Peritia()
 {
     delete ui;
+
+    qInfo()<<">>>>>>Closing Peritia<<<<<<<<<";
 }
 
 /*void Peritia::ShowSummary() {
@@ -730,6 +777,25 @@ void Peritia::makeADonationStatus()  {
 
 }
 
+void Peritia::dockWidgetExpand()  {
+
+    /*This increments the value of the progress bar by 1(or the setMaximum value */
+    ui->dockWidget->resize(10, 10+20);
+          //  setValue(ui->progressBar->value()+1);
+    //int value = ui->dockWidget->value();
+  //  ui->progressBar->setValue(value);
+
+}
+
+
+void Peritia::closeDockWidget() {
+
+    ui->dockWidget->hide();
+
+
+
+                 }
+
 void Peritia::hideLeftToolBar()   {
 
     ui->toolBar->hide();
@@ -741,7 +807,7 @@ void Peritia::hideLeftToolBar()   {
     QPushButton *leftToolbarButton = new QPushButton();
     QIcon icon1;
 
-    icon1.addFile(QString::fromUtf8(":/icons/buttons/right-arrow.png"), QSize(50, 50));
+    icon1.addFile(QString::fromUtf8(":/icons/buttons/chevron-right.png"), QSize(50, 50));
 
     leftToolbarButton->setIcon(icon1);
     leftToolbarButton->setFlat(true);
@@ -810,8 +876,9 @@ void Peritia::showAbout() {
    AboutDialog  *dialog = new AboutDialog;
 
 
+
+   connect(dialog, SIGNAL(windowTitleChanged(QString)), this, SLOT(setWindowTitle(QString)));
    dialog->show();
-   // dialog->connect(licensePushButton, SIGNAL(clicked()), dialog, SLOT(close()));
 
   if(!dialog->isHidden()) {
 
@@ -898,9 +965,45 @@ void Peritia::showFullScreen() {
 }
 
 
-void Peritia::showLogin()   {
 
-    ui->dockWidget->show();
+
+void Peritia::showAccount()   {
+
+   // QPropertyAnimation *animation = new QPropertyAnimation(ui->dockWidget, "size");
+  //  animation->setDuration(150);
+   // animation->setStartValue(QSize(0, 700));
+  //  animation->setEndValue(QSize(250,250+10));
+  //  animation->start();
+
+    if(!ui->dockWidget->isHidden()) {
+
+        ui->dockWidget->hide();
+    } else {
+        ui->dockWidget->show();
+        ui->dockWidget->setWindowTitle("Account: Information about user accounts");
+
+        }
+    LoginWidget *loginWidget = new LoginWidget;
+    ui->dockWidget->setWidget(loginWidget);
+
+    if(!loginWidget->isActiveWindow()) {
+
+            ui->dockWidget->hide();
+    }
+
+
+
+
+
+
+}
+
+void Peritia::showCurrentDateTime() {
+    DateTimeDialog *dateTimeDialog = new DateTimeDialog;
+    dateTimeDialog->show();
+
+
+
 }
 void Peritia::showLeftToolBar()  {
 
@@ -922,9 +1025,63 @@ void Peritia::showHelp() {
 
 }
 
+
+void Peritia::showInternetConnection()  {
+
+    QIcon internetConnectionIcon;
+    internetConnectionIcon.addFile(QString::fromUtf8(":/icons/buttons/internet.png"), QSize(), QIcon::Normal, QIcon::Off);
+
+    internetConnectionStatusButton->setIcon(internetConnectionIcon);
+    internetConnectionStatusButton->setStyleSheet("QToolTip {border:1px solid green;}");
+
+    internetConnectionStatusButton->setToolTip("Internet connection available");
+
+
+}
+void Peritia::showInternetConnectionError() {
+
+    QIcon noInternetIcon;
+    noInternetIcon.addFile(QString::fromUtf8(":/icons/buttons/no-internet.png"), QSize(), QIcon::Normal, QIcon::Off);
+
+    internetConnectionStatusButton->setIcon(noInternetIcon);
+    internetConnectionStatusButton->setStyleSheet("QToolTip {border:1px solid red;}");
+    internetConnectionStatusButton->setToolTip("The network is unavailable");
+
+   // QList<QPushButton*> connectionErrorPushButton
+
+
+
+
+           /* QPushButton *connectionErrorPushButton = new QPushButton;//"Network unavailable");
+
+            QIcon noInternetIcon;
+            noInternetIcon.addFile(QString::fromUtf8(":/icons/buttons/no-internet.png"), QSize(), QIcon::Normal, QIcon::Off);
+
+            connectionErrorPushButton->setIcon(noInternetIcon);
+            connectionErrorPushButton->setToolTip("The network is unavalable");
+
+           // QTimer::singleShot(10000, connectionErrorLabel, SLOT(hide()));
+
+            This adds the label to the right*
+            ui->statusBar->addPermanentWidget(connectionErrorPushButton)
+
+*/
+
+}
+
+
+void Peritia::showKeyBoardShortcuts()  {
+
+    ShortcutDialog *shortcutsDialog = new ShortcutDialog(this);
+    shortcutsDialog->show();
+
+
+}
 void Peritia::showSettings() {
 
   SettingsDialog *settingsDialog = new SettingsDialog(this);
+  connect(settingsDialog, SIGNAL(windowTitleChanged(QString)), this, SLOT(setWindowTitle(QString)));
+
 
   settingsDialog->show();
 
@@ -1082,6 +1239,7 @@ void Peritia::timer() {
 }
 
 void Peritia::timerEvent(QTimerEvent *) {
+
     QTime utcTime;
 	
 	/*My Nethunter computer was only able to show utc + 0 so I used .addSecs to change to UTC+3
@@ -1197,7 +1355,21 @@ void Peritia::timerEvent(QTimerEvent *) {
             case 30:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
                 break;
     }
+
     }
+
+    /*The network manager checks for internet connectivity after 2 seconds */
+
+    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+    QNetworkRequest request;
+    request.setUrl(QUrl("http://google.com"));
+    request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
+
+    QNetworkReply *reply = manager->get(request);
+    /*tries to connect to the website above*/
+    connect(reply, &QIODevice::readyRead, this, &Peritia::showInternetConnection);
+    connect(reply, &QNetworkReply::errorOccurred, this, &Peritia::showInternetConnectionError);
 
 
 }
@@ -1240,3 +1412,5 @@ void Peritia::getText(QString text){
     //return ui-
 
 }
+
+

@@ -3,7 +3,6 @@
 #include <filesystem>
 #include <fstream>
 #include <stdio.h>
-
 //#ifdef WIN32
 //#include <Windows.h>
 //#else
@@ -12,6 +11,7 @@
 
 #include <QApplication>
 #include <QDialog>
+
 
 #include <QTimer>
 
@@ -27,7 +27,8 @@
 int main(int argc, char *argv[])
 {
     Logger::init();
-    qInfo()<<"Starting Peritia...";
+
+    qInfo()<<"Starting Peritia by "<<QSysInfo::machineHostName()<<", on a "<<QSysInfo::kernelVersion()<<" computer";
 
 
     QApplication a(argc, argv);

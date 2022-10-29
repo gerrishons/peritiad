@@ -3,7 +3,7 @@
 
 
         
-        
+        <file>icons/countries/kenya.png</file>
         
         <file>icons/date/date-01.png</file>
         <file>icons/date/date-02.png</file>
@@ -56,6 +56,22 @@
         <file>backgrounds/pexels-dids.jpg</file>  
         <file>backgrounds/pexels-sergej-eckhardt.jpg</file>
         
+        <file>docs/clocks.qml</file>
+        <file>docs/londonclock.qml</file>
+        <file>docs/nairobiclock.qml</file>
+        <file>docs/newyorkclock.qml</file>
+        <file>docs/clockcontent/Clock.qml</file>
+        <file>docs/clocks.qmlproject</file>
+        <file>docs/clockcontent/arrow.png</file>
+        <file>docs/clockcontent/background.png</file>
+        <file>docs/clockcontent/center.png</file>
+        <file>docs/clockcontent/clock-night.png</file>
+        <file>docs/clockcontent/clock.png</file>
+        <file>docs/clockcontent/Clock.qml</file>
+        <file>docs/clockcontent/hour.png</file>
+        <file>docs/clockcontent/minute.png</file>
+        <file>docs/clockcontent/quit.png</file>
+        <file>docs/clockcontent/second.png</file>
         <file>docs/LICENSE.md</file>
               
         <file>gifs/girl-working-at-home.gif</file>
@@ -68,7 +84,11 @@
         <file>icons/buttons/exit.png</file>
         <file>icons/buttons/fullscreen.png</file>
         <file>icons/buttons/info.png</file>
+        <file>icons/buttons/internet.png</file>
+        <file>icons/buttons/left-arrow.png</file>
         <file>icons/buttons/right-arrow.png</file>
+        <file>icons/buttons/chevron-right.png</file>
+        <file>icons/buttons/no-internet.png</file>
         <file>icons/buttons/settings-1.png</file>
         <file>icons/buttons/settings-2.png</file> 
         <file>icons/buttons/sign-language.png</file>

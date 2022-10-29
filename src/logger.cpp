@@ -28,7 +28,31 @@ void Logger::init()  {
 
 
     logFile = new QFile;
-    logFile->setFileName("/home/gerry/peritia.log");
+#ifdef Q_OS_LINUX
+    QDir linuxDir;
+    QString defaultPath = linuxDir.home().filePath(".peritia/logs/peritia.log");
+    logFile->setFileName(defaultPath);
+    if (!logFile->exists()) {
+        /*defaultPath does not exist! ..making a new path...*/
+        linuxDir.home().mkpath(".peritia/logs");
+
+    }
+
+#endif
+
+#ifdef Q_OS_WIN
+    QDir windowsDir;
+    QString defaultPath = windowsDir.home().filePath("peritia/logs/peritia.log");
+    logFile->setFileName(defaultPath);
+    if (!logFile->exists()) {
+        /*defaultPath does not exist! ..making a new path...*/
+        windowsDir.home().mkpath("peritia/logs");
+
+    }
+
+#endif
+
+
     logFile->open(QIODevice::Append | QIODevice::Text);
 
     qInstallMessageHandler(Logger::messageOutput);
@@ -51,11 +75,11 @@ void Logger::clean()   {
 
 void Logger::messageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)  {
 
-    QString log = QObject::tr("%1 | %2 | %3 | %4 | %5 | %6\n").
+    QString log = QObject::tr("Date: %1     |%2     |%3     \n").// %4 | %5 | %6\n").
          arg(QDateTime::currentDateTime().toString("dd-MM-yyyy | hh:mm:ss")).
          arg(Logger::contextNames.value(type)).
-         arg(context.line).
-         arg(QString(context.file)).
+         //arg(context.line).
+         //arg(QString(context.file)).
          arg(msg);
 
        //  section('//', -1)).
