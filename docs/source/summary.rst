@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 SUMMARY
 ==========
 
@@ -18,3 +19,7 @@ However, not everyone has been able to benefit from such opportunities.
 Harnessing technology and innovation to achieve the Sustainable Development
 Goals and leaving no one behind requires promoting not only more technologies and
 innovations but also more inclusive ones.
+=======
+Summary
+===========
+>>>>>>> 9b1a9d7262d90dd42c31a0574c1b39e8461831ff

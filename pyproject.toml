@@ -1,5 +1,5 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
+requires = ["flit_core >=3.2,<4", "secretum_sphinx_theme==2022.2"]
 build-backend = "flit_core.buildapi"
 
 [project]
