@@ -1,10 +1,12 @@
 [Desktop Entry]
-Name=Peritia
-Comment=All in one assistive technology
-Exec=/usr/bin/peritia %U
-Icon=peritia
-Terminal=false
+Version=1.0
 Type=Application
-Encoding=UTF-8
-Categories=Accesories;Application;
-Name[en_US]=Peritia
+Name=peritia
+Comment=All in one assistive software
+Exec=/home/gerry/git/peritia/release/peritia
+Icon=/usr/share/icons/hicolor/16x16/apps/peritia-logo.png
+Path=
+Categories=GNOME;GTK;Utility;Calendar;X-Red-Hat-Base;
+Terminal=false
+StartupNotify=false
+X-Desktop-File-Install-Version=0.26

@@ -9,6 +9,8 @@ WelcomeDialog::WelcomeDialog(QWidget *parent)
 {
     ui->setupUi(this);
 
+    setAccessibleName("Peritia welcome");
+
     setAttribute(Qt::WA_DeleteOnClose);
     setModal(true);
 

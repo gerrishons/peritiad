@@ -1,6 +1,6 @@
-﻿## MIT License
+﻿MIT License
 
-## Copyright (c) 2021 Gerrishon Sirere
+Copyright (c) 2021 Gerrishon Sirere
 
 
 **Peritia** is distributed "AS IS" in the hope that it will be useful, but WITHOUT WARRANTY OF ANY KIND, EXPRESS OR

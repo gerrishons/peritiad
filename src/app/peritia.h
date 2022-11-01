@@ -77,6 +77,8 @@ private slots:
     void text2ASL();
     void timer();
     void ss();
+    void zoomIn(const int increment);
+    void zoomOut(const int decrement);
 
 
 
@@ -93,6 +95,7 @@ private:
    // SettingsDialog *settingsDialog;
   //  QLabel *statusBarClockLabel;
     QFile *myInfo;
+    int newFixedWidth;
     QLabel *label_2;
     QLabel *label_4;
     QLabel *label;

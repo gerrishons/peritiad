@@ -88,11 +88,10 @@ QMAKE_SPECS = $$[QMAKESPEC]
 
 unix: CONFIG += link_pkgconfig
 
-unix:!macx: LIBS += -L$$PWD/src/ -lupower
+
 
 INCLUDEPATH += $$PWD/src
 DEPENDPATH += $$PWD/src
 
 
 
-unix: PKGCONFIG += libupower

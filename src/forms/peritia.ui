@@ -563,6 +563,15 @@ border-radius:9999px;</string>
          </color>
         </brush>
        </colorrole>
+       <colorrole role="Highlight">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>38</red>
+          <green>162</green>
+          <blue>105</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="HighlightedText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
@@ -634,6 +643,15 @@ border-radius:9999px;</string>
           <red>36</red>
           <green>31</green>
           <blue>49</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Highlight">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>38</red>
+          <green>162</green>
+          <blue>105</blue>
          </color>
         </brush>
        </colorrole>
@@ -711,6 +729,15 @@ border-radius:9999px;</string>
          </color>
         </brush>
        </colorrole>
+       <colorrole role="Highlight">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>38</red>
+          <green>162</green>
+          <blue>105</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="HighlightedText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
@@ -736,7 +763,8 @@ border-radius:9999px;</string>
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">selection-color: rgb(145, 65, 172);</string>
+     <string notr="true">selection-color: rgb(145, 65, 172);
+selection-background-color: rgb(38, 162, 105);</string>
     </property>
     <property name="tearOffEnabled">
      <bool>false</bool>
@@ -757,7 +785,8 @@ border-radius:9999px;</string>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="styleSheet">
-     <string/>
+     <string notr="true">selection-color: rgb(246, 211, 45);
+selection-background-color: rgb(165, 29, 45);</string>
     </property>
     <property name="title">
      <string>View</string>
@@ -777,8 +806,8 @@ border-radius:9999px;</string>
     <addaction name="actionRedo"/>
     <addaction name="actionFont"/>
     <addaction name="separator"/>
-    <addaction name="actionZoom_in"/>
-    <addaction name="actionZoom_out"/>
+    <addaction name="actionZoomIn"/>
+    <addaction name="actionZoomOut"/>
     <addaction name="actionFullScreen"/>
     <addaction name="actionMinimize"/>
     <addaction name="separator"/>
@@ -799,9 +828,9 @@ selection-background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0
     <addaction name="actionMakeADonation"/>
     <addaction name="actionSubmitFeedback"/>
     <addaction name="separator"/>
+    <addaction name="actionCheck_for_updates"/>
     <addaction name="actionAbout"/>
     <addaction name="separator"/>
-    <addaction name="actionCheck_for_updates"/>
    </widget>
    <widget class="QMenu" name="menuPreference">
     <property name="title">
@@ -821,52 +850,6 @@ selection-background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0
    <addaction name="menuTools"/>
    <addaction name="menuPreference"/>
    <addaction name="menuHelp"/>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <property name="maximumSize">
-    <size>
-     <width>16777215</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::WheelFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 0, 0);</string>
-   </property>
-   <property name="movable">
-    <bool>false</bool>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionSummary"/>
-   <addaction name="actionOpen"/>
-   <addaction name="actionSave"/>
-   <addaction name="actionSave_as"/>
-   <addaction name="actionPrint"/>
-   <addaction name="separator"/>
-   <addaction name="actionCopy"/>
-   <addaction name="actionCut"/>
-   <addaction name="actionPaste"/>
-   <addaction name="actionUndo"/>
-   <addaction name="actionRedo"/>
-   <addaction name="separator"/>
-   <addaction name="actionFont"/>
-   <addaction name="actionBold"/>
-   <addaction name="actionItalic"/>
-   <addaction name="actionUnderline"/>
-   <addaction name="separator"/>
-   <addaction name="actionPreference"/>
-   <addaction name="separator"/>
-   <addaction name="actionAbout"/>
-   <addaction name="separator"/>
-   <addaction name="actionExit"/>
-   <addaction name="separator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="maximumSize">
@@ -937,9 +920,9 @@ selection-background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0
    </attribute>
    <addaction name="actionSummary"/>
    <addaction name="actionText2ASL"/>
-   <addaction name="actionExit"/>
+   <addaction name="actionAccount"/>
    <addaction name="actionWebprobe"/>
-   <addaction name="actionPreference"/>
+   <addaction name="actionCheck_for_updates"/>
    <addaction name="separator"/>
   </widget>
   <widget class="QDockWidget" name="dockWidget">
@@ -969,9 +952,6 @@ selection-background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0
    </property>
    <property name="features">
     <set>QDockWidget::DockWidgetClosable</set>
-   </property>
-   <property name="windowTitle">
-    <string>hhh</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -1288,10 +1268,10 @@ selection-background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0
     <string>Ctrl+P</string>
    </property>
   </action>
-  <action name="actionZoom_in">
+  <action name="actionZoomIn">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/zoom-in.png</normaloff>:/images/zoom-in.png</iconset>
+    <iconset resource="../../resources/peritia.qrc">
+     <normaloff>:/icons/buttons/zoom-in.png</normaloff>:/icons/buttons/zoom-in.png</iconset>
    </property>
    <property name="text">
     <string>Zoom in</string>
@@ -1300,10 +1280,10 @@ selection-background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0
     <string>Ctrl+Up</string>
    </property>
   </action>
-  <action name="actionZoom_out">
+  <action name="actionZoomOut">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/zoom-out.png</normaloff>:/images/zoom-out.png</iconset>
+    <iconset resource="../../resources/peritia.qrc">
+     <normaloff>:/icons/buttons/zoom-out.png</normaloff>:/icons/buttons/zoom-out.png</iconset>
    </property>
    <property name="text">
     <string>Zoom out</string>
@@ -1332,8 +1312,8 @@ selection-background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/minimize.png</normaloff>:/images/minimize.png</iconset>
+    <iconset resource="../../resources/peritia.qrc">
+     <normaloff>:/icons/buttons/minimize.png</normaloff>:/icons/buttons/minimize.png</iconset>
    </property>
    <property name="text">
     <string>Minimize</string>

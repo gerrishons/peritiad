@@ -3,8 +3,6 @@
 
 
         
-        <file>icons/countries/kenya.png</file>
-        
         <file>icons/date/date-01.png</file>
         <file>icons/date/date-02.png</file>
         <file>icons/date/date-03.png</file>
@@ -86,12 +84,17 @@
         <file>icons/buttons/info.png</file>
         <file>icons/buttons/internet.png</file>
         <file>icons/buttons/left-arrow.png</file>
+        <file>icons/buttons/minimize.png</file> 
         <file>icons/buttons/right-arrow.png</file>
         <file>icons/buttons/chevron-right.png</file>
         <file>icons/buttons/no-internet.png</file>
         <file>icons/buttons/settings-1.png</file>
         <file>icons/buttons/settings-2.png</file> 
+        <file>icons/buttons/zoom-in.png</file> 
+        <file>icons/buttons/zoom-out.png</file> 
         <file>icons/buttons/sign-language.png</file>
+        
+        <file>icons/countries/kenya.png</file>
         
         <file>illustrations/3-people.png</file>
         <file>illustrations/boy-girl-sitting-in-chairs.png</file>

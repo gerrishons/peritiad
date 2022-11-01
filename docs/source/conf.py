@@ -35,7 +35,7 @@ templates_path = ['_templates']
 # The suffix of source filenames.
 source_suffix = [".rst", ".md"]
 
-html_theme = 'furo' #rtd_sphinx_theme'
+html_theme = 'furomon' #rtd_sphinx_theme'
 html_logo = "images/peritia-logo.png"
 
 

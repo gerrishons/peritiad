@@ -329,7 +329,8 @@ Peritia::Peritia(QWidget *parent) :
     ui->toolBar->addWidget(emptyWidget);
     ui->toolBar->addAction(ui->actionPreference);
     ui->toolBar->addAction(ui->actionFullScreen);
-    ui->toolBar->addAction(ui->actionAccount);
+    ui->toolBar->addAction(ui->actionAbout);
+    ui->toolBar->addAction(ui->actionExit);
     ui->toolBar->addAction(ui->actionHideLeftToolBar);
 
     ui->toolBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -436,10 +437,10 @@ Peritia::Peritia(QWidget *parent) :
     connect(ui->actionText2ASL, &QAction::triggered, this, &Peritia::text2ASL);
 
     //This will maximize the screen
-    connect(ui->actionZoom_in, &QAction::triggered, this, &Peritia::showMaximized);
+    connect(ui->actionZoomIn, &QAction::triggered, this, &Peritia::zoomIn);//showMaximized);
 
     //This will change to the default size
-    connect(ui->actionZoom_out, &QAction::triggered, this, &Peritia::showNormal);
+    connect(ui->actionZoomOut, &QAction::triggered, this, &Peritia::zoomOut);
     //QObject::connect(listWidget, SIGNAL(currentRowChanged(int)), stackedWidget, SLOT(setCurrentIndex(int)));
 
     //connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(Peritia::itemClickedSlot(QListWidgetItem *)));
@@ -1354,6 +1355,8 @@ void Peritia::timerEvent(QTimerEvent *) {
                 break;
             case 30:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(26, 95, 180);"));
                 break;
+            case 31:  ui->clockLabel->setStyleSheet(QString::fromUtf8("color: rgb(98, 160, 234);"));
+                break;
     }
 
     }
@@ -1375,7 +1378,25 @@ void Peritia::timerEvent(QTimerEvent *) {
 }
 
 
+void Peritia::zoomIn(int increment) {
+    increment =10;
 
+    int width = Peritia::size().width();
+    int height = Peritia::size().height();
+
+    Peritia::setFixedSize(width+increment, height+increment);
+
+}
+
+void Peritia::zoomOut(int decrement) {
+    decrement = 10;
+
+    int width = Peritia::size().width();
+    int height = Peritia::size().height();
+
+    Peritia::setFixedSize(width-decrement, height-decrement);
+
+}
 void Peritia::ss() {
     bool ok;
 
