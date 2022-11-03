@@ -77,7 +77,8 @@
         
         <file>icons/buttons/accessibility.png</file>
         <file>icons/buttons/account.png</file> 
-        <file>icons/buttons/back-arrow.png</file> 
+        <file>icons/buttons/back-arrow.png</file>
+        <file>icons/buttons/clock.png</file> 
         <file>icons/buttons/donate.png</file>
         <file>icons/buttons/exit.png</file>
         <file>icons/buttons/fullscreen.png</file>
@@ -95,10 +96,13 @@
         <file>icons/buttons/sign-language.png</file>
         
         <file>icons/countries/kenya.png</file>
+        <file>icons/countries/uk.png</file>
+        <file>icons/countries/usa.png</file>
         
         <file>illustrations/3-people.png</file>
         <file>illustrations/boy-girl-sitting-in-chairs.png</file>
         <file>illustrations/boy-and-girl-standing-and-laughing.png</file>
+        <file>illustrations/fabulous-flags.png</file>
         <file>illustrations/girl-and-boy-with-laptop.png</file>
         <file>illustrations/man-playing-with-dog-on-the-couch.png</file>
         <file>illustrations/man-search-music-with-phone.png</file>

@@ -1,6 +1,7 @@
 #ifndef SETTINGSDIALOG_H
 #define SETTINGSDIALOG_H
 
+#include "qcheckbox.h"
 #include <QDialog>
 
 QT_BEGIN_NAMESPACE
@@ -14,6 +15,11 @@ class SettingsDialog : public QDialog
 public:
     SettingsDialog(QWidget *parent = nullptr);
     ~SettingsDialog();
+
+
+public slots:
+
+    void changeState();
 
 private:
     Ui::SettingsDialog *ui;

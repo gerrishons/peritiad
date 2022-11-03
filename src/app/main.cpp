@@ -1,8 +1,10 @@
-
 #include <iostream>
 #include <filesystem>
 #include <fstream>
 #include <stdio.h>
+#include <QSettings>
+
+#include "version.h"
 //#ifdef WIN32
 //#include <Windows.h>
 //#else
@@ -12,7 +14,7 @@
 #include <QApplication>
 #include <QDialog>
 
-
+#include <QFileInfo>
 #include <QTimer>
 
 
@@ -20,6 +22,7 @@
 #include "peritia.h"
 
 
+//#include "src/settings.h"
 #include "src/logger.h"
 #include "src/dialogs/welcomedialog.cpp"
 
@@ -28,14 +31,39 @@ int main(int argc, char *argv[])
 {
     Logger::init();
 
-    qInfo()<<"Starting Peritia by "<<QSysInfo::machineHostName()<<", on a "<<QSysInfo::kernelVersion()<<" computer";
+   //
+
+
 
 
     QApplication a(argc, argv);
 
-    QApplication::setApplicationName(QLatin1String("Peritia"));
+    QApplication::setApplicationName(global::name);//QLatin1String("Peritia"));
     QApplication::setDesktopFileName("peritia.desktop");
+    QApplication::setOrganizationDomain("peritia.org");
     QApplication::setOrganizationName(QLatin1String("Scalabli"));
+
+    qInfo()<<"Starting " <<global::name<<"Version: "<<global::version<< "on "<<QSysInfo::machineHostName()<<QSysInfo::kernelVersion()<<" computer";
+
+
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name);// global::name, Q_NULLPTR );
+    //qDebug() << "pathProfile" << settings.fileName();
+
+
+
+   // Settings settingsGstDebug;
+   /// QFileInfo fileInfo(settingsGstDebug.getFileName() );
+    //QString pathAndFilename = fileInfo.absoluteFilePath();
+   // qDebug() << "pathAndFilename:" << pathAndFilename;
+
+   // QString pathToProfile = fileInfo.absolutePath();
+    //qDebug() << "pathProfile" << pathToProfile;
+
+
+
+
+
+
 
     Peritia w;
 

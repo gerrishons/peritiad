@@ -59,6 +59,7 @@ Peritia::Peritia(QWidget *parent) :
     ui(new Ui::Peritia)
 {
     ui->setupUi(this);
+    readSettings();
     startTimer(1000);
 
     srand(time(0));
@@ -128,13 +129,32 @@ Peritia::Peritia(QWidget *parent) :
     QMovie *gifMovie = new QMovie(":/gifs/girl-working-at-home.gif");
     ui->label_4->setMovie(gifMovie);
     gifMovie->start();
+    QLabel *kak = new QLabel;
+    kak->setFixedSize(100,30);
+    kak->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/fabulous-flags.png);"));
+
+
+    QIcon clockIcon;
+    clockIcon.addFile(QString::fromUtf8(":/icons/buttons/clock.png"), QSize(830,30), QIcon::Normal, QIcon::Off);
+
+    clockPushButton = new QPushButton;
+    clockPushButton->setAccessibleName("current time");
+    clockPushButton->setFlat(true);
+    clockPushButton->animateClick();
+    clockPushButton->setFixedSize(80,20);
+    clockPushButton->setIcon(clockIcon);
+    //clockPushButton->
 
     internetConnectionStatusButton = new QPushButton;//"Network unavailable");
     internetConnectionStatusButton->setAccessibleName("connection status");
     internetConnectionStatusButton->setFlat(true);
 
     /*This adds the label to the right*/
+    ui->statusBar->addPermanentWidget(kak);
+    ui->statusBar->addPermanentWidget(clockPushButton);
     ui->statusBar->addPermanentWidget(internetConnectionStatusButton);
+
+
 
 
 
@@ -255,8 +275,6 @@ Peritia::Peritia(QWidget *parent) :
 
 
 
-   
-      ui->centralWidget->setStyleSheet(".QWidget {background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255)) }");
 
     if (FinalHour <12) {
 
@@ -797,6 +815,40 @@ void Peritia::closeDockWidget() {
 
                  }
 
+QFont Peritia::defaultFont() {
+    QFont thisIsDefaultFont = QApplication::font();
+   // thisIsDefaultFont.setFamily(QLatin1String(DEFAULT_FONT);
+
+
+}
+void Peritia::closeEvent(QCloseEvent *event)
+ {
+     if (Peritia::close()) {
+
+
+         checkBox = new QCheckBox("Don't show this again");
+         QMessageBox *quitMessageBox = new QMessageBox;
+         quitMessageBox->setIcon(QMessageBox::Information);
+         quitMessageBox->setWindowTitle("Confirm");
+         quitMessageBox->setCheckBox(checkBox);
+         quitMessageBox->setText("The document has been modified.");
+         quitMessageBox->setInformativeText("<b>Do you want to save your changes?</b>");
+         quitMessageBox->setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+         quitMessageBox->setDefaultButton(QMessageBox::Cancel);
+
+         writeSettings();
+
+         switch (quitMessageBox->exec()) {
+             case QMessageBox::Cancel: event->ignore();
+                  break;
+             case QMessageBox::Ok: event->accept();
+                  break;
+
+
+         }
+
+ }
+}
 void Peritia::hideLeftToolBar()   {
 
     ui->toolBar->hide();
@@ -843,6 +895,97 @@ void Peritia::hideStatusBar() {
     if(ui->statusBar->isHidden()) {
             ui->statusBar->setAttribute(Qt::WA_DeleteOnClose);
 }
+
+
+
+
+
+}
+
+void Peritia::readSettings()
+{
+
+   QSettings settings(QCoreApplication::organizationName(), QCoreApplication::applicationName());
+   settings.beginGroup("MainWindow");
+
+   const QByteArray geometry = settings.value("geometry", QByteArray()).toByteArray();
+
+   const QByteArray windowState = settings.value("windowState", QByteArray()).toByteArray();
+    qInfo()<<settings.value("geometry")<<"window state";
+
+
+   #ifdef Q_OS_LINUX
+   QFile file("/home/gerry/.config/Peritia/peritia.conf");
+   if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    QTextStream in(&file);
+
+    qInfo()<<"line 8"<<in.readAll();//.("geometry");///readLine(8);
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        qInfo()<<"read line"<<line;
+    }
+ #endif
+   if (geometry.isEmpty()) {
+       qInfo()<<"empty geometry";
+       setGeometry(100, 100, 1435, 813);
+            // QRect availableGeometry = screen()->availableGeometry();
+           // resize(availableGeometry.width() / 3, availableGeometry.height() / 2);
+           // move((availableGeometry.width() - width()) / 2,
+              //   (availableGeometry.height() - height()) / 2);
+   }
+      else {
+
+
+
+       restoreGeometry(geometry);
+   }
+   if (windowState.isEmpty()) {
+
+
+   }
+   else {
+       restoreState(windowState);
+
+   }
+
+
+
+
+
+   // font = QFont(qvariant_cast<QString>(settings.value(QLatin1String()))
+
+   // const auto font = settings.value("font", QByteArray()).toByteArray();
+
+  // const auto geometry = settings.value("geometry", QByteArray()).toByteArray();
+   QStringList tt =settings.value("geometry", QByteArray()).toStringList();
+
+
+  //  const auto styleSheet = settings.value("styleSheet", QByteArray()).toByteArray();
+   // const auto mainWindowSize = settings.value("size").toSize();
+
+   // if (font.isEmpty())
+
+   //    setFont(QFont("Cantrell, 9"));//ui->statusBar->setFont(QFont("Cantrell, 9"));
+
+
+  // if (geometry.isEmpty())
+
+    //    setGeometry(100, 50, 1435, 100);
+   // else
+     // restoreGeometry(geometry);
+
+  //  if (size().isEmpty())
+     //   setFixedSize(200,200);
+
+    //if (styleSheet.isEmpty())
+   //     setStyleSheet(".QWidget {background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255)) }");
+
+    //else
+      //  restoreState(settings.value("windowState").toByteArray());
+
+    settings.endGroup();
 
 
 
@@ -900,6 +1043,9 @@ void Peritia::showAbout() {
 
 
 void Peritia::showFullScreen() {
+
+    QSettings settings("/home/gerry/.config/Peritia", QSettings::IniFormat );
+    settings.beginGroup( "fullScreen" );
 
     QMediaPlayer * fullscreenPlayer = new QMediaPlayer;
     QAudioOutput * fullscreenAudioOutput =new QAudioOutput;
@@ -962,6 +1108,7 @@ void Peritia::showFullScreen() {
 
     }
 */
+    settings.endGroup();
 
 }
 
@@ -1081,7 +1228,11 @@ void Peritia::showKeyBoardShortcuts()  {
 void Peritia::showSettings() {
 
   SettingsDialog *settingsDialog = new SettingsDialog(this);
-  connect(settingsDialog, SIGNAL(windowTitleChanged(QString)), this, SLOT(setWindowTitle(QString)));
+  //qInfo()<<settingsDialog->changeState();
+ // if() {
+
+//  }
+
 
 
   settingsDialog->show();
@@ -1262,6 +1413,7 @@ void Peritia::timerEvent(QTimerEvent *) {
     }
 
     ui->clockLabel->setText(timeText);//utctime.toString("hh:mm"));
+    clockPushButton->setText(utcTime.toString("hh:mm:ss"));
 
     /*convert string to QString*/
     QString dayLabelIconQString = QString::fromStdString(dayLabelIcon);
@@ -1377,7 +1529,41 @@ void Peritia::timerEvent(QTimerEvent *) {
 
 }
 
+void Peritia::writeSettings()
+{
 
+     settingsFile = new QFile;
+   // "Moose Soft", "Peritia");// QSettings::NativeFormat);
+
+#ifdef Q_OS_LINUX
+     QDir linuxSettingsDir;
+     QString defaultPath = linuxSettingsDir.home().filePath(".config/Peritia/peritia.conf");
+
+     QSettings settings(defaultPath, QSettings::IniFormat);
+     settingsFile->setFileName(defaultPath);
+
+     if (!settingsFile->exists()) {
+           /*defaultPath does not exist! ..making a new path...*/
+           linuxSettingsDir.home().mkpath(".config/Peritia");
+
+       }
+#endif
+
+      settings.beginGroup("MainWindow");
+      settings.setValue("geometry", QRect(100, 100, 200, 200));// saveGeometry());
+      settings.setValue("windowState", saveState());
+   // settings.setValue("font", font());
+      //close());//saveGeometry());
+   // settings.setValue("size", size());
+   // settings.setValue("styleSheet", styleSheet());
+      settings.endGroup();
+
+
+
+      QString debugLevel = settings.value( "size", "0" ).toString();
+      qInfo()<<settings.value("geometry")<<debugLevel;
+
+}
 void Peritia::zoomIn(int increment) {
     increment =10;
 

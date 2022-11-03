@@ -30,11 +30,11 @@ void Logger::init()  {
     logFile = new QFile;
 #ifdef Q_OS_LINUX
     QDir linuxDir;
-    QString defaultPath = linuxDir.home().filePath(".peritia/logs/peritia.log");
+    QString defaultPath = linuxDir.home().filePath(".config/Peritia/logs/peritia.log");
     logFile->setFileName(defaultPath);
     if (!logFile->exists()) {
         /*defaultPath does not exist! ..making a new path...*/
-        linuxDir.home().mkpath(".peritia/logs");
+        linuxDir.home().mkpath(".config/Peritia/logs");
 
     }
 

@@ -1,7 +1,7 @@
 #include "src/dialogs/welcomedialog.h"
 #include "ui_welcomedialog.h"
-
-#include "src/version.cpp"
+#include "version.h"
+//#include "src/version.cpp"
 
 WelcomeDialog::WelcomeDialog(QWidget *parent)
     : QDialog(parent)
@@ -23,9 +23,7 @@ WelcomeDialog::WelcomeDialog(QWidget *parent)
     progressTimer->start(250);
 
 
-    PeritiaVersion version;
-
-    ui->versionLabel->setText("Version " +version.premier());
+    ui->versionLabel->setText("Version " +global::version);
 }
 
 WelcomeDialog::~WelcomeDialog()

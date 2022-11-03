@@ -1,6 +1,8 @@
 #ifndef PERITIA_H
 #define PERITIA_H
 
+#include <QCheckBox>
+#include <QFont>
 #include <QMessageBox>
 #include <QVBoxLayout>
 #include "qlabel.h"
@@ -8,6 +10,7 @@
 #include <QListWidgetItem>
 #include <QPushButton>
 #include <QMediaPlayer>
+#include <QSettings>
 #include <QMainWindow>
 
 
@@ -34,6 +37,8 @@ public:
     explicit Peritia (QWidget *parent = nullptr);
     ~Peritia();
 
+    QFont defaultFont();
+
 
 
 public slots:
@@ -56,6 +61,7 @@ private slots:
     void save();
     void saveAs();
     void print();
+
     void removeWidgetOnStatusBar();
     void selectFont();
     void setFontBold(bool bold);
@@ -77,6 +83,7 @@ private slots:
     void text2ASL();
     void timer();
     void ss();
+
     void zoomIn(const int increment);
     void zoomOut(const int decrement);
 
@@ -85,17 +92,28 @@ private slots:
 
 
 protected:
+    void closeEvent(QCloseEvent *event);
     void connectionEvent(QTimerEvent *event);
     void timerEvent(QTimerEvent *event);
 
 
 private:
     Ui::Peritia *ui;
+    QCheckBox *checkBox;
+    QFile *settingsFile;
+  //  QFont *defaultFont;
+    QPushButton *clockPushButton,
+                *internetConnectionStatusButton,
+                *leftToolbarButton;
+
+    QSettings settings;
+    void writeSettings();
+    void readSettings();
+
   //  AboutDialog *aboutDialog;
    // SettingsDialog *settingsDialog;
   //  QLabel *statusBarClockLabel;
     QFile *myInfo;
-    int newFixedWidth;
     QLabel *label_2;
     QLabel *label_4;
     QLabel *label;
@@ -106,9 +124,9 @@ private:
     QTimer *expansionTimer;
     bool closeWindow();
 
-    QPushButton *internetConnectionStatusButton;
 
-    QPushButton *leftToolbarButton;
+
+
     QVBoxLayout *verticalLayout;
 
 };

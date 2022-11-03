@@ -1,7 +1,7 @@
 
 
 #include "src/dialogs/aboutdialog.h"
-#include "src/version.cpp"
+#include "src/version.h"
 
 
 AboutDialog::AboutDialog(QWidget *parent)
@@ -90,7 +90,6 @@ AboutDialog::AboutDialog(QWidget *parent)
 
     hostName = QSysInfo::machineHostName();
     osVersion = QSysInfo::prettyProductName();
-    PeritiaVersion version;
 
 
     if (sizeof(void *) == 4)
@@ -101,15 +100,15 @@ AboutDialog::AboutDialog(QWidget *parent)
 
 
 #ifdef Q_OS_LINUX 
-    versionLabel->setText("Peritia version " + version.premier() + "\nBuilt for " +osVersion + bitness + "\n");
+    versionLabel->setText("Peritia version " + global::version + "\nBuilt for " +osVersion + bitness + "\n");
 #endif
 
 #ifdef Q_OS_MACOS
-    versionLabel->setText("Peritia version " + version.premier() + "\nBuilt for " +osVersion  + bitness +"\n");
+    versionLabel->setText("Peritia version " + global::version + "\nBuilt for " +osVersion  + bitness +"\n");
 #endif
 
 #ifdef Q_OS_WIN
-    versionLabel->setText("Peritia version " + version.premier() + "\nBuilt for " +osVersion + bitness + "\n");
+    versionLabel->setText("Peritia version " + global::version + "\nBuilt for " +osVersion + bitness + "\n");
 #endif
 
 

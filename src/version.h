@@ -1,3 +1,11 @@
-QString peritiaVersion_ = "2022.1";
+#include <QString>
 
 
+namespace global
+{
+    extern QString name;
+    extern QString nameOutput;
+    extern QString version;
+    //extern int showclickCounter;
+   // extern QLineEdit *lineEdit_EOS;
+}
