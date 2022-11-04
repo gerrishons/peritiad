@@ -22,7 +22,6 @@
 #include <QFontDialog>
 #include <QCloseEvent>
 #include <QMediaDevices>
-#include <QMovie>
 #include <QGraphicsOpacityEffect>
 
 #include <QtMultimedia/QCamera>
@@ -62,6 +61,9 @@ Peritia::Peritia(QWidget *parent) :
     readSettings();
     startTimer(1000);
 
+    gif1 = new QMovie(":/gifs/girl-working-at-home.gif");
+    gif2 = new QMovie(":/gifs/neo-sakura-waiting.gif");
+
     srand(time(0));
     randomize();
     std::vector<int> randomResult = randomize();
@@ -72,13 +74,21 @@ Peritia::Peritia(QWidget *parent) :
 
            switch(*iter) {
             case 1: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/boy-and-girl-standing-and-laughing.png);"));
+                    ui->centralWidget->setStyleSheet(".QWidget {background-color: qlineargradient(spread:pad, x1:0.697, y1:1, x2:1, y2:0, stop:0 rgba(232, 245, 176, 255), stop:0.09 rgba(246, 189, 237, 255), stop:0.14 rgba(194, 207, 246, 255), stop:0.19 rgba(184, 160, 168, 255), stop:0.25 rgba(171, 186, 248, 255), stop:0.32 rgba(243, 248, 224, 255), stop:0.385 rgba(249, 162, 183, 255), stop:0.47 rgba(100, 115, 124, 255), stop:0.58 rgba(251, 205, 202, 255), stop:0.65 rgba(170, 128, 185, 255), stop:0.75 rgba(252, 222, 204, 255), stop:0.805 rgba(206, 122, 218, 255), stop:0.86 rgba(254, 223, 175, 255), stop:0.91 rgba(254, 236, 244, 255), stop:1 rgba(255, 191, 221, 255)) }");
+                    ui->label1->setMovie(gif1);
+                    gif1->start();
                qInfo()<<"Random generated interger is "<<*iter;
 			    break;
             case 2: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/boy-girl-sitting-in-chairs.png);"));
+                    ui->centralWidget->setStyleSheet(".QWidget {background-color: qlineargradient(spread:pad, x1:0, y1:0.068, x2:1, y2:0, stop:0 rgba(40, 221, 218, 255), stop:1 rgba(255, 255, 255, 255)) }");
+                    ui->label1->setMovie(gif2);
+                    gif2->start();
                qInfo()<<"Random generated interger is "<<*iter;
 			    break;
             case 3: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/woman-in-glasses-sitting-and-reading-book.png);"));
+                    ui->centralWidget->setStyleSheet(".QWidget {background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255)) }");
                qInfo()<<"Random generated interger is "<<*iter;
+
 			    break;
             case 4: ui->illustrationLabel->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/man-playing-with-dog-on-the-couch.png);"));
                qInfo()<<"Random generated interger is "<<*iter;
@@ -103,6 +113,8 @@ Peritia::Peritia(QWidget *parent) :
 			     break;
 	    }
 
+
+
     
 
 
@@ -126,11 +138,10 @@ Peritia::Peritia(QWidget *parent) :
     cam->start();
     news->capture();
 
-    QMovie *gifMovie = new QMovie(":/gifs/girl-working-at-home.gif");
-    ui->label_4->setMovie(gifMovie);
-    gifMovie->start();
     QLabel *kak = new QLabel;
     kak->setFixedSize(100,30);
+
+
     kak->setStyleSheet(QString::fromUtf8("image: url(:/illustrations/fabulous-flags.png);"));
 
 

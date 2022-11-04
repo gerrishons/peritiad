@@ -3,6 +3,7 @@
 
 #include "qcheckbox.h"
 #include <QDialog>
+#include <QFile>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class SettingsDialog; }
@@ -19,9 +20,11 @@ public:
 
 public slots:
 
+    void changeBackground();
     void changeState();
 
 private:
     Ui::SettingsDialog *ui;
+    QFile *colorFile;
 };
 #endif // SETTINGSDIALOG_H

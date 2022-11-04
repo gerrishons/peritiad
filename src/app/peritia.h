@@ -1,8 +1,9 @@
 #ifndef PERITIA_H
 #define PERITIA_H
 
-#include <QCheckBox>
+//#include <QCheckBox>
 #include <QFont>
+#include <QMovie>
 #include <QMessageBox>
 #include <QVBoxLayout>
 #include "qlabel.h"
@@ -102,11 +103,15 @@ private:
     QCheckBox *checkBox;
     QFile *settingsFile;
   //  QFont *defaultFont;
+    QMovie *gif1,
+           *gif2;
+
     QPushButton *clockPushButton,
                 *internetConnectionStatusButton,
                 *leftToolbarButton;
 
     QSettings settings;
+
     void writeSettings();
     void readSettings();
 
