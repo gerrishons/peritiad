@@ -2,6 +2,7 @@
 #define PERITIA_H
 
 //#include <QCheckBox>
+#include <QDialog>
 #include <QFont>
 #include <QMovie>
 #include <QMessageBox>
@@ -101,6 +102,7 @@ protected:
 private:
     Ui::Peritia *ui;
     QCheckBox *checkBox;
+    QDialog *settingsDialog;
     QFile *settingsFile;
   //  QFont *defaultFont;
     QMovie *gif1,

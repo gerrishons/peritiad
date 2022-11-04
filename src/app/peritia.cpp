@@ -926,13 +926,16 @@ void Peritia::readSettings()
 
 
    #ifdef Q_OS_LINUX
-   QFile file("/home/gerry/.config/Peritia/peritia.conf");
+   QFile file("/home/gerry/.config/Peritia/backgrounds/peritia-color.conf");
    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 
     QTextStream in(&file);
 
-    qInfo()<<"line 8"<<in.readAll();//.("geometry");///readLine(8);
+    qInfo()<<"line 8"<<in.readAll();
+    QString tostring(in.readAll());
+    ui->label1->setText(tostring);
+     //" + ";");//"color: rgb(53, 132, 228);"))(//.("geometry");///readLine(8);
     while (!in.atEnd()) {
         QString line = in.readLine();
         qInfo()<<"read line"<<line;
@@ -1238,7 +1241,16 @@ void Peritia::showKeyBoardShortcuts()  {
 }
 void Peritia::showSettings() {
 
-  SettingsDialog *settingsDialog = new SettingsDialog(this);
+
+    settingsDialog = new SettingsDialog;
+    //settingsDialog->resize(600, 500);
+
+    settingsDialog->show();
+
+    Peritia::update();
+
+ // SettingsDialog *settingsDialog = new SettingsDialog(this);
+  //settingsDialog->
   //qInfo()<<settingsDialog->changeState();
  // if() {
 
@@ -1246,7 +1258,7 @@ void Peritia::showSettings() {
 
 
 
-  settingsDialog->show();
+ // settingsDialog->show();
 
 
 

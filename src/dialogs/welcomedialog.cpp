@@ -17,6 +17,7 @@ WelcomeDialog::WelcomeDialog(QWidget *parent)
     /*Frameless window hint causes the dialog to flicker a bit*/
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 
+
     progressTimer = new QTimer(this);
 
     QObject::connect(progressTimer, &QTimer::timeout, this, &WelcomeDialog::valueProgress);

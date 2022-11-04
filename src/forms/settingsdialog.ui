@@ -23,6 +23,9 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+    </item>
     <item row="1" column="0">
      <widget class="QListWidget" name="listWidget">
       <item>
@@ -30,13 +33,40 @@
         <string>Appearance</string>
        </property>
        <property name="icon">
-        <iconset theme="preferences-desktop-theme"/>
+        <iconset theme="preferences-desktop-theme">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Behavior</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../resources/peritia.qrc">
+         <normaloff>:/icons/buttons/accessibility.png</normaloff>:/icons/buttons/accessibility.png</iconset>
        </property>
       </item>
      </widget>
     </item>
-    <item row="1" column="1">
+    <item row="2" column="2">
+     <widget class="QPushButton" name="applyPushButton">
+      <property name="text">
+       <string>Appy</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(134, 94, 60);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -44,68 +74,150 @@
        <number>0</number>
       </property>
       <widget class="QWidget" name="page_3">
-       <widget class="QWidget" name="widget" native="true">
+       <widget class="QWidget" name="horizontalLayoutWidget_2">
         <property name="geometry">
          <rect>
           <x>9</x>
           <y>19</y>
           <width>281</width>
-          <height>441</height>
+          <height>41</height>
          </rect>
         </property>
-        <widget class="QWidget" name="gridLayoutWidget_2">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>309</width>
-           <height>441</height>
-          </rect>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0" alignment="Qt::AlignLeft|Qt::AlignTop">
-           <widget class="QLabel" name="label">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Font</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="fontLabel">
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="text">
+            <string>Change</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>406</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item alignment="Qt::AlignLeft">
+          <widget class="QLabel" name="colorSchemeLabel">
+           <property name="text">
+            <string>Color scheme</string>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignLeft">
+          <widget class="QComboBox" name="comboBox">
+           <item>
             <property name="text">
-             <string>Change Background</string>
+             <string>New Item</string>
             </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QCheckBox" name="checkBox">
+           </item>
+           <item>
             <property name="text">
-             <string>CheckBox</string>
+             <string>New Item</string>
             </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QPushButton" name="pushButton">
+           </item>
+           <item>
             <property name="text">
-             <string>PushButton</string>
+             <string>New Item</string>
             </property>
-           </widget>
-          </item>
-          <item row="1" column="0" rowspan="2" alignment="Qt::AlignTop">
-           <widget class="QLabel" name="label_2">
+           </item>
+           <item>
             <property name="text">
-             <string>Hide Left ToolBar</string>
+             <string>New Item</string>
             </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>New Item</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="page_4"/>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QDialogButtonBox" name="buttonBox">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="standardButtons">
-       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-      </property>
+      <widget class="QWidget" name="page_4">
+       <widget class="QSpinBox" name="spinBox">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>90</y>
+          <width>42</width>
+          <height>23</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="doubleSpinBox">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>160</y>
+          <width>62</width>
+          <height>23</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -116,6 +228,25 @@
    </property>
   </action>
  </widget>
- <resources/>
- <connections/>
+ <resources>
+  <include location="../../resources/peritia.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>listWidget</sender>
+   <signal>currentRowChanged(int)</signal>
+   <receiver>stackedWidget</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>14</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

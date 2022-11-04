@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <QSettings>
 
+#include "qdir.h"
 #include "version.h"
 //#ifdef WIN32
 //#include <Windows.h>
@@ -13,6 +14,8 @@
 
 #include <QApplication>
 #include <QDialog>
+#include <QFont>
+#include <QTextStream>
 
 #include <QFileInfo>
 #include <QTimer>
@@ -44,6 +47,60 @@ int main(int argc, char *argv[])
     QApplication::setOrganizationName(QLatin1String("Scalabli"));
 
     qInfo()<<"Starting " <<global::name<<"Version: "<<global::version<< "on "<<QSysInfo::machineHostName()<<QSysInfo::kernelVersion()<<" computer";
+
+    qInfo()<<"Current font being used is "<<a.font();
+
+
+
+#ifdef Q_OS_LINUX
+    QDir linuxBackgroundDir;
+    QFile fontFile = linuxBackgroundDir.home().filePath(".config/Peritia/font.conf");
+
+
+    if(!fontFile.exists()) {
+
+    }
+
+    fontFile.open(QIODevice::ReadOnly | QIODevice::Text);
+
+    QTextStream in(&fontFile);
+
+    QString resut = in.readLine().remove("\"").remove("QFont(").remove(")");
+
+
+    qInfo()<<resut;
+
+  //  qInfo()<<"removed"<<in.readAll().remove("\"");
+   // qInfo()<<"line 8"<<in.readLine().remove("\"");
+    a.setFont(in.readLine().remove("\""));
+
+    // QFont serifFont("Times", 10, QFont::Bold);
+    a.setFont(QFont(resut));//in.readAll());//QFont("Times", 10, QFont::Bold));//serifFont);//QFont(Cantarell,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1));//in.readAll());
+ //QString tostring(in.readAll());
+// ui->label1->setText(tostring);
+  //" + ";");//"color: rgb(53, 132, 228);"))(//.("geometry");///readLine(8);
+// while (!in.atEnd()) {
+//     QString line = in.readLine();
+    // qInfo()<<"read line"<<line;
+// //}
+
+
+    //if(!fontFile->open(QIODevice::ReadOnly | QIODevice::Text))
+       // return;
+
+      // QTextStream in(&fontFile);
+
+       //  qInfo()<<"line 8"<<in.readAll();
+        // QString tostring(in.readAll());
+   //
+    // }
+
+
+    // const QString getFontString =
+
+
+
+#endif
 
 
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name);// global::name, Q_NULLPTR );

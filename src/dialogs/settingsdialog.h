@@ -2,8 +2,10 @@
 #define SETTINGSDIALOG_H
 
 #include "qcheckbox.h"
+#include "qfontdialog.h"
 #include <QDialog>
 #include <QFile>
+#include <QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class SettingsDialog; }
@@ -20,11 +22,18 @@ public:
 
 public slots:
 
+    void changeFont();
     void changeBackground();
-    void changeState();
+    void writeSettings();
 
 private:
     Ui::SettingsDialog *ui;
-    QFile *colorFile;
+    QFile *colorFile,
+         *fontFile;
+    QFile *settingsFile;
+    QFont *font;
+    //QFontDialog *fontDialog;
+    QSettings settings;
+
 };
 #endif // SETTINGSDIALOG_H
