@@ -30,6 +30,9 @@ intersphinx_disabled_domains = ['std']
 
 templates_path = ['_templates']
 
+# The suffix of source filenames.
+source_suffix = [".rst", ".md"]
+
 # -- Options for HTML output
 
 # The suffix of source filenames.
